@@ -449,8 +449,9 @@ export default function AboutPage() {
 
       {/* Educational Foundation */}
 
+      
       <section className="py-20 bg-slate-50 w-full">
-      <Container size="xl">
+      <div className="container-xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -464,7 +465,17 @@ export default function AboutPage() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          className="education-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 400px))",
+            gap: "2rem",
+            maxWidth: "1152px",
+            margin: "0 auto",
+            justifyContent: "center",
+          }}
+        >
           {educationCards.map((card, index) => (
             <motion.div
               key={index}
@@ -473,7 +484,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="group"
+              className="group education-card"
+              style={{ maxWidth: "400px", width: "100%" }}
             >
               <Card className={`h-full ${card.color} border-2 transition-all duration-300 group-hover:shadow-xl`}>
                 <CardContent className="p-8 text-center">
@@ -498,9 +510,9 @@ export default function AboutPage() {
             </motion.div>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
-    
+
       {/* <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <motion.div

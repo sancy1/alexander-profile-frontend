@@ -220,8 +220,6 @@
 
 
 
-
-
 import type { Config } from "tailwindcss"
 
 const config: Config = {
@@ -233,7 +231,23 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: ["border-border", "container", "mx-auto", "max-w-7xl", "px-4", "sm:px-6", "lg:px-8"],
+  safelist: [
+    "border-border",
+    "container",
+    "mx-auto",
+    "max-w-3xl",
+    "max-w-5xl",
+    "max-w-6xl",
+    "max-w-7xl",
+    "max-w-none",
+    "px-4",
+    "sm:px-6",
+    "lg:px-8",
+    "w-full",
+    "grid",
+    "md:grid-cols-3",
+    "gap-8",
+  ],
   theme: {
     container: {
       center: true,
@@ -320,4 +334,3 @@ const config: Config = {
 }
 
 export default config
-

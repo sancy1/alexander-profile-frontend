@@ -59,14 +59,14 @@
   }
 }
 
-/* @layer base {
+@layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-} */
+}
 
 /* Force consistent container behavior */
 @layer components {
@@ -89,5 +89,66 @@
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px !important;
+  }
+}
+
+/* Force container constraints in production */
+@layer utilities {
+  .container-sm {
+    width: 100% !important;
+    max-width: 768px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .container-md {
+    width: 100% !important;
+    max-width: 1024px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .container-lg {
+    width: 100% !important;
+    max-width: 1152px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .container-xl {
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .content-grid {
+    display: grid !important;
+    max-width: 1152px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 2rem !important;
+  }
+
+  @media (min-width: 768px) {
+    .content-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+}
+
+/* Prevent cards from stretching too wide */
+.education-card {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .education-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+    max-width: 1152px !important;
+    margin: 0 auto !important;
   }
 }
