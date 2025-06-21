@@ -389,7 +389,7 @@ export default function AboutPage() {
 
       <section className="py-20">
       <div className="w-full px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
