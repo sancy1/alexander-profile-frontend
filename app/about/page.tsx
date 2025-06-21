@@ -464,7 +464,7 @@ export default function AboutPage() {
               </p>
             </motion.div>
       
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {educationCards.map((card, index) => (
                 <motion.div
                   key={index}
