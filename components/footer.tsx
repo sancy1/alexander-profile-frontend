@@ -524,7 +524,7 @@ export default function Footer() {
     <footer className="bg-slate-900 text-white">
       <div className="w-full px-4 py-16">
         {/* Main Footer Content - Constrained Width */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand Section */}
             <motion.div
@@ -539,7 +539,7 @@ export default function Footer() {
                   ASC
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Alexander S. Cyril</h3>
+                  <h3 className="text-xl font-bold">Alexander Cyril</h3>
                   <Badge className="bg-emerald-600 text-white text-xs">Software Engineer</Badge>
                 </div>
               </div>
@@ -655,7 +655,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mt-12"
         >
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50 max-w-4xl mx-auto">
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50 max-w-6xl mx-auto">
             <DateTimeLocationWeather />
           </div>
         </motion.div>
@@ -668,7 +668,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="border-t border-slate-800 mt-12 pt-8"
         >
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-slate-400 text-sm flex items-center gap-2">
                 © 2025 Alexander S. Cyril. Made with <Heart className="w-4 h-4 text-red-500" /> and{" "}
