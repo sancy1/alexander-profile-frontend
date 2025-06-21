@@ -63,23 +63,36 @@
   * {
     @apply border-border;
   }
+
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
 }
 
-/* Force consistent container behavior */
-@layer components {
-  .page-container {
-    @apply container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+/* Clean full-width background utility without horizontal scroll */
+@layer utilities {
+  .full-width-bg {
+    position: relative;
   }
 
-  .content-wrapper {
-    @apply w-full max-w-none;
+  .full-width-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    right: -9999px;
+    bottom: 0;
+    z-index: -1;
+    background: inherit;
   }
 }
 
-/* Ensure consistent width across environments */
+/* Ensure consistent container behavior */
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px !important;
@@ -92,63 +105,13 @@
   }
 }
 
-/* Force container constraints in production */
-@layer utilities {
-  .container-sm {
-    width: 100% !important;
-    max-width: 768px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* Force consistent container behavior */
+@layer components {
+  .page-container {
+    @apply container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  .container-md {
-    width: 100% !important;
-    max-width: 1024px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .container-lg {
-    width: 100% !important;
-    max-width: 1152px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .container-xl {
-    width: 100% !important;
-    max-width: 1280px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .content-grid {
-    display: grid !important;
-    max-width: 1152px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    gap: 2rem !important;
-  }
-
-  @media (min-width: 768px) {
-    .content-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
-  }
-}
-
-/* Prevent cards from stretching too wide */
-.education-card {
-  max-width: 400px !important;
-  width: 100% !important;
-}
-
-@media (min-width: 768px) {
-  .education-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 2rem !important;
-    max-width: 1152px !important;
-    margin: 0 auto !important;
+  .content-wrapper {
+    @apply w-full max-w-none;
   }
 }

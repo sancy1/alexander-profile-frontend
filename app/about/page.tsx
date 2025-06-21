@@ -319,7 +319,7 @@ import WhatsAppFloat from "@/components/whatsapp-float"
 import Footer from "@/components/footer"
 import NextImage from "next/image"
 import HeroSection from "@/components/HeroSection";
-import { Container } from "@/components/container"
+import { FullWidthSection } from "@/components/full-width-section"
 
 const educationCards = [
   {
@@ -450,69 +450,56 @@ export default function AboutPage() {
       {/* Educational Foundation */}
 
       
-      <section className="py-20 bg-slate-50 w-full">
-      <div className="container-xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Educational Foundation</h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Continuous learning and professional development drive my expertise
-          </p>
-        </motion.div>
-
-        <div
-          className="education-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 400px))",
-            gap: "2rem",
-            maxWidth: "1152px",
-            margin: "0 auto",
-            justifyContent: "center",
-          }}
-        >
-          {educationCards.map((card, index) => (
+      <FullWidthSection className="py-20 bg-slate-50">
             <motion.div
-              key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group education-card"
-              style={{ maxWidth: "400px", width: "100%" }}
+              className="text-center mb-16"
             >
-              <Card className={`h-full ${card.color} border-2 transition-all duration-300 group-hover:shadow-xl`}>
-                <CardContent className="p-8 text-center">
-                  <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    {card.icon && <card.icon className="w-8 h-8 text-emerald-600" />}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">{card.title}</h3>
-                  <p className="text-slate-600 mb-4">{card.institution}</p>
-                  <div className="flex items-center justify-center gap-2">
-                    <Badge
-                      variant={card.status === "Completed" ? "default" : "secondary"}
-                      className={card.status === "Completed" ? "bg-green-600 text-white" : "bg-emerald-600 text-white"}
-                    >
-                      {card.status}
-                    </Badge>
-                    <Badge variant="outline" className="border-emerald-600 text-emerald-600">
-                      {card.year}
-                    </Badge>
-                  </div>
-                </CardContent>
-              </Card>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Educational Foundation</h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                Continuous learning and professional development drive my expertise
+              </p>
             </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-
+      
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {educationCards.map((card, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10 }}
+                  className="group"
+                >
+                  <Card className={`h-full ${card.color} border-2 transition-all duration-300 group-hover:shadow-xl`}>
+                    <CardContent className="p-8 text-center">
+                      <div className="flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        {card.icon && <card.icon className="w-8 h-8 text-emerald-600" />}
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">{card.title}</h3>
+                      <p className="text-slate-600 mb-4">{card.institution}</p>
+                      <div className="flex items-center justify-center gap-2">
+                        <Badge
+                          variant={card.status === "Completed" ? "default" : "secondary"}
+                          className={card.status === "Completed" ? "bg-green-600 text-white" : "bg-emerald-600 text-white"}
+                        >
+                          {card.status}
+                        </Badge>
+                        <Badge variant="outline" className="border-emerald-600 text-emerald-600">
+                          {card.year}
+                        </Badge>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </FullWidthSection>
+          
       {/* <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <motion.div

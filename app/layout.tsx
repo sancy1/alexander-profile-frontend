@@ -203,6 +203,58 @@
 
 
 
+// import type React from "react"
+// import type { Metadata } from "next"
+// import { Inter } from "next/font/google"
+// import "./globals.css"
+// import ScrollUtils from "@/components/ScrollUtils"
+// import Footer from "../components/footer"
+
+// const inter = Inter({ subsets: ["latin"] })
+
+// export const metadata: Metadata = {
+//   title: "Alexander Cyril - Software Engineer & Data Professional",
+//   description:
+//     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
+//   keywords: "software engineer, full-stack developer, machine learning, data analytics, AI, Python, Next.js, Django",
+//   authors: [{ name: "Alexander Cyril" }],
+//   openGraph: {
+//     title: "Alexander Cyril - Software Engineer",
+//     description:
+//       "Building innovative software solutions with expertise in full-stack development, AI, and data analytics",
+//     type: "website",
+//   },
+//   generator: "v0.dev",
+// }
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en">
+//       <ScrollUtils />
+//       <body className={`${inter.className} bg-background text-foreground`}>
+//         <div className="min-h-screen w-full">
+//           <main className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</main>
+//           <Footer />
+//         </div>
+//       </body>
+//     </html>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -233,11 +285,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <ScrollUtils />
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
         <div className="min-h-screen w-full">
-          {children}
+          <main className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</main>
           <Footer />
         </div>
       </body>
