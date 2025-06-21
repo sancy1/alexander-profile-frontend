@@ -539,15 +539,15 @@ export default function Footer() {
                   ASC
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Alexander Cyril</h3>
+                  <h3 className="text-lg font-bold">Alexander Cyril</h3>
                   <Badge className="bg-emerald-600 text-white text-xs">Software Engineer</Badge>
                 </div>
               </div>
-              <p className="text-slate-300 mb-6 leading-relaxed">
+              <p className="text-slate-300 mb-6 leading-relaxed text-sm">
                 Passionate software engineer specializing in full-stack and mobile development, machine learning, and
                 data analytics. Building innovative solutions that transform ideas into reality.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 text-sm">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
@@ -572,7 +572,7 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <h4 className="text-lg font-semibold mb-6 text-emerald-400">Quick Links</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-sm">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <Link
@@ -595,7 +595,7 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <h4 className="text-lg font-semibold mb-6 text-emerald-400">Services</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-3 text-sm">
                 {services.map((service, index) => (
                   <li key={index} className="text-slate-300 flex items-center gap-2">
                     <Code2 className="w-3 h-3 text-emerald-400" />
@@ -613,7 +613,7 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <h4 className="text-lg font-semibold mb-6 text-emerald-400">Get In Touch</h4>
-              <div className="space-y-4">
+              <div className="space-y-4 text-sm">
                 <Link
                   href="mailto:sanchez.a.cyril@gmail.com"
                   className="flex items-center gap-3 text-slate-300 hover:text-emerald-400 transition-colors"
@@ -630,7 +630,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="text-slate-300 hover:text-emerald-400 transition-colors"
                   >
-                    www.alexander.xyz
+                    https://www.alexander.xyz
                   </Link>
                 </div>
 
@@ -668,13 +668,13 @@ export default function Footer() {
           viewport={{ once: true }}
           className="border-t border-slate-800 mt-12 pt-8"
         >
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto text-sm">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-slate-400 text-sm flex items-center gap-2">
                 © 2025 Alexander S. Cyril. Made with <Heart className="w-4 h-4 text-red-500" /> and{" "}
                 <Code2 className="w-4 h-4 text-emerald-400" />
               </p>
-              <div className="flex gap-6 text-sm text-slate-400">
+              <div className="flex gap-6 text-sm text-slate-400 text-sm">
                 <span className="hover:text-emerald-400 transition-colors cursor-pointer">Privacy Policy</span>
                 <span className="hover:text-emerald-400 transition-colors cursor-pointer">Terms of Service</span>
                 <span className="hover:text-emerald-400 transition-colors cursor-pointer">Sitemap</span>
