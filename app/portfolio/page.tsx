@@ -146,7 +146,7 @@ export default function PortfolioPage() {
 
       {/* Hero Section */}
         <HeroSection
-          imageSrc="/images/slider/theme1.jpg"
+          imageSrc="/images/slider/Theme1.jpg"
           imageAlt="Services Section"
           title={
             <h1 className="text-4xl md:text-6xl text-white mb-6">

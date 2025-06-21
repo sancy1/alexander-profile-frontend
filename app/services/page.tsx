@@ -295,7 +295,7 @@ export default function ServicesPage() {
 
       {/* Hero Section */}
       <HeroSection
-        imageSrc="/images/slider/theme2.jpg"
+        imageSrc="/images/slider/Theme2.jpg"
         imageAlt="Services Section"
         title={
           <h1 className="text-4xl md:text-6xl text-white mb-6">
