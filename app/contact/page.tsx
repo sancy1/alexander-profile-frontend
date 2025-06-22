@@ -62,6 +62,7 @@ const socialLinks = [
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     subject: "",
     message: "",
@@ -86,6 +87,7 @@ export default function ContactPage() {
     // Reset form
     setFormData({
       name: "",
+      phone: "",
       email: "",
       subject: "",
       message: "",
@@ -163,18 +165,32 @@ export default function ContactPage() {
                             required
                           />
                         </div>
+
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
+                          <Label htmlFor="email">Phone</Label>
                           <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
+                            id="phone"
+                            name="phone"
+                            type="number"
+                            value={formData.phone}
                             onChange={handleInputChange}
-                            placeholder="your.email@example.com"
+                            placeholder="Tel: 2349022162214"
                             required
                           />
                         </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Email</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          placeholder="Your.email@example.com"
+                          required
+                        />
                       </div>
 
                       <div className="space-y-2">

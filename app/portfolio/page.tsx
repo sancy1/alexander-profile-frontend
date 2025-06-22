@@ -45,7 +45,7 @@ const projects = [
     title: "AI Builder",
     description:
       "An innovative application empowering developers with rapid and efficient application development through AI-driven prompt and code generation, alongside other rich features. Includes project templates, code suggestions, and automated documentation generation.",
-    image: "/images/portfolio/ai-builder.png?height=300&width=400",
+    image: "/images/portfolio/AIbuilder.png?height=300&width=400",
     tags: ["Next.js", "PostgreSQL", "Django", "ML/AI", "Tailwind", "Full-Stack"],
     categories: ["ai", "fullstack"],
     status: "In Development",

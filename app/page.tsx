@@ -140,14 +140,13 @@ export default function HomePage() {
 >
   <div className="container mx-auto px-4 z-10 h-full flex items-center">
     <div className="w-full max-w-7xl mx-auto h-full flex items-center">
-     <AnimatePresence mode="wait">
+<AnimatePresence mode="wait">
   <motion.div
     key={currentSlide}
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -50 }}
     transition={{ duration: 0.8, ease: "easeOut" }}
-    // ⭐ MODIFIED: Grid remains single column up to 'xl' breakpoint ⭐
     className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-12 items-center w-full relative"
   >
     {/* Text Content - Full width on mobile/tablet/smaller desktop, 50% on very large screens */}
@@ -232,8 +231,8 @@ export default function HomePage() {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }}
-      // ⭐ REVISED: Removed 2xl positioning classes, as image will now naturally be w-full when grid-cols-1 ⭐
-      className="relative order-1 md:order-2 w-full h-48 sm:h-64 md:h-80 lg:h-96"
+      // ⭐ MODIFIED: Increased height for default mobile breakpoint (h-48 -> h-64) ⭐
+      className="relative order-1 md:order-2 w-full h-64 sm:h-72 md:h-[28rem] lg:h-96"
     >
       <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
         <Image
@@ -242,7 +241,6 @@ export default function HomePage() {
           fill
           className="object-cover"
           priority
-          // ⭐ REVISED: Updated sizes to reflect the new grid behavior ⭐
           sizes="(max-width: 1280px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

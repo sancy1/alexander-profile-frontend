@@ -143,7 +143,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
@@ -155,7 +155,7 @@ const navItems = [
   { name: "Portfolio", href: "/portfolio" },
   { name: "Resume", href: "/resume" },
   // { name: "Blog", href: "/blog" },
-  { name: "Playground", href: "/playground" },
+  { name: "Codehub", href: "/codehub" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -212,7 +212,9 @@ export default function Navigation() {
                     // className="text-slate-700 hover:text-emerald-600 font-medium transition-colors duration-200 cursor-pointer"
                     className="text-sm text-slate-700 hover:text-emerald-600 font-medium transition-colors duration-200 cursor-pointer"
                   >
-                    {item.name}
+                    {/* {item.name} */}
+                    {item.name === "Home" ? <Home className="w-4 h-4" /> : item.name}
+
                   </motion.span>
                 </Link>
               ))}
@@ -248,7 +250,16 @@ export default function Navigation() {
                       className="block px-4 py-2 text-sm text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors duration-200 cursor-pointer"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {item.name}
+                      {/* {item.name} */}
+
+                      {item.name === "Home" ? (
+                        <div className="flex items-center gap-2">
+                          <Home className="w-4 h-4" /> Home
+                        </div>
+                      ) : (
+                        item.name
+                      )}
+
                     </span>
                   </Link>
                 ))}
