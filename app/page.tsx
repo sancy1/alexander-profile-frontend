@@ -288,287 +288,141 @@ export default function HomePage() {
   </div>
 </FullWidthSection>
 
-{/* <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100">
-  <div className="container mx-auto px-4 z-10 h-full flex items-center">
-    <div className="w-full max-w-7xl mx-auto h-full flex items-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full"
-        >
-          
-          <div className="text-center md:text-left order-2 md:order-1 px-4 md:px-0">
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-6 md:mb-8"
-            >
-              
-            </motion.div>
-
-            {heroSlides[currentSlide].showGreeting && (
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4"
-              >
-                Hi, I'm <span className="text-emerald-600">Alexander</span>
-              </motion.h1>
-            )}
-
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 mb-4 md:mb-6"
-            >
-              {heroSlides[currentSlide].title}
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-base sm:text-lg text-slate-600 mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0"
-            >
-              {heroSlides[currentSlide].description}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap justify-center md:justify-start gap-3 mb-6 md:mb-8"
-            >
-              {heroSlides[currentSlide].tags.map((tag, index) => (
-                <Badge
-                  key={index}
-                  className="bg-emerald-600 text-white hover:bg-emerald-700 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium"
-                >
-                  {tag}
-                </Badge>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
-            >
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-2 sm:py-3">
-                Let's Innovate Together
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 py-2 sm:py-3"
-              >
-                View My Work
-                <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-              </Button>
-            </motion.div>
-          </div>
-
-        
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative order-1 md:order-2 w-full h-64 sm:h-80 md:h-96 lg:h-[28rem]"
-          >
-            <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
-              <Image
-                src={heroSlides[currentSlide].image || "/placeholder.svg"}
-                alt={heroSlides[currentSlide].title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  </div>
 
 
-  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-3 sm:gap-4">
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={prevSlide}
-      className="bg-white/90 backdrop-blur-sm hover:bg-white border-emerald-200 w-8 h-8 sm:w-10 sm:h-10"
-    >
-      <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
-    </Button>
-
-    <div className="flex gap-1 sm:gap-2">
-      {heroSlides.map((_, index) => (
-        <button
-          key={index}
-          onClick={() => {
-            setCurrentSlide(index)
-            setIsAutoPlaying(false)
-          }}
-          className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${
-            index === currentSlide ? "bg-emerald-600 w-6 sm:w-8" : "bg-white/60 w-2 sm:w-3"
-          }`}
-        />
-      ))}
-    </div>
-
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={nextSlide}
-      className="bg-white/90 backdrop-blur-sm hover:bg-white border-emerald-200 w-8 h-8 sm:w-10 sm:h-10"
-    >
-      <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
-    </Button>
-  </div>
-</section> */}
-
-
-
- 
-
-
-{/* Beautiful Introduction Section with Matching Widths */}
-<FullWidthSection className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-  {/* Decorative background elements */}
-  <div className="absolute top-0 left-0 w-full h-full opacity-5">
-    <div className="absolute top-20 -left-20 w-64 h-64 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-    <div className="absolute bottom-20 -right-20 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
-  </div>
-
-  <div className="container mx-auto px-4 relative z-10 max-w-7xl">
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="mx-auto"
-    >
-      {/* Solid Background Heading Card - Full Width */}
-      <motion.div 
-        whileHover={{ y: -3 }}
-        className="relative mb-12 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-8 shadow-md w-full"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
-          Passionate Software Engineer
-          <br />
-          <span className="text-emerald-100">& Data Professional</span>
-        </h2>
-        <div className="mt-4 flex justify-center">
-          <div className="w-24 h-1 bg-white/50 rounded-full"></div>
-        </div>
-        <p className="text-lg text-emerald-50 text-center mt-4">
-          Creating digital solutions that bridge technology and business needs
-        </p>
-      </motion.div>
-
-      {/* Main Content Card - Now Full Width to Match Heading */}
-      <motion.div 
-        whileHover={{ y: -2 }}
-        className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-100 relative overflow-hidden w-full"
-      >
-        <div className="flex items-start mb-8">
-          <div className="flex-shrink-0 mr-4 mt-1">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center shadow-sm">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-emerald-600 w-6 h-6"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">Alexander S. Cyril</h3>
-            <p className="text-sm text-slate-500">Full-Stack Developer & Data Specialist</p>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-
-          <div className="space-y-6">
-            <p className="text-lg text-slate-700 leading-relaxed">
-              I'm a passionate and results-oriented software engineer with a strong foundation in full-stack development, mobile applications (React Native), backend systems, data analytics, and intelligent automation. With an academic background in Software Development and a track record of self-initiated tech projects, I specialize in building scalable cross-platform applications that solve real-world problems.
-            </p>
-
-            <p className="text-lg text-slate-700 leading-relaxed">
-              My passion lies in creating seamless user experiences across web and mobile platforms, automating processes, and building solutions powered by data and logic. I combine technical expertise with creative problem-solving to deliver innovative digital solutions that work beautifully on any device.
-            </p>
-        </div>
-
-        </div>
-
-        {/* Signature */}
-        <div className="mt-8 pt-6 border-t border-slate-100 flex justify-end">
-          <div className="text-slate-400 font-serif italic flex items-center">
-            <span className="mr-2">Let's build something amazing</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-emerald-500"
-            >
-              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-              <polyline points="16 6 12 2 8 6"></polyline>
-              <line x1="12" y1="2" x2="12" y2="15"></line>
-            </svg>
-          </div>
-        </div>
-      </motion.div>
-
-      
-      {/* Stats Section with Colorful Borders */}
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
-        {[
-          { value: "1+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
-          { value: "15+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
-          { value: "25+", label: "Major Technologies", border: "border-t-blue-400", text: "text-blue-600" },
-          { value: "100%", label: "Client Satisfaction", border: "border-t-orange-400", text: "text-orange-600" }
-        ].map((stat, index) => (
-          <motion.div 
-            key={index}
-            whileHover={{ y: -3, scale: 1.03 }}
-            className={`p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border-t-4 ${stat.border} ${stat.text}`}
-          >
-            <div className="text-3xl font-bold mb-2">{stat.value}</div>
-            <div className="text-sm text-slate-500">{stat.label}</div>
-          </motion.div>
-        ))}
+{
+/* Beautiful Introduction Section with Matching Widths */}
+<FullWidthSection className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="absolute top-20 -left-20 w-64 h-64 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-20 -right-20 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
-    </motion.div>
-  </div></div>
-</FullWidthSection>
+
+      {/* Mobile: Full width, Desktop: Constrained */}
+      <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-none sm:max-w-6xl lg:max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            {/* Solid Background Heading Card - Full Width on Mobile */}
+            <motion.div
+              whileHover={{ y: -3 }}
+              className="relative mb-8 sm:mb-12 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-lg sm:rounded-2xl p-6 sm:p-8 shadow-md w-full"
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center leading-tight">
+                Passionate Software Engineer
+                <br />
+                <span className="text-emerald-100">& Data Professional</span>
+              </h2>
+              <div className="mt-4 flex justify-center">
+                <div className="w-16 sm:w-24 h-1 bg-white/50 rounded-full"></div>
+              </div>
+              <p className="text-base sm:text-lg text-emerald-50 text-center mt-4 leading-relaxed">
+                Creating digital solutions that bridge technology and business needs
+              </p>
+            </motion.div>
+
+            {/* Main Content Card - Full Width on Mobile */}
+            <motion.div
+              whileHover={{ y: -2 }}
+              className="bg-white rounded-lg sm:rounded-2xl p-6 sm:p-8 lg:p-10 shadow-lg border border-slate-100 relative overflow-hidden w-full"
+            >
+              <div className="flex items-start mb-6 sm:mb-8">
+                <div className="flex-shrink-0 mr-3 sm:mr-4 mt-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center shadow-sm">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-emerald-600 w-5 h-5 sm:w-6 sm:h-6"
+                    >
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-1 sm:mb-2">Alexander S. Cyril</h3>
+                  <p className="text-xs sm:text-sm text-slate-500">Full-Stack Developer & Data Specialist</p>
+                </div>
+              </div>
+
+              <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                    I'm a passionate and results-oriented software engineer with a strong foundation in full-stack
+                    development, mobile applications (React Native), backend systems, data analytics, and intelligent
+                    automation. With an academic background in Software Development and a track record of self-initiated
+                    tech projects, I specialize in building scalable cross-platform applications that solve real-world
+                    problems.
+                  </p>
+
+                  <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+                    My passion lies in creating seamless user experiences across web and mobile platforms, automating
+                    processes, and building solutions powered by data and logic. I combine technical expertise with
+                    creative problem-solving to deliver innovative digital solutions that work beautifully on any
+                    device.
+                  </p>
+                </div>
+              </div>
+
+              {/* Signature */}
+              <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-100 flex justify-center sm:justify-end">
+                <div className="text-slate-400 font-serif italic flex items-center text-sm sm:text-base">
+                  <span className="mr-2">Let's build something amazing</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-emerald-500 w-4 h-4 sm:w-5 sm:h-5"
+                  >
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Stats Section - Full Width Grid on Mobile */}
+            <div className="mt-8 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
+              {[
+                { value: "1+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
+                { value: "15+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
+                { value: "25+", label: "Major Technologies", border: "border-t-blue-400", text: "text-blue-600" },
+                { value: "100%", label: "Client Satisfaction", border: "border-t-orange-400", text: "text-orange-600" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  className={`p-4 sm:p-6 bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border-t-4 ${stat.border} ${stat.text}`}
+                >
+                  <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{stat.value}</div>
+                  <div className="text-xs sm:text-sm text-slate-500 leading-tight">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </FullWidthSection>
 
 
 

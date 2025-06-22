@@ -81,13 +81,6 @@ export function FullWidthSection({
           zIndex: -1,
         }}
       />
-
-      {/* Content container - ⭐ MODIFIED LINE HERE ⭐ */}
-      {/* Added 'bg-transparent' to the section and the inner content div.
-          The 'bg-transparent' will ensure no default or inherited background
-          color (like bg-white from a parent) shows through behind the content,
-          allowing only the 'backgroundColor' prop of this component to be visible.
-          The 'py-20' and 'className' are preserved. */}
       <section className={cn("relative py-20 bg-transparent", className)}>
         <div className={cn("container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-transparent", contentClassName)}>{children}</div>
       </section>
