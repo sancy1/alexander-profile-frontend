@@ -10,6 +10,7 @@ import WhatsAppFloat from "@/components/whatsapp-float"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/HeroSection";
 import Link from 'next/link';
+import { FullWidthSection } from "@/components/full-width-section"
 
 
 const technicalSkills = [
@@ -127,7 +128,7 @@ export default function ResumePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
@@ -143,7 +144,10 @@ export default function ResumePage() {
           />
 
       {/* Hero Section */}
-      <section className="py-4 md:py-4 mx-auto px-4 relative z-10 h-full flex items-center bg-gradient-to-br from-slate-50 to-gray-100">
+      <FullWidthSection
+  backgroundColor="bg-gradient-to-br from-slate-50 to-gray-100" // ⭐ Moved the gradient here ⭐
+  className="py-4 md:py-4 relative z-10 h-full flex items-center" // ⭐ Kept content-specific classes here ⭐
+>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -172,7 +176,7 @@ export default function ResumePage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
 
 
 
@@ -192,7 +196,7 @@ export default function ResumePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {technicalSkills.map((skillGroup, index) => (
               <motion.div
                 key={index}
@@ -230,7 +234,7 @@ export default function ResumePage() {
       </section>
 
       {/* Main Expertise */}
-      <section className="py-20 bg-slate-50">
+      <FullWidthSection className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -261,7 +265,7 @@ export default function ResumePage() {
             </div>
           </div>
         </div>
-      </section>
+      </FullWidthSection>
 
       {/* Education & Certifications */}
       <section className="py-20">
@@ -326,7 +330,7 @@ export default function ResumePage() {
       </section>
 
       {/* Resume Actions */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-emerald-900 relative overflow-hidden">
+      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -363,9 +367,9 @@ export default function ResumePage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
 
-      <Footer />
+      {/* <Footer /> */}
       <WhatsAppFloat />
     </div>
   )

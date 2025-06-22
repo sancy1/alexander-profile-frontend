@@ -29,6 +29,8 @@ import { Textarea } from "@/components/ui/textarea"
 import Navigation from "@/components/navigation"
 import WhatsAppFloat from "@/components/whatsapp-float"
 import Footer from "@/components/footer"
+import { FullWidthSection } from "@/components/full-width-section"
+import Link from 'next/link';
 
 const showcaseSnippets = [
   {
@@ -288,11 +290,14 @@ export default function PlaygroundPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-slate-50 to-gray-100">
+      <FullWidthSection
+  backgroundColor="bg-gradient-to-br from-slate-50 to-gray-100" // ⭐ Move your gradient here ⭐
+  className="pt-24 pb-16" // ⭐ Keep any padding/overflow classes for the content container here ⭐
+>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -320,12 +325,13 @@ export default function PlaygroundPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
+
 
       {/* Main Playground */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-7xl mx-auto">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-5xl mx-auto">
             <TabsList className="grid w-full grid-cols-4 mb-12">
               <TabsTrigger value="snippets" className="flex items-center gap-2">
                 <Code className="w-4 h-4" />
@@ -674,8 +680,9 @@ export default function PlaygroundPage() {
         </div>
       </section>
 
+
       {/* Call to Action */}
-      <section className="py-20 bg-emerald-600">
+      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -694,19 +701,23 @@ export default function PlaygroundPage() {
                 Let's Talk About Your Project
                 <ChevronRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3"
-              >
-                View Full Portfolio
-              </Button>
+
+              <Link href="/portfolio" passHref>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-green hover:bg-white hover:text-emerald-600 px-8 py-3"
+                  >
+                    View Full Portfolio
+                </Button>
+              </Link>
+
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
 
-      <Footer />
+      {/* <Footer /> */}
       <WhatsAppFloat />
     </div>
   )

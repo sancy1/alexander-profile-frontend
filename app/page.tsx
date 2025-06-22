@@ -11,6 +11,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import Link from 'next/link';
+import { FullWidthSection } from "@/components/full-width-section"
 
 const heroSlides = [
   {
@@ -126,11 +127,170 @@ export default function HomePage() {
   // const IconComponent = heroSlides[currentSlide].icon
   const IconComponent = heroSlides[currentSlide]
     return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
+
+
  
 {/* Hero Section with Slider - Optimized for Tablet */}
-<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100">
+
+<FullWidthSection
+  backgroundColor="bg-gradient-to-br from-slate-50 to-gray-100" // ⭐ CHANGED: Moved background here from original section's className ⭐
+  className="relative min-h-screen flex items-center justify-center overflow-hidden" // ⭐ CHANGED: Moved other relevant classes here from original section's className ⭐
+>
+  <div className="container mx-auto px-4 z-10 h-full flex items-center">
+    <div className="w-full max-w-7xl mx-auto h-full flex items-center">
+     <AnimatePresence mode="wait">
+  <motion.div
+    key={currentSlide}
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -50 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    // ⭐ MODIFIED: Grid remains single column up to 'xl' breakpoint ⭐
+    className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-12 items-center w-full relative"
+  >
+    {/* Text Content - Full width on mobile/tablet/smaller desktop, 50% on very large screens */}
+    <div className="text-center md:text-left order-2 md:order-1 px-4 md:px-0">
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mb-6 md:mb-8"
+      >
+        {/* Optional icon placeholder */}
+      </motion.div>
+
+      {heroSlides[currentSlide].showGreeting && (
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+        >
+          Hi, I'm <span className="text-emerald-600">Alexander</span>
+        </motion.h1>
+      )}
+
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 mb-4 md:mb-6"
+      >
+        {heroSlides[currentSlide].title}
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="text-base sm:text-lg text-slate-600 mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0"
+      >
+        {heroSlides[currentSlide].description}
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="flex flex-wrap justify-center md:justify-start gap-3 mb-6 md:mb-8"
+      >
+        {heroSlides[currentSlide].tags.map((tag, index) => (
+          <Badge
+            key={index}
+            className="bg-emerald-600 text-white hover:bg-emerald-700 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium"
+          >
+            {tag}
+          </Badge>
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
+      >
+        <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-2 sm:py-3">
+          Let's Innovate Together
+          <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 py-2 sm:py-3"
+        >
+          View My Work
+          <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+        </Button>
+      </motion.div>
+    </div>
+
+    {/* Image Content - Full width below 'xl', 50% on 'xl' and above */}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      // ⭐ REVISED: Removed 2xl positioning classes, as image will now naturally be w-full when grid-cols-1 ⭐
+      className="relative order-1 md:order-2 w-full h-48 sm:h-64 md:h-80 lg:h-96"
+    >
+      <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
+        <Image
+          src={heroSlides[currentSlide].image || "/placeholder.svg"}
+          alt={heroSlides[currentSlide].title}
+          fill
+          className="object-cover"
+          priority
+          // ⭐ REVISED: Updated sizes to reflect the new grid behavior ⭐
+          sizes="(max-width: 1280px) 100vw, 50vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+    </motion.div>
+  </motion.div>
+</AnimatePresence>
+    </div>
+  </div>
+
+  {/* Slider Controls - Centered and responsive */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-3 sm:gap-4">
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={prevSlide}
+      className="bg-white/90 backdrop-blur-sm hover:bg-white border-emerald-200 w-8 h-8 sm:w-10 sm:h-10"
+    >
+      <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
+    </Button>
+
+    <div className="flex gap-1 sm:gap-2">
+      {heroSlides.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => {
+            setCurrentSlide(index)
+            setIsAutoPlaying(false)
+          }}
+          className={`h-2 sm:h-3 rounded-full transition-all duration-300 ${
+            index === currentSlide ? "bg-emerald-600 w-6 sm:w-8" : "bg-white/60 w-2 sm:w-3"
+          }`}
+        />
+      ))}
+    </div>
+
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={nextSlide}
+      className="bg-white/90 backdrop-blur-sm hover:bg-white border-emerald-200 w-8 h-8 sm:w-10 sm:h-10"
+    >
+      <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
+    </Button>
+  </div>
+</FullWidthSection>
+
+{/* <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100">
   <div className="container mx-auto px-4 z-10 h-full flex items-center">
     <div className="w-full max-w-7xl mx-auto h-full flex items-center">
       <AnimatePresence mode="wait">
@@ -142,7 +302,7 @@ export default function HomePage() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full"
         >
-          {/* Text Content - Full width on mobile, 50% on tablet+ */}
+          
           <div className="text-center md:text-left order-2 md:order-1 px-4 md:px-0">
             <motion.div
               initial={{ scale: 0.8 }}
@@ -150,7 +310,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-6 md:mb-8"
             >
-              {/* Optional icon placeholder */}
+              
             </motion.div>
 
             {heroSlides[currentSlide].showGreeting && (
@@ -219,7 +379,7 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* Image Content - Full width on mobile, 50% on tablet+ */}
+        
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -243,7 +403,7 @@ export default function HomePage() {
     </div>
   </div>
 
-  {/* Slider Controls - Centered and responsive */}
+
   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-3 sm:gap-4">
     <Button
       variant="outline"
@@ -278,7 +438,7 @@ export default function HomePage() {
       <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
     </Button>
   </div>
-</section>
+</section> */}
 
 
 
@@ -286,7 +446,8 @@ export default function HomePage() {
 
 
 {/* Beautiful Introduction Section with Matching Widths */}
-<section className="relative py-24 bg-white overflow-hidden">
+<FullWidthSection className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4 relative z-10 max-w-4xl">
   {/* Decorative background elements */}
   <div className="absolute top-0 left-0 w-full h-full opacity-5">
     <div className="absolute top-20 -left-20 w-64 h-64 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -352,13 +513,6 @@ export default function HomePage() {
 
         <div className="space-y-6">
 
-          {/* <p className="text-lg text-slate-700 leading-relaxed">
-            I'm a passionate and results-oriented software engineer with a strong foundation in full-stack development, backend systems, data analytics, and intelligent automation. With an academic background in Software Development and a track record of self-initiated tech projects, I specialize in building scalable applications that solve real-world problems.
-          </p>
-          <p className="text-lg text-slate-700 leading-relaxed">
-            My passion lies in creating seamless user experiences, automating processes, and building solutions powered by data and logic. I combine technical expertise with creative problem-solving to deliver innovative digital solutions.
-          </p> */}
-
           <div className="space-y-6">
             <p className="text-lg text-slate-700 leading-relaxed">
               I'm a passionate and results-oriented software engineer with a strong foundation in full-stack development, mobile applications (React Native), backend systems, data analytics, and intelligent automation. With an academic background in Software Development and a track record of self-initiated tech projects, I specialize in building scalable cross-platform applications that solve real-world problems.
@@ -415,8 +569,8 @@ export default function HomePage() {
         ))}
       </div>
     </motion.div>
-  </div>
-</section>
+  </div></div>
+</FullWidthSection>
 
 
 
@@ -425,7 +579,7 @@ export default function HomePage() {
 
 {/* Collaboration Banner Section */}
 {/* Collaboration Banner with Universal Image Opacity Control */}
-<section className="relative pt-12 md:pt-20 pb-16 md:pb-24 w-full max-w-7xl mx-auto px-4">
+<section className="relative pt-12 md:pt-20 pb-16 md:pb-24 w-full max-w-6xl mx-auto px-4">
   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
     {/* Background Image with Universal Opacity Control */}
     <div className="absolute inset-0 bg-black/70 z-0"></div> {/* Uniform 50% darkness - adjust /50 value as needed */}
@@ -482,7 +636,7 @@ export default function HomePage() {
 
 
 {/* Key Expertise Highlights */}
-<section className="py-20 bg-slate-50 w-full">
+<FullWidthSection className="py-20 bg-slate-50 w-full">
   <div className="container mx-auto px-4">
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -497,7 +651,7 @@ export default function HomePage() {
       </p>
     </motion.div>
 
-    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {expertiseCards.map((card, index) => (
         <motion.div
           key={index}
@@ -550,11 +704,12 @@ export default function HomePage() {
       ))}
     </div>
   </div>
-</section>
+</FullWidthSection>
+
 
 
       {/* Quick Access Buttons */}
-      <section className="py-20 bg-emerald-600">
+      {/* <section className="py-20 bg-emerald-600">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -591,9 +746,62 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
-      <Footer />
+
+
+<FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
+        {/* Floating elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-emerald-500 blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-teal-500 blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Get Started?
+            </h2>
+            {/* <p className="text-xl text-emerald-100 mb-8 leading-relaxed">
+              Let's collaborate to create solutions that drive real business impact.
+            </p> */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3">
+                <Download className="mr-2 w-5 h-5" />
+                Download Resume
+              </Button>
+              
+              <Link href="/portfolio" passHref>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-green hover:bg-white hover:text-emerald-600 px-8 py-3"
+              >
+                See Portfolio
+              </Button>
+              </Link>
+
+              <Link href="/contact" passHref>
+              <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3">
+                Hire Me
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              </Link>
+              
+            </div>
+          </motion.div>
+        </div>
+      </FullWidthSection>
+
+
+      {/* <Footer /> */}
       <WhatsAppFloat />
     </div>
   )

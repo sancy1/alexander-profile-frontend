@@ -209,7 +209,8 @@ export default function Navigation() {
                 <Link key={item.name} href={item.href}>
                   <motion.span
                     whileHover={{ y: -2 }}
-                    className="text-slate-700 hover:text-emerald-600 font-medium transition-colors duration-200 cursor-pointer"
+                    // className="text-slate-700 hover:text-emerald-600 font-medium transition-colors duration-200 cursor-pointer"
+                    className="text-sm text-slate-700 hover:text-emerald-600 font-medium transition-colors duration-200 cursor-pointer"
                   >
                     {item.name}
                   </motion.span>
@@ -243,7 +244,8 @@ export default function Navigation() {
                 {navItems.map((item) => (
                   <Link key={item.name} href={item.href}>
                     <span
-                      className="block px-4 py-2 text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors duration-200 cursor-pointer"
+                      // className="block px-4 py-2 text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors duration-200 cursor-pointer"
+                      className="block px-4 py-2 text-sm text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors duration-200 cursor-pointer"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}

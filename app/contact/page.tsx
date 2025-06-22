@@ -15,6 +15,7 @@ import WhatsAppFloat from "@/components/whatsapp-float"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/HeroSection";
 import Link from 'next/link';
+import { FullWidthSection } from "@/components/full-width-section"
 
 const contactInfo = [
   {
@@ -136,7 +137,7 @@ export default function ContactPage() {
       {/* Contact Form & Info */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Contact Form */}
               <motion.div
@@ -295,8 +296,9 @@ export default function ContactPage() {
         </div>
       </section>
 
+
       {/* Special CTA Buttons */}
-      <section className="py-20 bg-slate-50">
+      <FullWidthSection className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -330,9 +332,10 @@ export default function ContactPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
 
-      <Footer />
+
+      {/* <Footer /> */}
       <WhatsAppFloat />
     </div>
   )

@@ -498,7 +498,6 @@ export default function AboutPage() {
           </FullWidthSection>
           
       
-      
       {/* Personal Philosophy */}
 
       <section className="py-20">
@@ -539,44 +538,6 @@ export default function AboutPage() {
         </div>
       </div>
     </section>
-
-      {/* <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Core Values & Philosophy</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              The principles that guide my approach to technology and collaboration
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="text-center group"
-              >
-                <div className="flex items-center justify-center w-20 h-20 bg-emerald-600 text-white rounded-full mb-6 mx-auto group-hover:bg-emerald-700 transition-colors duration-300">
-                  <value.icon className="w-10 h-10" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">{value.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
 
       {/* <Footer /> */}
       <WhatsAppFloat />

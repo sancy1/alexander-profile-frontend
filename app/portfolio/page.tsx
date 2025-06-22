@@ -13,6 +13,7 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import HeroSection from "@/components/HeroSection";
 import Link from 'next/link';
+import { FullWidthSection } from "@/components/full-width-section"
 
 const filterCategories = [
   { name: "All", value: "all", icon: Filter },
@@ -141,7 +142,7 @@ export default function PortfolioPage() {
   const featuredProjects = projects.filter((project) => project.featured)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
@@ -172,7 +173,7 @@ export default function PortfolioPage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-20">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -249,7 +250,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* All Projects with Filters */}
-      <section className="py-20 bg-slate-50 -mt-10">
+      <FullWidthSection className="py-20 bg-slate-50 -mt-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -285,7 +286,7 @@ export default function PortfolioPage() {
 
 
       <AnimatePresence>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {filteredProjects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -375,11 +376,11 @@ export default function PortfolioPage() {
       </div>
     </AnimatePresence>
     </div>
-    </section> {/* Closing section tag */}
+    </FullWidthSection> {/* Closing section tag */}
       
 
       {/* Call to Action */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-emerald-900 relative overflow-hidden">
+      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -414,9 +415,9 @@ export default function PortfolioPage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </FullWidthSection>
 
-      <Footer />
+      {/* <Footer /> */}
       <WhatsAppFloat />
     </div>
   )
