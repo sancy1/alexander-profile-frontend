@@ -645,6 +645,273 @@
 
 
 
+// "use client"
+
+// import { motion } from "framer-motion"
+// import { BookOpen, Calendar, Search, Tag, User, Bell, ArrowRight, Home, Heart } from "lucide-react"
+// import { Button } from "@/components/ui/button"
+// import { Card, CardContent } from "@/components/ui/card"
+// import { Badge } from "@/components/ui/badge"
+// import { Input } from "@/components/ui/input"
+// import Link from "next/link"
+// import Navigation from "@/components/navigation"
+// import { FullWidthSection } from "@/components/full-width-section"
+
+// const upcomingFeatures = [
+//   {
+//     icon: BookOpen,
+//     title: "Rich Content",
+//     description: "In-depth articles on software development, data science, and emerging technologies",
+//     color: "text-emerald-600",
+//     bgColor: "bg-emerald-100",
+//   },
+//   {
+//     icon: Search,
+//     title: "Smart Search",
+//     description: "Advanced search functionality to find exactly what you're looking for",
+//     color: "text-blue-600",
+//     bgColor: "bg-blue-100",
+//   },
+//   {
+//     icon: Tag,
+//     title: "Category Tags",
+//     description: "Organized content with tags for easy navigation and discovery",
+//     color: "text-purple-600",
+//     bgColor: "bg-purple-100",
+//   },
+//   {
+//     icon: User,
+//     title: "Author Insights",
+//     description: "Personal experiences and lessons learned from real-world projects",
+//     color: "text-orange-600",
+//     bgColor: "bg-orange-100",
+//   },
+//   {
+//     icon: Calendar,
+//     title: "Regular Updates",
+//     description: "Fresh content published regularly with the latest industry insights",
+//     color: "text-teal-600",
+//     bgColor: "bg-teal-100",
+//   },
+//   {
+//     icon: Bell,
+//     title: "Notifications",
+//     description: "Stay updated with new posts and important announcements",
+//     color: "text-pink-600",
+//     bgColor: "bg-pink-100",
+//   },
+//   {
+//     icon: Heart,
+//     title: "Favorites System",
+//     description: "Bookmark and save your favorite articles for easy access and future reference",
+//     color: "text-red-600",
+//     bgColor: "bg-red-100",
+//   },
+// ]
+
+// export default function BlogComingSoon() {
+//   return (
+//     <div className="min-h-screen bg-white overflow-x-hidden">
+//       <Navigation />
+
+//       {/* Hero Section */}
+//       <FullWidthSection className="py-20 sm:py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-emerald-50">
+//         <div className="text-center px-4 sm:px-6 lg:px-8">
+//           <div className="max-w-none sm:max-w-4xl mx-auto">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               className="mb-8 sm:mb-12"
+//             >
+//               <div className="flex justify-center mb-6 sm:mb-8">
+//                 <div className="relative">
+//                   <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+//                     <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-white" />
+//                   </div>
+//                   <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-full flex items-center justify-center">
+//                     <span className="text-white text-xs sm:text-sm font-bold">!</span>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
+//                 Blog <span className="text-emerald-600">Coming Soon</span>
+//               </h1>
+
+//               <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+//                 I'm crafting a comprehensive blog experience filled with insights on software development, data science,
+//                 emerging technologies, and real-world project experiences. Get ready for rich, engaging content that
+//                 will help you grow as a developer.
+//               </p>
+
+//               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+//                 <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 px-4 py-2 rounded-full">
+//                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+//                   <span className="text-sm sm:text-base font-medium">Launching Soon</span>
+//                 </div>
+//                 <Badge className="bg-emerald-600 text-white px-4 py-2 text-sm sm:text-base">
+//                   Rich Features Included
+//                 </Badge>
+//               </div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+
+//       {/* Features Preview */}
+//       <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-white">
+//         <div className="px-4 sm:px-6 lg:px-8">
+//           <div className="max-w-none sm:max-w-6xl mx-auto">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               viewport={{ once: true }}
+//               className="text-center mb-12 sm:mb-16"
+//             >
+//               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">What to Expect</h2>
+//               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+//                 The blog will feature a rich set of tools and content designed to provide maximum value for developers
+//                 and tech enthusiasts.
+//               </p>
+//             </motion.div>
+
+//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+//               {upcomingFeatures.map((feature, index) => (
+//                 <motion.div
+//                   key={index}
+//                   initial={{ opacity: 0, y: 50 }}
+//                   whileInView={{ opacity: 1, y: 0 }}
+//                   transition={{ duration: 0.6, delay: index * 0.1 }}
+//                   viewport={{ once: true }}
+//                   whileHover={{ y: -5, scale: 1.02 }}
+//                   className="group"
+//                 >
+//                   <Card className="h-full border-2 border-slate-200 hover:border-emerald-300 transition-all duration-300 group-hover:shadow-lg">
+//                     <CardContent className="p-6 sm:p-8 text-center">
+//                       <div
+//                         className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 ${feature.bgColor} rounded-full mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}
+//                       >
+//                         <feature.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${feature.color}`} />
+//                       </div>
+//                       <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">{feature.title}</h3>
+//                       <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{feature.description}</p>
+//                     </CardContent>
+//                   </Card>
+//                 </motion.div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+//       {/* Newsletter Signup */}
+//       <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-emerald-600 to-teal-700">
+//         <div className="px-4 sm:px-6 lg:px-8">
+//           <div className="max-w-none sm:max-w-4xl mx-auto text-center">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               viewport={{ once: true }}
+//             >
+//               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
+//                 Be the First to Know
+//               </h2>
+//               <p className="text-base sm:text-lg text-emerald-100 mb-6 sm:mb-8 leading-relaxed">
+//                 Get notified when the blog launches and receive exclusive early access to premium content.
+//               </p>
+
+//               <div className="max-w-md mx-auto">
+//                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+//                   <Input
+//                     type="email"
+//                     placeholder="Enter your email"
+//                     className="flex-1 bg-white/90 border-white/20 text-slate-900 placeholder:text-slate-500"
+//                   />
+//                   <Button className="bg-white text-emerald-600 hover:bg-slate-100 px-6 py-2 font-medium w-full sm:w-auto">
+//                     Notify Me
+//                     <Bell className="ml-2 w-4 h-4" />
+//                   </Button>
+//                 </div>
+//                 <p className="text-xs sm:text-sm text-emerald-200 mt-3 sm:mt-4">
+//                   No spam, unsubscribe anytime. Just quality content updates.
+//                 </p>
+//               </div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+//       {/* CTA Section */}
+//       <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+//         <div className="px-4 sm:px-6 lg:px-8">
+//           <div className="max-w-none sm:max-w-4xl mx-auto text-center">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               viewport={{ once: true }}
+//             >
+//               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">
+//                 Explore Other Sections
+//               </h2>
+//               <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
+//                 While you wait for the blog, check out my portfolio, services, and get in touch for potential
+//                 collaborations.
+//               </p>
+
+//               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+//                 <Link href="/" passHref>
+//                   <Button
+//                     size="lg"
+//                     className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
+//                   >
+//                     <Home className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+//                     Back to Home
+//                   </Button>
+//                 </Link>
+
+//                 <Link href="/portfolio" passHref>
+//                   <Button
+//                     size="lg"
+//                     variant="outline"
+//                     className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
+//                   >
+//                     View Portfolio
+//                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+//                   </Button>
+//                 </Link>
+//               </div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </FullWidthSection>
+//     </div>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client"
 
 import { motion } from "framer-motion"
@@ -655,7 +922,8 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import Navigation from "@/components/navigation"
-import { FullWidthSection } from "@/components/full-width-section"
+import { FullWidthSection } from "@/components/full-width-section" // This is now a content-wrapper only
+import WhatsAppFloat from "@/components/whatsapp-float"
 
 const upcomingFeatures = [
   {
@@ -711,13 +979,26 @@ const upcomingFeatures = [
 
 export default function BlogComingSoon() {
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    // The main app wrapper should generally not have horizontal padding/max-width
+    // `overflow-x-hidden` is good to prevent scrollbars from w-screen
+    <div className="min-h-screen overflow-x-hidden">
       <Navigation />
 
-      {/* Hero Section */}
-      <FullWidthSection className="py-20 sm:py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-emerald-50">
-        <div className="text-center px-4 sm:px-6 lg:px-8">
-          <div className="max-w-none sm:max-w-4xl mx-auto">
+      {/* --- Hero Section --- */}
+      {/* Outer div: relative position for the absolute background, and sets vertical padding */}
+      <div className="relative py-20 sm:py-24 lg:py-32">
+        {/* Full-width background: absolute, spans entire screen, behind content */}
+        <div
+          className="absolute inset-0 w-screen bg-gradient-to-br from-slate-50 to-emerald-50"
+          style={{
+            left: "50%", // Center it
+            transform: "translateX(-50%)", // Pull it back to ensure it starts at the left edge
+            zIndex: -1, // Ensures it stays behind the content
+          }}
+        />
+        {/* Content wrapper: uses the simplified FullWidthSection for max-width and horizontal padding */}
+        <FullWidthSection>
+          <div className="text-center"> {/* Original text-center from your code */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -756,61 +1037,77 @@ export default function BlogComingSoon() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </FullWidthSection>
+        </FullWidthSection>
+      </div>
 
+      {/* --- Features Preview --- */}
+      {/* Apply the same pattern */}
+      <div className="relative py-16 sm:py-20 lg:py-24">
+        <div
+          className="absolute inset-0 w-screen bg-white"
+          style={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: -1,
+          }}
+        />
+        <FullWidthSection>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">What to Expect</h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              The blog will feature a rich set of tools and content designed to provide maximum value for developers
+              and tech enthusiasts.
+            </p>
+          </motion.div>
 
-      {/* Features Preview */}
-      <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="max-w-none sm:max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-12 sm:mb-16"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">What to Expect</h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                The blog will feature a rich set of tools and content designed to provide maximum value for developers
-                and tech enthusiasts.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {upcomingFeatures.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="group"
-                >
-                  <Card className="h-full border-2 border-slate-200 hover:border-emerald-300 transition-all duration-300 group-hover:shadow-lg">
-                    <CardContent className="p-6 sm:p-8 text-center">
-                      <div
-                        className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 ${feature.bgColor} rounded-full mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <feature.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${feature.color}`} />
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">{feature.title}</h3>
-                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{feature.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {upcomingFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group"
+              >
+                <Card className="h-full border-2 border-slate-200 hover:border-emerald-300 transition-all duration-300 group-hover:shadow-lg">
+                  <CardContent className="p-6 sm:p-8 text-center">
+                    <div
+                      className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 ${feature.bgColor} rounded-full mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <feature.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${feature.color}`} />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">{feature.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </FullWidthSection>
+        </FullWidthSection>
+      </div>
 
-      {/* Newsletter Signup */}
-      <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-emerald-600 to-teal-700">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="max-w-none sm:max-w-4xl mx-auto text-center">
+      {/* --- Newsletter Signup --- */}
+      {/* Apply the same pattern */}
+      <div className="relative py-16 sm:py-20 lg:py-24">
+        <div
+          className="absolute inset-0 w-screen bg-gradient-to-br from-emerald-600 to-teal-700"
+          style={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: -1,
+          }}
+        />
+        
+        <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
+          <div className="text-center"> 
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -842,13 +1139,22 @@ export default function BlogComingSoon() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </FullWidthSection>
+        </FullWidthSection>
+      </div>
 
-      {/* CTA Section */}
-      <FullWidthSection className="py-16 sm:py-20 lg:py-24 bg-slate-50">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="max-w-none sm:max-w-4xl mx-auto text-center">
+      {/* --- CTA Section --- */}
+      {/* Apply the same pattern */}
+      <div className="relative py-16 sm:py-20 lg:py-24">
+        <div
+          className="absolute inset-0 w-screen bg-slate-50"
+          style={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: -1,
+          }}
+        />
+        <FullWidthSection>
+          <div className="text-center"> {/* Original text-center from your code */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -856,8 +1162,7 @@ export default function BlogComingSoon() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">
-                Explore Other Sections
-              </h2>
+                Explore Other Sections</h2>
               <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
                 While you wait for the blog, check out my portfolio, services, and get in touch for potential
                 collaborations.
@@ -887,9 +1192,10 @@ export default function BlogComingSoon() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </FullWidthSection>
+        </FullWidthSection>
+
+        <WhatsAppFloat />
+      </div>
     </div>
   )
 }
-
