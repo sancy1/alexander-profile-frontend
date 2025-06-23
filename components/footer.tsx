@@ -719,6 +719,8 @@ const quickLinks = [
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Resume", href: "/resume" },
+  { name: "Codehub", href: "/codehub" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ]
 
