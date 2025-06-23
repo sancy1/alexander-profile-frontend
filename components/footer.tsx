@@ -748,12 +748,41 @@ const socialLinks = [
     color: "hover:text-slate-900",
   },
   {
-    icon: MessageCircle,
-    name: "WhatsApp",
-    href: "https://wa.me/15551234567",
-    color: "hover:text-green-600",
+  icon: MessageCircle,
+  name: "WhatsApp",
+  href: "#", // Keep as fallback
+  onClick: () => {
+    const phoneNumber = "2349067467561"; // Your number without + or dashes
+    const message = "Hello Alexander! I visited your website and would love to chat about a potential project or learn more about your services. Could you please provide some information?";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   },
+  color: "hover:text-green-600",
+}
 ]
+
+const SocialLinks = () => (
+  <>
+    {socialLinks.map((link) => (
+      <a
+        key={link.name}
+        href={link.href}
+        onClick={(e) => {
+          if (link.onClick) {
+            e.preventDefault();
+            link.onClick();
+          }
+        }}
+        className={`p-2 ${link.color} transition-colors duration-200`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <link.icon className="h-6 w-6" />
+      </a>
+    ))}
+  </>
+);
+
 
 export default function Footer() {
   return (
@@ -762,6 +791,7 @@ export default function Footer() {
         {/* Main Footer Content - Constrained Width */}
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
             {/* Brand Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -783,10 +813,18 @@ export default function Footer() {
                 Passionate software engineer specializing in full-stack and mobile development, machine learning, and
                 data analytics. Building innovative solutions that transform ideas into reality.
               </p>
+              
               <div className="flex gap-4 text-sm">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
+                    // Add the onClick handler here
+                    onClick={(e) => {
+                      if (social.onClick) { // Check if onClick property exists
+                        e.preventDefault(); // Prevent default link behavior if onClick is handled
+                        social.onClick(); // Execute the custom onClick function
+                      }
+                    }}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
