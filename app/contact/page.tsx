@@ -809,13 +809,49 @@ const socialLinks = [
     href: "https://github.com/alexcy1",
     color: "hover:text-slate-900",
   },
-  {
+  // {
+  //   icon: MessageCircle,
+  //   name: "WhatsApp",
+  //   href: "https://wa.me/2349067467561",
+  //   color: "hover:text-green-600",
+  // },
+{
     icon: MessageCircle,
     name: "WhatsApp",
-    href: "https://wa.me/15551234567",
+    href: "#", // Keep as fallback
+    onClick: () => {
+      const phoneNumber = "2349067467561"; // Your number without + or dashes
+      const message = "Hello Alexander! I visited your website and would love to chat about a potential project or learn more about your services. Could you please provide some information?";
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    },
     color: "hover:text-green-600",
-  },
+  }
 ]
+
+const SocialLinks = () => (
+  <>
+    {socialLinks.map((link) => (
+      <a
+        key={link.name}
+        href={link.href}
+        onClick={(e) => {
+          if (link.onClick) { // Check if onClick property exists
+            e.preventDefault(); // Prevent default link behavior if onClick is handled
+            link.onClick(); // Execute the custom onClick function
+          }
+        }}
+        className={`p-2 ${link.color} transition-colors duration-200`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <link.icon className="h-6 w-6" />
+      </a>
+    ))}
+  </>
+);
+
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -1127,6 +1163,13 @@ export default function ContactPage() {
                       <motion.a
                         key={index}
                         href={social.href}
+                        // This is the newly added/modified section for onClick
+                        onClick={(e) => {
+                          if (social.onClick) { // Check if onClick property exists
+                            e.preventDefault(); // Prevent default link behavior if onClick is handled
+                            social.onClick(); // Execute the custom onClick function
+                          }
+                        }}
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
@@ -1138,6 +1181,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
+
               </motion.div>
             </div>
           </div>

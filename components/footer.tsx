@@ -1678,11 +1678,11 @@ export default function Footer() {
               <h4 className="text-lg font-semibold mb-6 text-emerald-400">Get In Touch</h4>
               <div className="space-y-4 text-sm">
                 <Link
-                  href="mailto:sanchez.a.cyril@gmail.com"
+                  href="mailto:alexander.s.cyril@gmail.com"
                   className="flex items-center gap-3 text-slate-300 hover:text-emerald-400 transition-colors"
                 >
                   <Mail className="w-5 h-5 text-emerald-400" />
-                  <span>sanchez.a.cyril@gmail.com</span>
+                  <span>alexander.s.cyril@gmail.com</span>
                 </Link>
 
                 <div className="flex items-center gap-3">
