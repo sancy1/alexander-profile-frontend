@@ -318,6 +318,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import ScrollUtils from "@/components/ScrollUtils"
 import Footer from "../components/footer"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -346,12 +347,12 @@ export default function RootLayout({
       <ScrollUtils />
       <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
         <div className="min-h-screen w-full">
-          {/* ⭐ MODIFIED: Adjusting main tag for mobile full-width ⭐ */}
           <main className="w-full px-0 md:px-4 lg:px-8 xl:px-0 lg:container lg:mx-auto lg:max-w-7xl">
             {children}
           </main>
           <Footer />
         </div>
+        <Toaster />
       </body>
     </html>
   )
