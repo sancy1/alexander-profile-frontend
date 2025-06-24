@@ -474,7 +474,7 @@ export default function UnsubscribePage() {
       </section>
 
       {/* Unsubscribe Form Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
+      <section className="py-6 sm:py-5 lg:py-6">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {!isUnsubscribed ? (
             <motion.div
@@ -483,6 +483,7 @@ export default function UnsubscribePage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
+            <div className="max-w-xl mx-auto -mt-10">
               <Card className="border-2 border-slate-200 hover:border-emerald-300 transition-colors duration-300 shadow-lg">
                 <CardContent className="p-6 sm:p-8 lg:p-10">
                   <div className="text-center mb-8">
@@ -566,6 +567,7 @@ export default function UnsubscribePage() {
                   </div>
                 </CardContent>
               </Card>
+              </div>
             </motion.div>
           ) : (
             /* Success State */
