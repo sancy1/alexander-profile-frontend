@@ -501,8 +501,13 @@ export default function Navigation() {
                 </div>
 
                 <div className="px-4">
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">Let's Talk</Button>
+                  <Link href="/contact" passHref>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                    Let's Talk
+                  </Button>
+                  </Link>
                 </div>
+
               </div>
             </div>
           </motion.div>
@@ -511,3 +516,4 @@ export default function Navigation() {
     </motion.nav>
   )
 }
+
