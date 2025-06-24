@@ -1,0 +1,10 @@
+
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://www.alexandercyril.xyz/:path*",
+      "permanent": true
+    }
+  ]
+}
