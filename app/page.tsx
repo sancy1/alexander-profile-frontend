@@ -140,7 +140,114 @@ export default function HomePage() {
 >
   <div className="container mx-auto px-4 z-10 h-full flex items-center">
     <div className="w-full max-w-7xl mx-auto h-full flex items-center">
-<AnimatePresence mode="wait">
+
+  
+  <AnimatePresence mode="wait">
+  <motion.div
+    key={currentSlide}
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -50 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center w-full relative"
+    >
+    <div className="text-center md:text-left order-2 lg:order-1 px-4 md:px-0">
+      <motion.div
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mb-6 md:mb-8"
+      >
+        </motion.div>
+
+      {heroSlides[currentSlide].showGreeting && (
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+        >
+          Hi, I'm <span className="text-emerald-600">Alexander</span>
+        </motion.h1>
+      )}
+
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-700 mb-4 md:mb-6"
+      >
+        {heroSlides[currentSlide].title}
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="text-base sm:text-lg text-slate-600 mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0"
+      >
+        {heroSlides[currentSlide].description}
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="flex flex-wrap justify-center md:justify-start gap-3 mb-6 md:mb-8"
+      >
+        {heroSlides[currentSlide].tags.map((tag, index) => (
+          <Badge
+            key={index}
+            className="bg-emerald-600 text-white hover:bg-emerald-700 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium"
+          >
+            {tag}
+          </Badge>
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
+      >
+        <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-2 sm:py-3">
+          Let's Innovate Together
+          <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 py-2 sm:py-3"
+        >
+          View My Work
+          <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+        </Button>
+      </motion.div>
+    </div>
+
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+      className="relative order-1 lg:order-2 w-full h-64 sm:h-72 md:h-[28rem] lg:h-96"
+      >
+      <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
+        <Image
+          src={heroSlides[currentSlide].image || "/placeholder.svg"}
+          alt={heroSlides[currentSlide].title}
+          fill
+          className="object-cover"
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+    </motion.div>
+  </motion.div>
+</AnimatePresence>
+      
+{/* <AnimatePresence mode="wait">
   <motion.div
     key={currentSlide}
     initial={{ opacity: 0, y: 50 }}
@@ -149,7 +256,7 @@ export default function HomePage() {
     transition={{ duration: 0.8, ease: "easeOut" }}
     className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-12 items-center w-full relative"
   >
-    {/* Text Content - Full width on mobile/tablet/smaller desktop, 50% on very large screens */}
+   
     <div className="text-center md:text-left order-2 md:order-1 px-4 md:px-0">
       <motion.div
         initial={{ scale: 0.8 }}
@@ -157,7 +264,7 @@ export default function HomePage() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="mb-6 md:mb-8"
       >
-        {/* Optional icon placeholder */}
+   
       </motion.div>
 
       {heroSlides[currentSlide].showGreeting && (
@@ -226,12 +333,12 @@ export default function HomePage() {
       </motion.div>
     </div>
 
-    {/* Image Content - Full width below 'xl', 50% on 'xl' and above */}
+   
     <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }}
-      // ⭐ MODIFIED: Increased height for default mobile breakpoint (h-48 -> h-64) ⭐
+      
       className="relative order-1 md:order-2 w-full h-64 sm:h-72 md:h-[28rem] lg:h-96"
     >
       <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
@@ -247,7 +354,8 @@ export default function HomePage() {
       </div>
     </motion.div>
   </motion.div>
-</AnimatePresence>
+</AnimatePresence> */}
+
     </div>
   </div>
 
