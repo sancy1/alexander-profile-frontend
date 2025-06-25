@@ -12,6 +12,8 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import Link from 'next/link';
 import { FullWidthSection } from "@/components/full-width-section"
+import { useResumeActions } from "@/hooks/use-resume-actions";
+
 
 const heroSlides = [
   {
@@ -103,6 +105,8 @@ const expertiseCards = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  const { downloadResume, viewResume } = useResumeActions();
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -733,10 +737,20 @@ export default function HomePage() {
             </p> */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
-              <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3">
+            <Button
+                size="lg"
+                variant="secondary"
+                className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3"
+                onClick={downloadResume} 
+              >
                 <Download className="mr-2 w-5 h-5" />
                 Download Resume
               </Button>
+
+              {/* <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3">
+                <Download className="mr-2 w-5 h-5" />
+                Download Resume
+              </Button> */}
               
               <Link href="/portfolio" passHref>
               <Button

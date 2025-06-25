@@ -915,7 +915,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, Calendar, Search, Tag, User, Bell, ArrowRight, Home, Heart } from "lucide-react"
+import { BookOpen, Calendar, Search, Tag, User, Bell, ArrowRight, Home, Heart, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -924,6 +924,8 @@ import Link from "next/link"
 import Navigation from "@/components/navigation"
 import { FullWidthSection } from "@/components/full-width-section" // This is now a content-wrapper only
 import WhatsAppFloat from "@/components/whatsapp-float"
+import { useNewsletterSubscription } from "@/hooks/use-newsletter-subscription";
+
 
 const upcomingFeatures = [
   {
@@ -977,7 +979,11 @@ const upcomingFeatures = [
   },
 ]
 
+
+
 export default function BlogComingSoon() {
+  const { email, setEmail, isSubmitting, localMessage, handleSubscribe } = useNewsletterSubscription();
+
   return (
     // The main app wrapper should generally not have horizontal padding/max-width
     // `overflow-x-hidden` is good to prevent scrollbars from w-screen
@@ -1122,20 +1128,52 @@ export default function BlogComingSoon() {
               </p>
 
               <div className="max-w-md mx-auto">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 bg-white/90 border-white/20 text-slate-900 placeholder:text-slate-500"
-                  />
-                  <Button className="bg-white text-emerald-600 hover:bg-slate-100 px-6 py-2 font-medium w-full sm:w-auto">
-                    Notify Me
-                    <Bell className="ml-2 w-4 h-4" />
-                  </Button>
-                </div>
-                <p className="text-xs sm:text-sm text-emerald-200 mt-3 sm:mt-4">
-                  No spam, unsubscribe anytime. Just quality content updates.
-                </p>
+                <form onSubmit={handleSubscribe} className="space-y-4"> {/* Added space-y-4 for vertical spacing */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      required
+                      value={email} // ⭐ MODIFICATION 3: Bind value to hook state ⭐
+                      onChange={(e) => setEmail(e.target.value)} // ⭐ MODIFICATION 4: Update email via hook setter ⭐
+                      className="flex-1 bg-white/90 border-white/20 text-slate-900 placeholder:text-slate-500"
+                    />
+                    <Button
+                      type="submit" // ⭐ IMPORTANT: Set type to submit for form submission ⭐
+                      disabled={isSubmitting} // ⭐ MODIFICATION 5: Disable based on hook state ⭐
+                      className="bg-white text-emerald-600 hover:bg-slate-100 px-6 py-2 font-medium w-full sm:w-auto"
+                    >
+                      {/* ⭐ MODIFICATION 6: Conditional button text based on submitting state ⭐ */}
+                      {isSubmitting ? "Notifying..." : (
+                        <>
+                          Notify Me
+                          <Bell className="ml-2 w-4 h-4" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
+
+                  {/* ⭐ MODIFICATION 7: Local Message Display Area ⭐ */}
+                  {localMessage.type && (
+                    <div
+                      className={`
+                        p-3 rounded-md flex items-center gap-2 text-sm w-full mx-auto
+                        ${localMessage.type === "success" ? "bg-emerald-800 text-emerald-200 border border-emerald-700" : ""}
+                        ${localMessage.type === "error" ? "bg-red-800 text-red-200 border border-red-700" : ""}
+                      `}
+                      role="alert"
+                    >
+                      {localMessage.type === "success" && <CheckCircle className="w-4 h-4 flex-shrink-0" />}
+                      {localMessage.type === "error" && <AlertCircle className="w-4 h-4 flex-shrink-0" />}
+                      <p className="font-medium">{localMessage.text}</p>
+                    </div>
+                  )}
+                  {/* ⭐ END MODIFICATION 7 ⭐ */}
+
+                  <p className="text-xs sm:text-sm text-emerald-200 mt-3 sm:mt-4">
+                    No spam, unsubscribe anytime. Just quality content updates.
+                  </p>
+                </form>
               </div>
             </motion.div>
           </div>

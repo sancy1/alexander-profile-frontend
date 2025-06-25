@@ -14,6 +14,7 @@ import Image from "next/image"
 import HeroSection from "@/components/HeroSection";
 import Link from 'next/link';
 import { FullWidthSection } from "@/components/full-width-section"
+import { useResumeActions } from "@/hooks/use-resume-actions";
 
 const filterCategories = [
   { name: "All", value: "all", icon: Filter },
@@ -129,6 +130,8 @@ const projects = [
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState("all")
   const [filteredProjects, setFilteredProjects] = useState(projects)
+
+  const { downloadResume, viewResume } = useResumeActions();
 
   const handleFilterChange = (filterValue: string) => {
     setActiveFilter(filterValue)
@@ -402,15 +405,14 @@ export default function PortfolioPage() {
               </Button>
               </Link>
 
-              <Link href="/portfolio" passHref>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-white text-green hover:bg-white hover:text-emerald-600 px-8 py-3"
+                  onClick={viewResume}
                 >
                   View Resume
                 </Button>
-              </Link>
 
             </div>
           </motion.div>

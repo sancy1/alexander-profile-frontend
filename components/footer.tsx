@@ -1417,6 +1417,7 @@ import Link from "next/link"
 import DateTimeLocationWeather from "./DateTimeLocationWeather"
 import React, { useState } from "react" // Import useState
 // import { useToast } from "@/components/ui/use-toast" // REMOVED: No longer needed for this form
+import { useNewsletterSubscription } from "@/hooks/use-newsletter-subscription";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -1490,89 +1491,92 @@ const SocialLinks = () => (
 
 
 export default function Footer() {
-  const [email, setEmail] = useState<string>("")
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-  const [localMessage, setLocalMessage] = useState<{ type: string; text: string }>({
-    type: "", // 'success' | 'error' | ''
-    text: "",
-  })
+  // const [email, setEmail] = useState<string>("")
+  // const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  // const [localMessage, setLocalMessage] = useState<{ type: string; text: string }>({
+  //   type: "", // 'success' | 'error' | ''
+  //   text: "",
+  // })
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLocalMessage({ type: "", text: "" }) // Clear any previous messages
-    setIsSubmitting(true)
+  // const handleSubscribe = async (e: React.FormEvent) => {
+  //   e.preventDefault()
+  //   setLocalMessage({ type: "", text: "" }) // Clear any previous messages
+  //   setIsSubmitting(true)
 
-    // Basic client-side email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      setLocalMessage({
-        type: "error",
-        text: "Please enter a valid email address.",
-      })
-      setIsSubmitting(false)
-      setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
-      return
-    }
+  //   // Basic client-side email validation
+  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  //   if (!emailRegex.test(email)) {
+  //     setLocalMessage({
+  //       type: "error",
+  //       text: "Please enter a valid email address.",
+  //     })
+  //     setIsSubmitting(false)
+  //     setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
+  //     return
+  //   }
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
-    if (!backendUrl) {
-      setLocalMessage({
-        type: "error",
-        text: "Configuration error: Backend API URL is not configured. Please contact support.",
-      })
-      setIsSubmitting(false)
-      setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
-      return
-    }
+  //   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+  //   if (!backendUrl) {
+  //     setLocalMessage({
+  //       type: "error",
+  //       text: "Configuration error: Backend API URL is not configured. Please contact support.",
+  //     })
+  //     setIsSubmitting(false)
+  //     setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
+  //     return
+  //   }
 
-    try {
-      const response = await fetch(`${backendUrl}/api/newsletter/subscribe/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
+  //   try {
+  //     const response = await fetch(`${backendUrl}/api/newsletter/subscribe/`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ email }),
+  //     })
 
-      if (response.ok) {
-        setLocalMessage({
-          type: "success",
-          text: "Thank you for subscribing! A confirmation email has been sent to your inbox.",
-        })
-        setEmail(""); // Clear the email input
-        setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
-      } else {
-        const errorData = await response.json()
-        const backendErrorMessage = errorData.error || errorData.message || "An unexpected error occurred."
+  //     if (response.ok) {
+  //       setLocalMessage({
+  //         type: "success",
+  //         text: "Thank you for subscribing! A confirmation email has been sent to your inbox.",
+  //       })
+  //       setEmail(""); // Clear the email input
+  //       setTimeout(() => setLocalMessage({ type: "", text: "" }), 5000);
+  //     } else {
+  //       const errorData = await response.json()
+  //       const backendErrorMessage = errorData.error || errorData.message || "An unexpected error occurred."
 
-        let displayMessage = backendErrorMessage;
+  //       let displayMessage = backendErrorMessage;
 
-        // ⭐ MODIFIED PART: Check for specific "already subscribed" message ⭐
-        const lowerCaseErrorMessage = backendErrorMessage.toLowerCase();
-        if (lowerCaseErrorMessage.includes("already subscribed") ||
-            lowerCaseErrorMessage.includes("email already exists") ||
-            lowerCaseErrorMessage.includes("duplicate entry") // Add other phrases your backend might return
-        ) {
-          displayMessage = "This email address is already subscribed to our newsletter. Thank you!";
-        }
+  //       // ⭐ MODIFIED PART: Check for specific "already subscribed" message ⭐
+  //       const lowerCaseErrorMessage = backendErrorMessage.toLowerCase();
+  //       if (lowerCaseErrorMessage.includes("already subscribed") ||
+  //           lowerCaseErrorMessage.includes("email already exists") ||
+  //           lowerCaseErrorMessage.includes("duplicate entry") // Add other phrases your backend might return
+  //       ) {
+  //         displayMessage = "This email address is already subscribed to our newsletter. Thank you!";
+  //       }
 
-        setLocalMessage({
-          type: "error", // Still an 'error' type message
-          text: displayMessage,
-        })
-        setTimeout(() => setLocalMessage({ type: "", text: "" }), 8000);
-      }
-    } catch (error) {
-      console.error("Error subscribing to newsletter:", error)
-      setLocalMessage({
-        type: "error",
-        text: "Network Error: Could not connect to the server. Please check your internet connection and try again.",
-      })
-      setTimeout(() => setLocalMessage({ type: "", text: "" }), 8000);
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  //       setLocalMessage({
+  //         type: "error", // Still an 'error' type message
+  //         text: displayMessage,
+  //       })
+  //       setTimeout(() => setLocalMessage({ type: "", text: "" }), 8000);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error subscribing to newsletter:", error)
+  //     setLocalMessage({
+  //       type: "error",
+  //       text: "Network Error: Could not connect to the server. Please check your internet connection and try again.",
+  //     })
+  //     setTimeout(() => setLocalMessage({ type: "", text: "" }), 8000);
+  //   } finally {
+  //     setIsSubmitting(false)
+  //   }
+  // }
+
+  const { email, setEmail, isSubmitting, localMessage, handleSubscribe } = useNewsletterSubscription();
+
 
   return (
     <footer className="bg-slate-900 text-white">
@@ -1712,8 +1716,8 @@ export default function Footer() {
                   <p className="text-xs text-slate-400 mb-3">
                     Get the latest insights and updates delivered to your inbox. No spam
                   </p>
-                  <form onSubmit={handleSubscribe} className="space-y-3">
-                    {/* MODIFIED: This div now always stacks its children vertically */}
+
+                   <form onSubmit={handleSubscribe} className="space-y-3">
                     <div className="flex flex-col gap-2">
                       <input
                         type="email"
@@ -1721,13 +1725,11 @@ export default function Footer() {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        // The flex-1 with w-full ensures it stretches well
                         className="flex-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded-md text-white placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors w-full"
                       />
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        // MODIFIED: button now explicitly takes full width
                         className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-md transition-colors duration-200 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 w-full"
                       >
                         {isSubmitting ? "Subscribing..." : "Subscribe"}
@@ -1748,11 +1750,11 @@ export default function Footer() {
                         <p className="font-medium">{localMessage.text}</p>
                       </div>
                     )}
-                    {/* "No spam" message - now explicitly w-full */}
                     <p className="text-xs text-slate-500 w-full">
                       No spam, unsubscribe anytime. Just quality content updates.
                     </p>
                   </form>
+                  
                 </div>
               </div>
             </motion.div>

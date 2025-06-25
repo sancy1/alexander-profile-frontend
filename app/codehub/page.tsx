@@ -697,10 +697,13 @@ export default function PlaygroundPage() {
               technology and innovative solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              <Link href="/contact" passHref>
               <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3">
                 Let's Talk About Your Project
                 <ChevronRight className="ml-2 w-5 h-5" />
               </Button>
+              </Link>
 
               <Link href="/portfolio" passHref>
                 <Button
