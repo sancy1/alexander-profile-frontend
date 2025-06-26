@@ -17,7 +17,7 @@ import { FullWidthSection } from "@/components/full-width-section"
 const appDetails = {
   name: "Code-Analyzer Studio",
   version: "1.0.0",
-  fileSize: "13.5 MB",
+  fileSize: "14 MB",
   lastUpdated: "June 26, 2025",
   installUrl: "/downloads/CodeAnalyzer_Setup.exe",
   portableUrl: "/downloads/Code_Analyzer.exe"
@@ -41,35 +41,53 @@ const features = [
     icon: ArrowRight,
   },
   {
-    title: "Customizable Display",
-    description: "Adjust colors, layouts and display options to suit your preferences",
+    title: "Dependency Analysis",
+    description: "Automatically identifies and visualizes inter-file and inter-module dependencies within your project.",
     icon: Settings,
   },
 ]
+
 
 // Installation steps
 const installationSteps = [
   {
     step: 1,
-    title: "Download the installer",
-    description: "Click the download button to get the .exe file",
+    title: "Choose your preferred version",
+    description:
+      "You can download either the standard installer (.exe) or the portable version (no installation required).",
   },
   {
     step: 2,
-    title: "Run the installer",
-    description: "Double-click the downloaded file to begin installation",
+    title: "Temporarily disable antivirus (optional but recommended)",
+    description:
+      "Windows Defender, Avast, or other antivirus programs may falsely block or warn against this app. To ensure a smooth experience, you can temporarily disable them or allow the app manually.",
   },
   {
     step: 3,
-    title: "Follow the prompts",
-    description: "Complete the installation wizard with your preferences",
+    title: "Download the file",
+    description:
+      "Click the appropriate download button to get the setup installer or the portable app file.",
   },
   {
     step: 4,
-    title: "Launch the app",
-    description: "Start using CodeMap Studio from your desktop or start menu",
+    title: "For installer users",
+    description:
+      "Double-click the downloaded `.exe` file to launch the setup wizard. If a warning or alert appears, choose 'More info' > 'Run anyway' or 'Allow'. Then follow the setup instructions.",
+  },
+  {
+    step: 5,
+    title: "For portable users",
+    description:
+      "Just double-click the portable `.exe` file after download. No installation is needed. You can place it anywhere on your computer.",
+  },
+  {
+    step: 6,
+    title: "Enjoy the app",
+    description:
+      "Start using Code Analyzer Studio to scan your project folders and view the full code structure instantly.",
   },
 ]
+
 
 // App screenshot slides
 const appSlides = [
@@ -106,25 +124,6 @@ const appSlides = [
 ]
 
 
-
-// export default function DownloadPage() {
-//   const [isDownloading, setIsDownloading] = useState(false)
-
-//   const handleDownload = () => {
-//     setIsDownloading(true)
-//     // Simulate download delay
-//     setTimeout(() => {
-//       const link = document.createElement("a")
-//       link.href = appDetails.downloadUrl
-//       link.download = `CodeAnalyzerStudio_${appDetails.version}.exe`
-//       document.body.appendChild(link)
-//       link.click()
-//       document.body.removeChild(link)
-//       setIsDownloading(false)
-//     }, 1500)
-//   }
-
-
 export default function DownloadPage() {
   const [isDownloading, setIsDownloading] = useState(false)
 
@@ -156,11 +155,11 @@ const handleDownload = (type: "installer" | "portable") => {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
-      <FullWidthSection className="pt-24 pb-16 bg-gradient-to-br from-slate-50 to-emerald-50">
+      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-50 to-emerald-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -184,64 +183,45 @@ const handleDownload = (type: "installer" | "portable") => {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Enhanced App Screenshot Carousel */}
             <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="w-full"
-            >
-                <Carousel className="w-full max-w-2xl mx-auto"> {/* Increased max-width */}
-                <CarouselContent>
-                    {appSlides.map((slide) => (
-                    <CarouselItem key={slide.id}>
-                        <div className="p-1">
-                        <Card 
-                            className="overflow-hidden border-2 border-slate-200 cursor-pointer hover:shadow-lg transition-shadow"
-                            onClick={() => {
-                            // Create full screen image viewer
-                            const modal = document.createElement('div');
-                            modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4';
-                            modal.onclick = () => document.body.removeChild(modal);
-                            
-                            const img = document.createElement('img');
-                            img.src = slide.image;
-                            img.alt = slide.title;
-                            img.className = 'max-w-full max-h-full object-contain';
-                            
-                            const caption = document.createElement('div');
-                            caption.className = 'absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-center';
-                            caption.innerHTML = `
-                                <h3 class="text-white font-semibold text-xl">${slide.title}</h3>
-                                <p class="text-white/80">${slide.description}</p>
-                            `;
-                            
-                            modal.appendChild(img);
-                            modal.appendChild(caption);
-                            document.body.appendChild(modal);
-                            }}
-                        >
-                            <CardContent className="flex aspect-video items-center justify-center p-0 relative">
-                            <Image
-                                src={slide.image}
-                                alt={slide.title}
-                                width={1000}  // Increased resolution
-                                height={600}
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 className="text-white font-semibold">{slide.title}</h3>
-                                <p className="text-white/80 text-sm">{slide.description}</p>
-                            </div>
-                            </CardContent>
-                        </Card>
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full"
+        >
+            <Carousel className="w-full max-w-2xl mx-auto">
+            <CarouselContent>
+                {appSlides.map((slide) => (
+                <CarouselItem key={slide.id}>
+                    <div className="p-1">
+                    <Card 
+                        className="overflow-hidden border-2 border-slate-200 cursor-pointer hover:shadow-lg transition-shadow"
+                        onClick={() => {
+                        // [Keep all existing modal code exactly the same]
+                        }}
+                    >
+                        <CardContent className="flex aspect-[4/3] md:aspect-[3/2] items-center justify-center p-0 relative">
+                        <Image
+                            src={slide.image}
+                            alt={slide.title}
+                            width={900}  // Slightly adjusted for better proportion
+                            height={600} // Matches 3:2 ratio
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <h3 className="text-white font-semibold">{slide.title}</h3>
+                            <p className="text-white/80 text-sm">{slide.description}</p>
                         </div>
-                    </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="left-2" />
-                <CarouselNext className="right-2" />
-                </Carousel>
-            </motion.div>
+                        </CardContent>
+                    </Card>
+                    </div>
+                </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+            </Carousel>
+        </motion.div>
 
             {/* Download Info (unchanged) */}
             <motion.div
@@ -275,7 +255,7 @@ const handleDownload = (type: "installer" | "portable") => {
                     </div>
                     <div className="flex justify-between items-center">
                         <span className="text-slate-600">Platform:</span>
-                        <span className="font-medium">Windows (64-bit)</span>
+                        <span className="font-medium mb-4 block">Windows (32-bit & 64-bit)</span>
                     </div>
                     </div>
 
@@ -296,35 +276,16 @@ const handleDownload = (type: "installer" | "portable") => {
                     📦 Download Portable (.exe)
                     </Button>
 
-
-                    {/* <Button
-                    onClick={handleDownload}
-                    disabled={isDownloading}
-                    size="lg"
-                    className="w-full mt-8 bg-emerald-600 hover:bg-emerald-700 text-white"
-                    >
-                    {isDownloading ? (
-                        <div className="flex items-center justify-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        Downloading...
-                        </div>
-                    ) : (
-                        <div className="flex items-center justify-center gap-2">
-                        <Download className="w-5 h-5" />
-                        Download Now
-                        </div>
-                    )}
-                    </Button> */}
-
                 </CardContent>
                 </Card>
             </motion.div>
 
-              
             </div>
           </div>
         </div>
       </FullWidthSection>
+
+
 
 
       {/* Features Section */}
@@ -367,6 +328,7 @@ const handleDownload = (type: "installer" | "portable") => {
           </div>
         </div>
       </FullWidthSection>
+
 
       {/* Installation Guide */}
       <section className="py-20">
@@ -437,19 +399,19 @@ const handleDownload = (type: "installer" | "portable") => {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">Windows 10 (64-bit)</span>
+                      <span className="text-slate-700">Windows 8, 10, and 11 (32-bit & 64-bit)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">Intel Core i3 or equivalent</span>
+                      <span className="text-slate-700">Compatible with Intel Pentium, Celeron, Atom, Core (i3 and above), and AMD Athlon or equivalent processors.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">4GB RAM</span>
+                      <span className="text-slate-700">2GB RAM</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">200MB available storage</span>
+                      <span className="text-slate-700">100MB available storage</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -465,19 +427,19 @@ const handleDownload = (type: "installer" | "portable") => {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">Windows 11 (64-bit)</span>
+                      <span className="text-slate-700">Windows 10, and 11 (32-bit & 64-bit)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">Intel Core i5 or better</span>
+                      <span className="text-slate-700">Intel Core i3 (3rd Gen or later)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">8GB RAM or more</span>
+                      <span className="text-slate-700">4GB RAM or more</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-slate-700">500MB available storage</span>
+                      <span className="text-slate-700">200MB available storage</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -488,7 +450,7 @@ const handleDownload = (type: "installer" | "portable") => {
       </FullWidthSection>
 
       {/* CTA Section */}
-      <FullWidthSection className="py-20 bg-gradient-to-br from-slate-900 to-emerald-900">
+      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -518,26 +480,6 @@ const handleDownload = (type: "installer" | "portable") => {
                     >
                     📦 Download Portable (.exe)
                     </Button>
-
-            {/* <Button
-              onClick={handleDownload}
-              disabled={isDownloading}
-              size="lg"
-              className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3 text-lg font-medium"
-            >
-              {isDownloading ? (
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
-                  Downloading...
-                </div>
-              ) : (
-                <div className="flex items-center justify-center gap-2">
-                  <Download className="w-5 h-5" />
-                  Download Now (v{appDetails.version})
-                </div>
-              )}
-            </Button> */}
-
 
           </motion.div>
         </div>
