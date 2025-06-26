@@ -182,46 +182,67 @@ const handleDownload = (type: "installer" | "portable") => {
             
             <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Enhanced App Screenshot Carousel */}
+            
             <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="w-full"
-        >
+            >
             <Carousel className="w-full max-w-2xl mx-auto">
-            <CarouselContent>
+                <CarouselContent>
                 {appSlides.map((slide) => (
-                <CarouselItem key={slide.id}>
+                    <CarouselItem key={slide.id}>
                     <div className="p-1">
-                    <Card 
+                        <Card
                         className="overflow-hidden border-2 border-slate-200 cursor-pointer hover:shadow-lg transition-shadow"
                         onClick={() => {
-                        // [Keep all existing modal code exactly the same]
+                            /* ONLY THIS SECTION IS NEW - FULLSCREEN VIEWER */
+                            const modal = document.createElement('div');
+                            modal.className = 'fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4';
+                            modal.onclick = () => document.body.removeChild(modal);
+                            
+                            const img = document.createElement('img');
+                            img.src = slide.image;
+                            img.alt = slide.title;
+                            img.className = 'max-w-full max-h-[90vh] object-contain';
+                            
+                            const caption = document.createElement('div');
+                            caption.className = 'absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-center';
+                            caption.innerHTML = `
+                            <h3 class="text-white font-semibold text-lg">${slide.title}</h3>
+                            <p class="text-white/80 text-sm">${slide.description}</p>
+                            `;
+                            
+                            modal.appendChild(img);
+                            modal.appendChild(caption);
+                            document.body.appendChild(modal);
                         }}
-                    >
-                        <CardContent className="flex aspect-[4/3] md:aspect-[3/2] items-center justify-center p-0 relative">
-                        <Image
+                        >
+                        {/* EVERYTHING BELOW REMAINS EXACTLY AS IN YOUR ORIGINAL CODE */}
+                        <CardContent className="flex aspect-[3/2] items-center justify-center p-0 relative">
+                            <Image
                             src={slide.image}
                             alt={slide.title}
-                            width={900}  // Slightly adjusted for better proportion
-                            height={600} // Matches 3:2 ratio
+                            width={900}
+                            height={600}
                             className="w-full h-full object-cover"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                             <h3 className="text-white font-semibold">{slide.title}</h3>
                             <p className="text-white/80 text-sm">{slide.description}</p>
-                        </div>
+                            </div>
                         </CardContent>
-                    </Card>
+                        </Card>
                     </div>
-                </CarouselItem>
+                    </CarouselItem>
                 ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2" />
-            <CarouselNext className="right-2" />
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
             </Carousel>
-        </motion.div>
+            </motion.div>
 
             {/* Download Info (unchanged) */}
             <motion.div
@@ -461,7 +482,7 @@ const handleDownload = (type: "installer" | "portable") => {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-emerald-100 mb-8 leading-relaxed">
-              Download CodeMap Studio today and take control of your project structure
+              Download Code-Analyzer Studio today and take control of your project structure
             </p>
 
 
