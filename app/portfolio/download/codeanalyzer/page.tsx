@@ -19,7 +19,8 @@ const appDetails = {
   version: "1.0.0",
   fileSize: "13.5 MB",
   lastUpdated: "June 26, 2025",
-  downloadUrl: "/downloads/CodeAnalyzer_Setup.exe" 
+  installUrl: "/downloads/CodeAnalyzer_Setup.exe",
+  portableUrl: "/downloads/Code_Analyzer.exe"
 }
 
 // Features list
@@ -104,22 +105,55 @@ const appSlides = [
   },
 ]
 
+
+
+// export default function DownloadPage() {
+//   const [isDownloading, setIsDownloading] = useState(false)
+
+//   const handleDownload = () => {
+//     setIsDownloading(true)
+//     // Simulate download delay
+//     setTimeout(() => {
+//       const link = document.createElement("a")
+//       link.href = appDetails.downloadUrl
+//       link.download = `CodeAnalyzerStudio_${appDetails.version}.exe`
+//       document.body.appendChild(link)
+//       link.click()
+//       document.body.removeChild(link)
+//       setIsDownloading(false)
+//     }, 1500)
+//   }
+
+
 export default function DownloadPage() {
   const [isDownloading, setIsDownloading] = useState(false)
 
-  const handleDownload = () => {
-    setIsDownloading(true)
-    // Simulate download delay
-    setTimeout(() => {
-      const link = document.createElement("a")
-      link.href = appDetails.downloadUrl
-      link.download = `CodeAnalyzerStudio_${appDetails.version}.exe`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      setIsDownloading(false)
-    }, 1500)
-  }
+const handleDownload = (type: "installer" | "portable") => {
+  setIsDownloading(true)
+
+  setTimeout(() => {
+    const link = document.createElement("a")
+    const fileUrl =
+      type === "installer"
+        ? appDetails.installUrl
+        : appDetails.portableUrl
+
+    const fileName =
+      type === "installer"
+        ? `CodeAnalyzerStudio_${appDetails.version}_Installer.exe`
+        : `CodeAnalyzerStudio_${appDetails.version}_Portable.exe`
+
+    link.href = fileUrl
+    link.download = fileName
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    setIsDownloading(false)
+  }, 1500)
+}
+
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -245,7 +279,25 @@ export default function DownloadPage() {
                     </div>
                     </div>
 
+
                     <Button
+                    onClick={() => handleDownload("installer")}
+                    disabled={isDownloading}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white w-full"
+                    >
+                    💾 Download Installer (.exe)
+                    </Button>
+
+                    <Button
+                    onClick={() => handleDownload("portable")}
+                    disabled={isDownloading}
+                    className="bg-purple-600 hover:bg-indigo-700 text-white w-full mt-4"
+                    >
+                    📦 Download Portable (.exe)
+                    </Button>
+
+
+                    {/* <Button
                     onClick={handleDownload}
                     disabled={isDownloading}
                     size="lg"
@@ -262,7 +314,8 @@ export default function DownloadPage() {
                         Download Now
                         </div>
                     )}
-                    </Button>
+                    </Button> */}
+
                 </CardContent>
                 </Card>
             </motion.div>
@@ -448,7 +501,25 @@ export default function DownloadPage() {
             <p className="text-xl text-emerald-100 mb-8 leading-relaxed">
               Download CodeMap Studio today and take control of your project structure
             </p>
+
+
             <Button
+                    onClick={() => handleDownload("installer")}
+                    disabled={isDownloading}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white w-full"
+                    >
+                    💾 Download Installer (.exe)
+                    </Button>
+
+                    <Button
+                    onClick={() => handleDownload("portable")}
+                    disabled={isDownloading}
+                    className="bg-purple-600 hover:bg-indigo-700 text-white w-full mt-4"
+                    >
+                    📦 Download Portable (.exe)
+                    </Button>
+
+            {/* <Button
               onClick={handleDownload}
               disabled={isDownloading}
               size="lg"
@@ -465,7 +536,9 @@ export default function DownloadPage() {
                   Download Now (v{appDetails.version})
                 </div>
               )}
-            </Button>
+            </Button> */}
+
+
           </motion.div>
         </div>
       </FullWidthSection>
