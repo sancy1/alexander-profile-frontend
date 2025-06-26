@@ -36,9 +36,10 @@ const projects = [
     tags: ["Next.js", "PostgreSQL", "Tailwind", "Prisma", "Full-Stack"],
     categories: ["ecommerce", "fullstack"],
     status: "In Development",
-    hostedOn: "Vercel",
-    demoUrl: "#",
+    hostedOn: "Vercel | Visit website >",
+    demoUrl: "https://handcrafted-gamma.vercel.app",
     githubUrl: "#",
+    downloadPageUrl: "#", // Add this line
     featured: true,
   },
   {
@@ -53,6 +54,7 @@ const projects = [
     hostedOn: "Vercel",
     demoUrl: "#",
     githubUrl: "#",
+    downloadPageUrl: "portfolio/download/", // Add this line
     featured: true,
   },
   // {
@@ -71,16 +73,17 @@ const projects = [
   // },
     {
     id: 3,
-    title: "CodeMap Studio",
+    title: "Code-Analyzer Studio",
     description:
       "A modern developer tool that lets users upload a project folder, auto-generate a visual file map, and explore each file with its actual code displayed.",
     image: "/images/portfolio/code-map.png?height=300&width=400",
     tags: ["Python", "TTKBootstrap", "tkinter", "PIL"],
     categories: ["desktop", "desktop"],
     status: "Completed",
-    hostedOn: "PyInstaller",
-    demoUrl: "#",
+    hostedOn: "Nuitka | Downlodable >",
+    demoUrl: "portfolio/download/codeanalyzer",
     githubUrl: "#",
+    downloadPageUrl: "portfolio/download/codeanalyzer", // Add this line
     featured: false,
   },
   // {
@@ -109,6 +112,7 @@ const projects = [
     hostedOn: "Vercel",
     demoUrl: "#",
     githubUrl: "#",
+    downloadPageUrl: "portfolio/download/", // Add this line
     featured: false,
   },
   // {
@@ -162,95 +166,123 @@ export default function PortfolioPage() {
 
       {/* Featured Projects */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Highlighting my most impactful and innovative work
-            </p>
-          </motion.div>
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+      <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        Highlighting my most impactful and innovative work
+      </p>
+    </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="group"
-              >
-                <Card className="h-full border-2 border-emerald-200 bg-emerald-50 transition-all duration-300 group-hover:shadow-xl group-hover:border-emerald-300">
-                  <CardContent className="p-0">
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        width={400}
-                        height={300}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute top-4 right-4">
-                        <Badge
-                          variant={project.status === "Completed" ? "default" : "secondary"}
-                          className={
-                            project.status === "Completed" ? "bg-emerald-600 text-white" : "bg-orange-600 text-white"
-                          }
+    <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+      {featuredProjects.map((project, index) => (
+        <motion.div
+          key={project.id}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -10 }}
+          className="group"
+        >
+          <Card className="h-full border-2 border-emerald-200 bg-emerald-50 transition-all duration-300 group-hover:shadow-xl group-hover:border-emerald-300">
+            <CardContent className="p-0">
+              <div className="relative overflow-hidden rounded-t-lg">
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  width={400}
+                  height={300}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 right-4">
+                  <Badge
+                    variant={project.status === "Completed" ? "default" : "secondary"}
+                    className={
+                      project.status === "Completed" ? "bg-emerald-600 text-white" : "bg-orange-600 text-white"
+                    }
+                  >
+                    {project.status}
+                  </Badge>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{project.title}</h3>
+
+                <p className="text-slate-600 mb-4 leading-relaxed">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag, tagIndex) => (
+                    <Badge key={tagIndex} className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-slate-500">Hosted on {project.hostedOn}</span>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                      asChild
+                    >
+                      {project.demoUrl ? (
+                        <a 
+                          href={project.demoUrl} 
+                          target={project.demoUrl.startsWith('http') ? "_blank" : undefined}
+                          rel={project.demoUrl.startsWith('http') ? "noopener noreferrer" : undefined}
                         >
-                          {project.status}
-                      </Badge>
-                      </div>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-slate-900 mb-3">{project.title}</h3>
-
-                      <p className="text-slate-600 mb-4 leading-relaxed">{project.description}</p>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag, tagIndex) => (
-                          <Badge key={tagIndex} className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-slate-500">Hosted on {project.hostedOn}</span>
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-1" />
-                            Demo
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
-                          >
-                            <Github className="w-4 h-4 mr-1" />
-                            Code
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          Demo
+                        </a>
+                      ) : (
+                        <span>
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          Demo
+                        </span>
+                      )}
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                      asChild
+                    >
+                      {project.githubUrl ? (
+                        <a 
+                          href={project.githubUrl} 
+                          target={project.githubUrl.startsWith('http') ? "_blank" : undefined}
+                          rel={project.githubUrl.startsWith('http') ? "noopener noreferrer" : undefined}
+                        >
+                          <Github className="w-4 h-4 mr-1" />
+                          Code
+                        </a>
+                      ) : (
+                        <span>
+                          <Github className="w-4 h-4 mr-1" />
+                          Code
+                        </span>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* All Projects with Filters */}
       <FullWidthSection className="py-20 bg-slate-50 -mt-10">
@@ -289,95 +321,112 @@ export default function PortfolioPage() {
 
 
       <AnimatePresence>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {filteredProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            layout
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            whileHover={{ y: -5 }}
-            className="group"
-          >
-            <Card className="h-full border-2 transition-all duration-300 group-hover:shadow-xl group-hover:border-emerald-300">
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden rounded-t-lg">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={400}
-                    height={200}
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-3 right-3 flex flex-col gap-2">
-                    {/* Existing status badge */}
-                    <Badge
-                      variant={project.status === "Completed" ? "default" : "secondary"}
-                      className={
-                        project.status === "Completed" ? "bg-emerald-600 text-white" : "bg-orange-600 text-white"
-                      }
-                    >
-                      {project.status}
-                    </Badge>
-                    
-                    {/* New prominent status button */}
-                    <div className="relative">
-                      {/* <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg shadow-sm">
-                        <span className="text-xs font-bold text-white tracking-wider">STATUS: IN PROGRESS</span>
-                      </div> */}
-                    </div>
-                  </div>
-                </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {filteredProjects.map((project, index) => (
+      <motion.div
+        key={project.id}
+        layout
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.4, delay: index * 0.1 }}
+        whileHover={{ y: -5 }}
+        className="group"
+      >
+        <Card className="h-full border-2 transition-all duration-300 group-hover:shadow-xl group-hover:border-emerald-300">
+          <CardContent className="p-0">
+            <div className="relative overflow-hidden rounded-t-lg">
+              <Image
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                width={400}
+                height={200}
+                className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute top-3 right-3 flex flex-col gap-2">
+                <Badge
+                  variant={project.status === "Completed" ? "default" : "secondary"}
+                  className={
+                    project.status === "Completed" ? "bg-emerald-600 text-white" : "bg-orange-600 text-white"
+                  }
+                >
+                  {project.status}
+                </Badge>
+              </div>
+            </div>
 
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{project.title}</h3>
+            <div className="p-6">
+              <h3 className="text-lg font-bold text-slate-900 mb-2">{project.title}</h3>
 
-                  <p className="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
+              <p className="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                {project.description}
+              </p>
 
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <Badge key={tagIndex} className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <Badge className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
-                        +{project.tags.length - 3}
-                      </Badge>
-                    )}
-                  </div>
+              <div className="flex flex-wrap gap-1 mb-4">
+                {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                  <Badge key={tagIndex} className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
+                    {tag}
+                  </Badge>
+                ))}
+                {project.tags.length > 3 && (
+                  <Badge className="bg-emerald-600 text-white hover:bg-emerald-700 text-xs">
+                    +{project.tags.length - 3}
+                  </Badge>
+                )}
+              </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">{project.hostedOn}</span>
-                    <div className="flex gap-1">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="text-xs px-2 py-1 border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-slate-500">{project.hostedOn}</span>
+                <div className="flex gap-1">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="text-xs px-2 py-1 border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                    asChild
+                  >
+                    {project.demoUrl ? (
+                      <a 
+                        href={project.demoUrl} 
+                        target={project.demoUrl.startsWith('http') ? "_blank" : undefined}
+                        rel={project.demoUrl.startsWith('http') ? "noopener noreferrer" : undefined}
                       >
                         <ExternalLink className="w-3 h-3" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="text-xs px-2 py-1 border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                      </a>
+                    ) : (
+                      <span>
+                        <ExternalLink className="w-3 h-3" />
+                      </span>
+                    )}
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="text-xs px-2 py-1 border-emerald-600 text-emerald-600 hover:bg-emerald-50"
+                    asChild
+                  >
+                    {project.githubUrl ? (
+                      <a 
+                        href={project.githubUrl} 
+                        target={project.githubUrl.startsWith('http') ? "_blank" : undefined}
+                        rel={project.githubUrl.startsWith('http') ? "noopener noreferrer" : undefined}
                       >
                         <Github className="w-3 h-3" />
-                      </Button>
-                    </div>
-                  </div>
+                      </a>
+                    ) : (
+                      <span>
+                        <Github className="w-3 h-3" />
+                      </span>
+                    )}
+                  </Button>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
-    </AnimatePresence>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </div>
+</AnimatePresence>
     </div>
     </FullWidthSection> {/* Closing section tag */}
       
