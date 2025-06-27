@@ -312,6 +312,132 @@
 
 
 
+// import type React from "react"
+// import type { Metadata } from "next"
+// import { Inter } from "next/font/google"
+// import "./globals.css"
+// import ScrollUtils from "@/components/ScrollUtils"
+// import Footer from "../components/footer"
+// import { Toaster } from "@/components/ui/toaster"
+
+// const inter = Inter({ subsets: ["latin"] })
+
+// export const metadata: Metadata = {
+//   title: "Alexander Cyril - Software Engineer",
+//   description:
+//     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
+//  icons: {
+//     icon: "/favicon.ico", // CHANGE THIS LINE
+//     shortcut: "/favicon.ico", // This one was already correct
+//     apple: "/apple-touch-icon.png", // CHANGE THIS LINE (assuming apple-touch-icon.png is also in your app directory)
+//   },
+//   keywords: "software engineer, full-stack developer, machine learning, data analytics, AI, Python, Next.js, Django",
+//   authors: [{ name: "Alexander Cyril" }],
+//   openGraph: {
+//     title: "Alexander Cyril - Software Engineer",
+//     description:
+//       "Building innovative software solutions with expertise in full-stack development, AI, and data analytics",
+//     type: "website",
+//   },
+//   generator: "v0.dev",
+// }
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en" className="overflow-x-hidden">
+//       <ScrollUtils />
+//       <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
+//         <div className="min-h-screen w-full">
+//           <main className="w-full px-0 md:px-4 lg:px-8 xl:px-0 lg:container lg:mx-auto lg:max-w-7xl">
+//             {children}
+//           </main>
+//           <Footer />
+//         </div>
+//         <Toaster />
+//       </body>
+//     </html>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+// // app/layout.tsx
+// import type React from "react"
+// import type { Metadata } from "next"
+// import { Inter } from "next/font/google"
+// import "./globals.css"
+// import ScrollUtils from "@/components/ScrollUtils"
+// import Footer from "../components/footer"
+// import { Toaster } from "@/components/ui/toaster"
+
+// const inter = Inter({ subsets: ["latin"] })
+
+// export const metadata: Metadata = {
+//   title: "Alexander Cyril - Software Engineer",
+//   description:
+//     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
+//   icons: {
+//     icon: "/favicon.ico", // Correct path (relative to the domain root)
+//     shortcut: "/favicon.ico", // Optional (for older browsers)
+//     apple: "/apple-touch-icon.png", // Correct path (assuming it's in `app/`)
+//   },
+//   keywords: "software engineer, full-stack developer, machine learning, data analytics, AI, Python, Next.js, Django",
+//   authors: [{ name: "Alexander Cyril" }],
+//   openGraph: {
+//     title: "Alexander Cyril - Software Engineer",
+//     description:
+//       "Building innovative software solutions with expertise in full-stack development, AI, and data analytics",
+//     type: "website",
+//   },
+//   generator: "v0.dev",
+// }
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en" className="overflow-x-hidden">
+//       <ScrollUtils />
+//       <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
+//         <div className="min-h-screen w-full">
+//           <main className="w-full px-0 md:px-4 lg:px-8 xl:px-0 lg:container lg:mx-auto lg:max-w-7xl">
+//             {children}
+//           </main>
+//           <Footer />
+//         </div>
+//         <Toaster />
+//       </body>
+//     </html>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app/layout.tsx
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -323,19 +449,27 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Alexander Cyril - Software Engineer & Data Professional",
+  title: "Alexander Cyril - Software Engineer",
   description:
     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
-  keywords: "software engineer, full-stack developer, machine learning, data analytics, AI, Python, Next.js, Django",
-  authors: [{ name: "Alexander Cyril" }],
-  openGraph: {
-    title: "Alexander Cyril - Software Engineer",
-    description:
-      "Building innovative software solutions with expertise in full-stack development, AI, and data analytics",
-    type: "website",
+  icons: {
+    icon: "/favicon.ico", // Main favicon for most browsers
+    shortcut: "/favicon.ico", // Optional, for older browsers
+    apple: "/apple-touch-icon.png", // For iOS devices
+    // Add specific sizes for Android/PWA
+    other: [
+      {
+        rel: "android-chrome-192x192",
+        url: "/android-chrome-192x192.png", // Or the actual path for your 192x192 icon
+      },
+      {
+        rel: "android-chrome-512x512",
+        url: "/android-chrome-512x512.png", // Your 512x512 icon
+      },
+    ],
   },
-  generator: "v0.dev",
-}
+  // ... rest of your metadata
+};
 
 export default function RootLayout({
   children,

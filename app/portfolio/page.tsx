@@ -78,7 +78,7 @@ const projects = [
       "A modern developer tool that lets users upload a project folder, auto-generate a visual file map, and explore each file with its actual code displayed.",
     image: "/images/portfolio/code-map.png?height=300&width=400",
     tags: ["Python", "TTKBootstrap", "tkinter", "PIL"],
-    categories: ["desktop", "desktop"],
+    categories: ["ai", "desktop"],
     status: "Completed",
     hostedOn: "Nuitka | Downlodable >",
     demoUrl: "portfolio/download/codeanalyzer",
@@ -101,7 +101,7 @@ const projects = [
   //   featured: false,
   // },
   {
-    id: 5,
+    id: 4,
     title: "Modern Portfolio Website",
     description:
       "A responsive and interactive portfolio website built with modern web technologies. Features smooth animations, optimized performance across all devices.",
@@ -109,10 +109,10 @@ const projects = [
     tags: ["Next.js", "Tailwind", "Framer Motion", "Django", "PostgreSQL"],
     categories: ["fullstack", "fullstack"],
     status: "In Development",
-    hostedOn: "Vercel",
-    demoUrl: "#",
+    hostedOn: "Vercel | Visit website >",
+    demoUrl: "https://www.alexandercyril.xyz",
     githubUrl: "#",
-    downloadPageUrl: "portfolio/download/", // Add this line
+    downloadPageUrl: "https://www.alexandercyril.xyz", // Add this line
     featured: false,
   },
   // {
@@ -129,6 +129,22 @@ const projects = [
   //   githubUrl: "#",
   //   featured: false,
   // },
+
+    {
+    id: 5,
+    title: "AI Web Scraper Pro",
+    description:
+      "AI Web Scraper Pro, an advanced desktop application meticulously crafted to revolutionize how you gather information from the internet.",
+    image: "/images/portfolio/webscraper.png?height=300&width=400",
+    tags: ["Python", "ttkbootstrap", "Nltk", "BeautifulSoup", "Pandas"],
+    categories: ["ai", "desktop"],
+    status: "Completed",
+    hostedOn: "Nuitka | Downlodable >",
+    demoUrl: "portfolio/download/webscraper",
+    githubUrl: "#",
+    downloadPageUrl: "portfolio/download/webscraper", // Add this line
+    featured: false,
+  },
 ]
 
 export default function PortfolioPage() {
