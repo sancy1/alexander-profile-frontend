@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api/
+Disallow: /unsubscribe/
+
+Sitemap: https://www.alexandercyril.xyz/sitemap.xml

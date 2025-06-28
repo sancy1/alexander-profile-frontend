@@ -1794,7 +1794,10 @@ export default function Footer() {
                 <Link href="/unsubscribe" passHref> {/* Added Unsubscribe Link */}
                   <span className="hover:text-emerald-400 transition-colors cursor-pointer">Unsubscribe</span>
                 </Link>
+               
+               <a href="/sitemap.xml" target="blank">
                 <span className="hover:text-emerald-400 transition-colors cursor-pointer">Sitemap</span>
+                </a>
               </div>
             </div>
           </div>
