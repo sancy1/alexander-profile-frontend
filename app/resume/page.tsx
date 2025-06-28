@@ -16,13 +16,13 @@ import { FullWidthSection } from "@/components/full-width-section"
 const technicalSkills = [
   {
     category: "Full-Stack Development",
-    skills: ["Python", "Django", "React", "Next.js", "React Native", "Expo", "Tailwind CSS", "Node.js", "Express.js"],
+    skills: ["Python", "Django", "React", "Next.js", "Electron", "Tailwind CSS", "Node.js", "Express.js"],
     icon: Code,
     color: "bg-emerald-50 border-emerald-200",
   },
   {
     category: "Backend & Databases",
-    skills: ["REST Framework", "PostgreSQL", "SQLite", "Supabase", "MySQL", "MongoDB"],
+    skills: ["REST Framework", "PostgreSQL", "SQLite", "MySQL", "MongoDB"],
     icon: Database,
     color: "bg-green-50 border-green-200",
   },
@@ -73,7 +73,7 @@ const education = [
     degree: "Bachelor's Degree in Software Development",
     institution: "Brigham Young University – Idaho",
     status: "In Progress",
-    year: "2022 - Present",
+    year: "2023 - Present",
     icon: GraduationCap,
   },
   {
@@ -307,7 +307,7 @@ export default function ResumePage() {
                               <Badge
                                 variant={item.status === "Completed" ? "default" : "secondary"}
                                 className={
-                                  item.status === "Completed" ? "bg-green-600 text-white" : "bg-emerald-600 text-white"
+                                  item.status === "Completed" ? "bg-green-600 text-white" : "bg-gray-600 text-white"
                                 }
                               >
                                 {item.status}

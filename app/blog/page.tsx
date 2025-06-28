@@ -1124,7 +1124,7 @@ export default function BlogComingSoon() {
                 Be the First to Know
               </h2>
               <p className="text-base sm:text-lg text-emerald-100 mb-6 sm:mb-8 leading-relaxed">
-                Get notified when the blog launches and receive exclusive early access to premium content.
+                Get notified when the blog launches and receive exclusive early information.
               </p>
 
               <div className="max-w-md mx-auto">

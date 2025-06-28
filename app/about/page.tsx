@@ -333,7 +333,7 @@ const educationCards = [
   {
     title: "Machine Learning Certification",
     institution: "Coursera/Udemy",
-    year: "2024",
+    year: "In Progress",
     status: "Current",
     icon: Award,
     color: "bg-blue-50 border-blue-200",
@@ -421,7 +421,7 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Professional Journey</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
                 I'm Alexander Sanchez Cyril, a passionate and results-oriented software engineer with a strong
-                foundation in full-stack and mobile development, backend systems, data analytics, and intelligent
+                foundation in full-stack and desktop development, backend systems, data analytics, and intelligent
                 automation. With an academic background in Software Development and a track record of self-initiated
                 tech projects, I specialize in building scalable applications that solve real-world problems.
               </p>

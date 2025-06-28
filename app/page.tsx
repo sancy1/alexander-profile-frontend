@@ -41,13 +41,22 @@ const heroSlides = [
     // icon: Zap,
     image: "images/slider/task.jpg",
   },
+  // {
+  //   title: "Building Cross-Platform Mobile Experiences",
+  //   subtitle: "Mobile App Development",
+  //   description: "Creating performant mobile applications for iOS and Android with React Native",
+  //   tags: ["React Native", "Firebase", "iOS", "Android", "Expo"],
+  //   image: "images/slider/mobile2.jpg", 
+  // }
+
   {
-    title: "Building Cross-Platform Mobile Experiences",
-    subtitle: "Mobile App Development",
-    description: "Creating performant mobile applications for iOS and Android with React Native",
-    tags: ["React Native", "Firebase", "iOS", "Android", "Expo"],
-    image: "images/slider/mobile2.jpg", 
-  }
+  title: "Crafting Modern Desktop Applications",
+  subtitle: "Desktop App Development",
+  description: "Building powerful, cross-platform desktop applications using Electron with React and robust APIs powered by Node.js and Django.",
+  tags: ["Electron", "Node", "Express", "React", "Django"],
+  image: "images/slider/desktop.jpg"
+}
+
 ]
 
 
@@ -88,11 +97,24 @@ const expertiseCards = [
     iconBg: "bg-orange-100",
     iconColor: "text-orange-600",
   },
-  {
-    title: "Mobile Development",
+  // {
+  //   title: "Mobile Development",
+  //   description:
+  //     "Creating cross-platform mobile applications with React Native and Firebase for seamless performance and real-time functionality.",
+  //   tags: ["React Native", "Firebase", "iOS", "Android", "Expo"],
+  //   icon: Smartphone, // Make sure to import Smartphone from lucide-react
+  //   gradient: "from-blue-500 to-cyan-600",
+  //   bgColor: "bg-blue-50",
+  //   borderColor: "border-blue-200",
+  //   iconBg: "bg-blue-100",
+  //   iconColor: "text-blue-600",
+  // },
+
+   {
+    title: "Desktop Development",
     description:
-      "Creating cross-platform mobile applications with React Native and Firebase for seamless performance and real-time functionality.",
-    tags: ["React Native", "Firebase", "iOS", "Android", "Expo"],
+      "Creating cross-platform desktop applications with Electron for smooth performance and real-time functionality.",
+    tags: ["React", "Node", "Django", "Electron"],
     icon: Smartphone, // Make sure to import Smartphone from lucide-react
     gradient: "from-blue-500 to-cyan-600",
     bgColor: "bg-blue-50",
@@ -215,10 +237,14 @@ export default function HomePage() {
         transition={{ duration: 0.6, delay: 0.7 }}
         className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
       >
+        <Link href="/contact" passHref>
         <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 sm:px-8 py-2 sm:py-3">
           Let's Innovate Together
           <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
+        </Link>
+
+        <Link href="/portfolio" passHref>
         <Button
           size="lg"
           variant="outline"
@@ -227,6 +253,7 @@ export default function HomePage() {
           View My Work
           <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
         </Button>
+        </Link>
       </motion.div>
     </div>
 
@@ -466,7 +493,7 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-1 sm:mb-2">Alexander S. Cyril</h3>
-                  <p className="text-xs sm:text-sm text-slate-500">Full-Stack Developer & Data Specialist</p>
+                  <p className="text-xs sm:text-sm text-slate-500">Software Engineer</p>
                 </div>
               </div>
 
@@ -474,14 +501,14 @@ export default function HomePage() {
                 <div className="space-y-4 sm:space-y-6">
                   <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
                     I'm a passionate and results-oriented software engineer with a strong foundation in full-stack
-                    development, mobile applications (React Native), backend systems, data analytics, and intelligent
+                    development, desktop applications (Electron), backend systems, data analytics, and intelligent
                     automation. With an academic background in Software Development and a track record of self-initiated
                     tech projects, I specialize in building scalable cross-platform applications that solve real-world
                     problems.
                   </p>
 
                   <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                    My passion lies in creating seamless user experiences across web and mobile platforms, automating
+                    My passion lies in creating integrated user experiences across web and desktop platforms, automating
                     processes, and building solutions powered by data and logic. I combine technical expertise with
                     creative problem-solving to deliver innovative digital solutions that work beautifully on any
                     device.
@@ -517,7 +544,7 @@ export default function HomePage() {
             <div className="mt-8 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
               {[
                 { value: "1+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
-                { value: "15+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
+                { value: "9+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
                 { value: "25+", label: "Major Technologies", border: "border-t-blue-400", text: "text-blue-600" },
                 { value: "100%", label: "Client Satisfaction", border: "border-t-orange-400", text: "text-orange-600" },
               ].map((stat, index) => (

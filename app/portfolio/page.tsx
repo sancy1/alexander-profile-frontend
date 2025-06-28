@@ -106,7 +106,7 @@ const projects = [
     description:
       "A responsive and interactive portfolio website built with modern web technologies. Features smooth animations, optimized performance across all devices.",
     image: "/images/portfolio/profile.png?height=300&width=400",
-    tags: ["Next.js", "Tailwind", "Framer Motion", "Django", "PostgreSQL"],
+    tags: ["Django", "Next.js", "PostgreSQL", "Tailwind", "Framer Motion"],
     categories: ["fullstack", "fullstack"],
     status: "In Development",
     hostedOn: "Vercel | Visit website >",
@@ -136,7 +136,7 @@ const projects = [
     description:
       "AI Web Scraper Pro, an advanced desktop application meticulously crafted to revolutionize how you gather information from the internet.",
     image: "/images/portfolio/webscraper.png?height=300&width=400",
-    tags: ["Python", "ttkbootstrap", "Nltk", "BeautifulSoup", "Pandas"],
+    tags: ["Python", "TTkbootstrap", "Nltk", "BeautifulSoup", "Pandas"],
     categories: ["ai", "desktop"],
     status: "Completed",
     hostedOn: "Nuitka | Downlodable >",

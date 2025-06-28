@@ -1,4 +1,3 @@
-
 // "use client"
 
 // import { motion } from "framer-motion"
@@ -11,7 +10,6 @@
 // import Footer from "@/components/footer"
 // import HeroSection from "@/components/HeroSection";
 // import Link from 'next/link';
-
 
 // const services = [
 //   {
@@ -70,8 +68,6 @@
 //   },
 // ]
 
-
-
 // export default function ServicesPage() {
 //   return (
 //     <div className="min-h-screen bg-white">
@@ -125,10 +121,10 @@
 //                 <Card className={`h-full border border-slate-200/70 bg-white/50 backdrop-blur-sm overflow-hidden transition-all duration-500 group-hover:shadow-xl group-hover:shadow-slate-400/20 relative`}>
 //                   {/* Gradient accent */}
 //                   <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${service.color}`}></div>
-                  
+
 //                   {/* Floating icon background */}
 //                   <div className={`absolute -right-10 -top-10 w-32 h-32 rounded-full ${service.bg} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
-                  
+
 //                   <CardContent className="p-8 h-full flex flex-col relative z-10">
 //                     {/* Icon with gradient background */}
 //                     <div className={`flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-gradient-to-br ${service.color} shadow-lg group-hover:scale-105 transition-transform duration-300`}>
@@ -146,8 +142,8 @@
 //                     <div className="space-y-4">
 //                       <div className="flex flex-wrap gap-2">
 //                         {service.tags.map((tag, tagIndex) => (
-//                           <Badge 
-//                             key={tagIndex} 
+//                           <Badge
+//                             key={tagIndex}
 //                             className="bg-emerald-500/10 text-emerald-700 border border-emerald-400/30 hover:bg-emerald-500/20 transition-colors duration-200"
 //                           >
 //                             {tag}
@@ -181,7 +177,7 @@
 //           <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-emerald-500 blur-3xl"></div>
 //           <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-teal-500 blur-3xl"></div>
 //         </div>
-        
+
 //         <div className="container mx-auto px-4 relative z-10">
 //           <motion.div
 //             initial={{ opacity: 0, y: 50 }}
@@ -199,8 +195,8 @@
 //             <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
 //               <Link href="/contact" passHref>
-//               <Button 
-//                 size="lg" 
+//               <Button
+//                 size="lg"
 //                 className="bg-white text-emerald-800 hover:bg-slate-100 px-8 py-4 font-medium shadow-lg hover:shadow-xl transition-all"
 //               >
 //                 Get Started
@@ -217,7 +213,7 @@
 //                   See Portfolio
 //                 </Button>
 //               </Link>
-              
+
 //             </div>
 //           </motion.div>
 //         </div>
@@ -229,50 +225,43 @@
 //   )
 // }
 
+"use client";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"use client"
-
-import { motion } from "framer-motion"
-import { Server, Monitor, Database, Brain, TrendingUp, Zap, ArrowRight, Sparkles } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import Navigation from "@/components/navigation"
-import WhatsAppFloat from "@/components/whatsapp-float"
-import Footer from "@/components/footer"
+import { motion } from "framer-motion";
+import {
+  Server,
+  Monitor,
+  Database,
+  Brain,
+  TrendingUp,
+  Zap,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/navigation";
+import WhatsAppFloat from "@/components/whatsapp-float";
+import Footer from "@/components/footer";
 import HeroSection from "@/components/HeroSection";
-import Link from 'next/link';
-import { FullWidthSection } from "@/components/full-width-section"
-
+import Link from "next/link";
+import { FullWidthSection } from "@/components/full-width-section";
 
 const services = [
   {
     title: "Robust Backend Solutions",
     description:
       "Crafting secure, scalable, and high-performance backend systems tailored to your unique business requirements. This includes custom API development, database design, and robust security implementations.",
-    tags: ["Python", "Django", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "RESTful APIs"],
+    tags: [
+      "Python",
+      "Django",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "MongoDB",
+      "RESTful APIs",
+    ],
     icon: Server,
     color: "from-emerald-500 to-teal-600",
     bg: "bg-emerald-500/10",
@@ -280,7 +269,7 @@ const services = [
   {
     title: "Dynamic User Experiences",
     description:
-      "Building intuitive, responsive, and engaging user interfaces that provide seamless interactions across all devices, ensuring an exceptional user journey.",
+      "Building intuitive, responsive, and engaging user interfaces that provide unified interactions across all devices, ensuring an exceptional user journey.",
     tags: ["Next.js", "React", "Tailwind CSS", "UI/UX"],
     icon: Monitor,
     color: "from-green-500 to-emerald-600",
@@ -308,7 +297,15 @@ const services = [
     title: "Strategic Financial Intelligence",
     description:
       "Providing comprehensive financial analysis, modeling, and business intelligence dashboards to support strategic planning and risk management.",
-    tags: ["Excel", "Python", "SQL", "Financial Modeling", "Business Intelligence"],
+    tags: [
+      "Matplotlib",
+      "Plotly",
+      "Excel",
+      "Python",
+      "SQL",
+      "Financial Modeling",
+      "Business Intelligence",
+    ],
     icon: TrendingUp,
     color: "from-rose-500 to-pink-600",
     bg: "bg-rose-500/10",
@@ -317,14 +314,17 @@ const services = [
     title: "Streamlined Operations",
     description:
       "Automating repetitive tasks and optimizing business processes to boost efficiency, reduce operational costs, and improve overall productivity.",
-    tags: ["Selenium", "Task Automation", "Workflow Optimization"],
+    tags: [
+      "Selenium",
+      "BeautifulSoup",
+      "Task Automation",
+      "Workflow Optimization",
+    ],
     icon: Zap,
     color: "from-yellow-500 to-amber-600",
     bg: "bg-yellow-500/10",
   },
-]
-
-
+];
 
 export default function ServicesPage() {
   return (
@@ -344,7 +344,10 @@ export default function ServicesPage() {
       />
 
       {/* Services Grid */}
-      <FullWidthSection backgroundColor="bg-gradient-to-b from-white to-slate-50" className="relative overflow-hidden py-24">
+      <FullWidthSection
+        backgroundColor="bg-gradient-to-b from-white to-slate-50"
+        className="relative overflow-hidden py-24"
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -358,13 +361,13 @@ export default function ServicesPage() {
               What I Offer
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Transformative <span className="text-emerald-600">Digital Solutions</span>
+              Transformative{" "}
+              <span className="text-emerald-600">Digital Solutions</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Comprehensive services tailored to your unique business objectives
             </p>
           </motion.div>
-
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {services.map((service, index) => (
@@ -377,16 +380,24 @@ export default function ServicesPage() {
                 whileHover={{ y: -15 }}
                 className="group h-full"
               >
-                <Card className={`h-full border border-slate-200/70 bg-white/50 backdrop-blur-sm overflow-hidden transition-all duration-500 group-hover:shadow-xl group-hover:shadow-slate-400/20 relative`}>
+                <Card
+                  className={`h-full border border-slate-200/70 bg-white/50 backdrop-blur-sm overflow-hidden transition-all duration-500 group-hover:shadow-xl group-hover:shadow-slate-400/20 relative`}
+                >
                   {/* Gradient accent */}
-                  <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${service.color}`}></div>
-                  
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${service.color}`}
+                  ></div>
+
                   {/* Floating icon background */}
-                  <div className={`absolute -right-10 -top-10 w-32 h-32 rounded-full ${service.bg} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}></div>
-                  
+                  <div
+                    className={`absolute -right-10 -top-10 w-32 h-32 rounded-full ${service.bg} opacity-20 group-hover:opacity-30 transition-opacity duration-500`}
+                  ></div>
+
                   <CardContent className="p-8 h-full flex flex-col relative z-10">
                     {/* Icon with gradient background */}
-                    <div className={`flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-gradient-to-br ${service.color} shadow-lg group-hover:scale-105 transition-transform duration-300`}>
+                    <div
+                      className={`flex items-center justify-center w-16 h-16 rounded-2xl mb-6 bg-gradient-to-br ${service.color} shadow-lg group-hover:scale-105 transition-transform duration-300`}
+                    >
                       <service.icon className="w-6 h-6 text-white" />
                     </div>
 
@@ -401,8 +412,8 @@ export default function ServicesPage() {
                     <div className="space-y-4">
                       <div className="flex flex-wrap gap-2">
                         {service.tags.map((tag, tagIndex) => (
-                          <Badge 
-                            key={tagIndex} 
+                          <Badge
+                            key={tagIndex}
                             className="bg-emerald-500/10 text-emerald-700 border border-emerald-400/30 hover:bg-emerald-500/20 transition-colors duration-200"
                           >
                             {tag}
@@ -419,7 +430,6 @@ export default function ServicesPage() {
                         </span>
                         <ArrowRight className="ml-2 w-4 h-4 opacity-0 group-hover/button:opacity-100 group-hover/button:translate-x-1 transition-all duration-300" />
                       </Button> */}
-
                     </div>
                   </CardContent>
                 </Card>
@@ -428,16 +438,18 @@ export default function ServicesPage() {
           </div>
         </div>
       </FullWidthSection>
-      
 
       {/* Enhanced CTA Section */}
-      <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
+      <FullWidthSection
+        backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900"
+        className="relative overflow-hidden py-24"
+      >
         {/* Floating elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-emerald-500 blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-teal-500 blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -450,18 +462,18 @@ export default function ServicesPage() {
               Ready to Elevate Your Digital Presence?
             </h2>
             <p className="text-xl text-emerald-100 mb-8 leading-relaxed">
-              Let's collaborate to create solutions that drive real business impact.
+              Let's collaborate to create solutions that drive real business
+              impact.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
               <Link href="/contact" passHref>
-              <Button 
-                size="lg" 
-                className="bg-white text-emerald-800 hover:bg-slate-100 px-8 py-4 font-medium shadow-lg hover:shadow-xl transition-all"
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-white text-emerald-800 hover:bg-slate-100 px-8 py-4 font-medium shadow-lg hover:shadow-xl transition-all"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
               </Link>
 
               <Link href="/portfolio" passHref>
@@ -473,7 +485,6 @@ export default function ServicesPage() {
                   See Portfolio
                 </Button>
               </Link>
-              
             </div>
           </motion.div>
         </div>
@@ -481,5 +492,5 @@ export default function ServicesPage() {
 
       <WhatsAppFloat />
     </div>
-  )
+  );
 }

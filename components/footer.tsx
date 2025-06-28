@@ -1432,7 +1432,7 @@ const quickLinks = [
 
 const services = [
   "Full-Stack Development",
-  "Mobile Development",
+  "Desktop Development",
   "Machine Learning & AI",
   "Data Analytics",
   "Process Automation",
@@ -1603,7 +1603,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-slate-300 mb-6 leading-relaxed text-sm">
-                Passionate software engineer specializing in full-stack and mobile development, machine learning, and
+                Passionate software engineer specializing in full-stack and desktop development, machine learning, and
                 data analytics. Building innovative solutions that transform ideas into reality.
               </p>
               
