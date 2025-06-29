@@ -1,4 +1,6 @@
-// For App Router (Next.js 13+)
+
+// app/sitemap.xml/route.ts
+
 import { NextResponse } from 'next/server'
 
 export async function GET() {
