@@ -304,8 +304,6 @@ const handleDownload = (type: "installer" | "portable") => {
       </FullWidthSection>
 
 
-
-
       {/* Features Section */}
       <FullWidthSection className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
@@ -346,6 +344,47 @@ const handleDownload = (type: "installer" | "portable") => {
           </div>
         </div>
       </FullWidthSection>
+
+
+      
+
+{/* Video Demonstration Section */}
+<FullWidthSection className="py-20 backdrop-blur-[2px]" backgroundColor="bg-emerald-50/40">
+  <div className="container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Video Demonstration</h2>
+      <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        See AI Web Scraper Pro in action with this comprehensive walkthrough
+      </p>
+    </motion.div>
+
+    <div className="max-w-4xl mx-auto">
+      <div className="relative pt-[56.25%] rounded-xl overflow-hidden shadow-lg border-2 border-slate-200 bg-white">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/7tazyiVp-0c"
+          title="AI Web Scraper Pro Demonstration"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+      
+      <div className="mt-6 text-center">
+        <h3 className="text-xl font-semibold text-slate-900 mb-2">AI Web Scraper Pro Full Walkthrough</h3>
+        <p className="text-slate-600">
+          Learn how to extract, analyze, and export web data with our powerful AI-powered tool
+        </p>
+      </div>
+    </div>
+  </div>
+</FullWidthSection>
+
 
 
       {/* Installation Guide */}
