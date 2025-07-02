@@ -438,48 +438,146 @@
 
 
 // app/layout.tsx
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import ScrollUtils from "@/components/ScrollUtils"
-import Footer from "../components/footer"
-import { Toaster } from "@/components/ui/toaster"
 
-const inter = Inter({ subsets: ["latin"] })
+// import type React from "react"
+// import type { Metadata } from "next"
+// import { Inter } from "next/font/google"
+// import "./globals.css"
+// import ScrollUtils from "@/components/ScrollUtils"
+// import Footer from "../components/footer"
+// import { Toaster } from "@/components/ui/toaster"
+
+// const inter = Inter({ subsets: ["latin"] })
+
+// export const metadata: Metadata = {
+//   title: "Alexander Cyril - Software Engineer",
+//   description:
+//     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
+//   icons: {
+//     icon: "/favicon.ico", // Main favicon for most browsers
+//     shortcut: "/favicon.ico", // Optional, for older browsers
+//     apple: "/apple-touch-icon.png", // For iOS devices
+//     // Add specific sizes for Android/PWA
+//     other: [
+//       {
+//         rel: "android-chrome-192x192",
+//         url: "/android-chrome-192x192.png", // Or the actual path for your 192x192 icon
+//       },
+//       {
+//         rel: "android-chrome-512x512",
+//         url: "/android-chrome-512x512.png", // Your 512x512 icon
+//       },
+//     ],
+//   },
+//   // ... rest of your metadata
+// };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <html lang="en" className="overflow-x-hidden">
+//       <ScrollUtils />
+//       <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
+//         <div className="min-h-screen w-full">
+//           <main className="w-full px-0 md:px-4 lg:px-8 xl:px-0 lg:container lg:mx-auto lg:max-w-7xl">
+//             {children}
+//           </main>
+//           <Footer />
+//         </div>
+//         <Toaster />
+//       </body>
+//     </html>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// profile/app/layout.tsx
+
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import ScrollUtils from "@/components/ScrollUtils";
+import Footer from "../components/footer";
+import { Toaster } from "@/components/ui/toaster";
+import Script from "next/script";
+import Analytics from "./analytics"; // 👈 import your tracking component
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Alexander Cyril - Software Engineer",
   description:
     "Passionate software engineer specializing in full-stack development, machine learning, and data analytics. Building innovative solutions that transform ideas into reality.",
   icons: {
-    icon: "/favicon.ico", // Main favicon for most browsers
-    shortcut: "/favicon.ico", // Optional, for older browsers
-    apple: "/apple-touch-icon.png", // For iOS devices
-    // Add specific sizes for Android/PWA
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
     other: [
       {
         rel: "android-chrome-192x192",
-        url: "/android-chrome-192x192.png", // Or the actual path for your 192x192 icon
+        url: "/android-chrome-192x192.png",
       },
       {
         rel: "android-chrome-512x512",
-        url: "/android-chrome-512x512.png", // Your 512x512 icon
+        url: "/android-chrome-512x512.png",
       },
     ],
   },
-  // ... rest of your metadata
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <ScrollUtils />
-      <body className={`${inter.className} bg-background text-foreground overflow-x-hidden`}>
+      <head>
+        {/* Optional: Preconnect for performance */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+      </head>
+      <body
+        className={`${inter.className} bg-background text-foreground overflow-x-hidden`}
+      >
+        {/* Google Analytics Scripts */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-V6BNQFDEPC"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', 'G-V6BNQFDEPC', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+        <ScrollUtils />
+        <Analytics />
         <div className="min-h-screen w-full">
           <main className="w-full px-0 md:px-4 lg:px-8 xl:px-0 lg:container lg:mx-auto lg:max-w-7xl">
             {children}
@@ -489,5 +587,5 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
