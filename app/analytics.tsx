@@ -1,20 +1,20 @@
 
-// //app/analytics.tsx
+//app/analytics.tsx
 
-// 'use client';
+'use client';
 
-// import { usePathname } from 'next/navigation';
-// import { useEffect } from 'react';
-// import * as gtag from '../lib/gtag';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import * as gtag from '../lib/gtag';
 
-// export default function Analytics() {
-//   const pathname = usePathname();
+export default function Analytics() {
+  const pathname = usePathname();
 
-//   useEffect(() => {
-//     if (pathname) {
-//       gtag.pageview(pathname);
-//     }
-//   }, [pathname]);
+  useEffect(() => {
+    if (pathname) {
+      gtag.pageview(pathname);
+    }
+  }, [pathname]);
 
-//   return null;
-// }
+  return null;
+}

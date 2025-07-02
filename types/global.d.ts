@@ -1,10 +1,10 @@
 
-// // profile/types/global.d.ts
+// profile/types/global.d.ts
 
-// export {};
+export {};
 
-// declare global {
-//   interface Window {
-//     gtag: (...args: any[]) => void;
-//   }
-// }
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
