@@ -1785,7 +1785,7 @@ export default function Footer() {
           <div className="max-w-6xl mx-auto text-sm">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-slate-400 text-sm flex items-center gap-2">
-                © 2025 Alexander S. Cyril. Made with <Heart className="w-4 h-4 text-red-500" /> and{" "}
+                © 2025 Alexander Sanchez Cyril
                 <Code2 className="w-4 h-4 text-emerald-400" />
               </p>
               <div className="flex gap-6 text-sm text-slate-400 text-sm">
