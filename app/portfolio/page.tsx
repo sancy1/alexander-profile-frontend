@@ -36,7 +36,7 @@ const projects = [
     tags: ["Next.js", "PostgreSQL", "Tailwind", "Prisma", "Full-Stack"],
     categories: ["ecommerce", "fullstack"],
     status: "In Development",
-    hostedOn: "Vercel | Visit website >",
+    hostedOn: "Visit website >",
     demoUrl: "https://handcrafted-gamma.vercel.app",
     githubUrl: "#",
     downloadPageUrl: "#", // Add this line
@@ -109,7 +109,7 @@ const projects = [
     tags: ["Django", "Next.js", "PostgreSQL", "Tailwind", "Framer Motion"],
     categories: ["fullstack", "fullstack"],
     status: "In Development",
-    hostedOn: "Vercel | Visit website >",
+    hostedOn: "Visit website >",
     demoUrl: "https://www.alexandercyril.xyz",
     githubUrl: "#",
     downloadPageUrl: "https://www.alexandercyril.xyz", // Add this line
@@ -143,6 +143,22 @@ const projects = [
     demoUrl: "portfolio/download/webscraper",
     githubUrl: "#",
     downloadPageUrl: "portfolio/download/webscraper", // Add this line
+    featured: false,
+  },
+
+    {
+    id: 6,
+    title: "Universal Time",
+    description:
+      "Universal Time is a modern, beautiful world clock application that provides real-time analog and digital displays for any timezone worldwide. Making time zone management simple and elegant for developers, remote teams, and global businesses.",
+    image: "/images/portfolio/Universal-Time.png?height=300&width=400",
+    tags: ["Node.js", "TypeScript", "Next.js", "PostgreSQL", "Docker", "Tailwind"],
+    categories: ["fullstack", "fullstack"],
+    status: "Completed",
+    hostedOn: "Visit website >",
+    demoUrl: "https://universaltime.vercel.app",
+    githubUrl: "#",
+    downloadPageUrl: "https://universaltime.vercel.app", // Add this line
     featured: false,
   },
 ]
