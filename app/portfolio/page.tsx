@@ -52,9 +52,9 @@ const projects = [
     categories: ["ai", "fullstack"],
     status: "In Development",
     hostedOn: "Vercel",
-    demoUrl: "#",
+    demoUrl: "https://aibuilder-ten.vercel.app",
     githubUrl: "#",
-    downloadPageUrl: "portfolio/download/", // Add this line
+    downloadPageUrl: "#", 
     featured: true,
   },
   // {
