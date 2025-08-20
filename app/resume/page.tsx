@@ -16,19 +16,19 @@ import { FullWidthSection } from "@/components/full-width-section"
 const technicalSkills = [
   {
     category: "Full-Stack Development",
-    skills: ["Python", "Django", "React", "Next.js", "Electron", "Tailwind CSS", "Node.js", "Express.js"],
+    skills: ["C# (ASP.NET Core)", "Python (Django, FastAPI)", "JavaScript/TypeScript (Node.js, Express.js, Next.js, React)", "Tailwind CSS"],
     icon: Code,
     color: "bg-emerald-50 border-emerald-200",
   },
   {
     category: "Backend & Databases",
-    skills: ["REST Framework", "PostgreSQL", "SQLite", "MySQL", "MongoDB"],
+    skills: ["REST API Development", "PostgreSQL", "MySQL", "SQLite", "MongoDB", "Redis (caching & message brokering)"],
     icon: Database,
     color: "bg-green-50 border-green-200",
   },
   {
     category: "Machine Learning & AI",
-    skills: ["Machine Learning", "Scikit-learn", "TensorFlow", "Keras", "PyTorch", "OpenCV", "NLTK", "Artificial Intelligence"],
+    skills: ["Machine Learning & Deep Learning", "Scikit-learn", "TensorFlow", "Keras", "PyTorch", "OpenCV (computer vision)", "NLP (NLTK, Hugging Face, Transformers)", "LLMs (Large Language Models)"],
     icon: Brain,
     color: "bg-emerald-50 border-emerald-200",
   },
@@ -40,19 +40,19 @@ const technicalSkills = [
   },
   {
     category: "Web Scraping & Automation",
-    skills: ["Selenium", "BeautifulSoup", "Playwright"],
+    skills: ["Selenium", "BeautifulSoup", "Playwright", "Scrapy", "Custom automation scripts (Python)", "Task orchestration with Celery", "Intelligent Web Scrapers (AI-powered)"],
     icon: Settings,
     color: "bg-emerald-50 border-emerald-200",
   },
   {
     category: "Data Visualization",
-    skills: ["Matplotlib", "Plotly", "Tableau"],
+    skills: ["Matplotlib", "Seaborn", "Plotly", "Tableau", "Power BI"],
     icon: Settings,
     color: "bg-emerald-50 border-emerald-200",
   },
   {
     category: "Version Control & Collaboration",
-    skills: ["Git", "GitHub", "GitLab", "Trello"],
+    skills: ["Git", "GitHub", "GitLab", "Bitbucket", "Trello", "Jira", "Trello", "Asana", "CI/CD Pipelines (GitHub Actions, Jenkins)"],
     icon: Settings,
     color: "bg-emerald-50 border-emerald-200",
   },

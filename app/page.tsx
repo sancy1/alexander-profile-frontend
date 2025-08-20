@@ -65,7 +65,7 @@ const expertiseCards = [
     title: "Software Development",
     description:
       "Building robust and intuitive web applications from concept to deployment, specializing in both backend and frontend technologies.",
-    tags: ["Next.js", "Django", "Python", "React", "Node.js"],
+    tags: ["C#", "ASP.NET Core", "Python", "Django", "FastAPI", "Go", "JavaScript", "TypeScript", "Node.js", "Next.js",],
     icon: Code,
     gradient: "from-emerald-500 to-teal-600",
     bgColor: "bg-emerald-50",
@@ -77,7 +77,7 @@ const expertiseCards = [
     title: "Machine Learning & AI",
     description:
       "Developing intelligent systems and predictive models to unlock new possibilities and drive informed decision-making.",
-    tags: ["Pandas", "NumPy", "Scikit-learn", "AI", "ML"],
+    tags: ["Scikit-learn", "TensorFlow", "PyTorch", "OpenCV", "NLP", "LLMs", "Hugging", "Face", "NumPy"],
     icon: Brain,
     gradient: "from-purple-500 to-indigo-600",
     bgColor: "bg-purple-50",
@@ -89,7 +89,7 @@ const expertiseCards = [
     title: "Data & Process Optimization",
     description:
       "Transforming raw data into actionable insights and streamlining workflows for enhanced efficiency and performance.",
-    tags: ["Data Analysis", "SQL", "Automation", "Selenium", "Excel"],
+    tags: ["Pandas", , "Matplotlib", "Data Analysis", "SQL", "Automation", "Selenium", "Excel"],
     icon: Database,
     gradient: "from-orange-500 to-red-600",
     bgColor: "bg-orange-50",
@@ -113,8 +113,8 @@ const expertiseCards = [
    {
     title: "Desktop Development",
     description:
-      "Creating cross-platform desktop applications with Electron for smooth performance and real-time functionality.",
-    tags: ["React", "Node", "Django", "Electron"],
+      "Developing cross-platform desktop applications with Electron for smooth performance and real-time functionality.",
+    tags: ["React", "Node", "Django", "Electron", "Tkinter"],
     icon: Smartphone, // Make sure to import Smartphone from lucide-react
     gradient: "from-blue-500 to-cyan-600",
     bgColor: "bg-blue-50",
@@ -500,18 +500,20 @@ export default function HomePage() {
               <div className="space-y-4 sm:space-y-6">
                 <div className="space-y-4 sm:space-y-6">
                   <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                    I'm a passionate and results-oriented software engineer with a strong foundation in full-stack
-                    development, desktop applications (Electron), backend systems, data analytics, and intelligent
-                    automation. With an academic background in Software Development and a track record of self-initiated
-                    tech projects, I specialize in building scalable cross-platform applications that solve real-world
-                    problems.
+                    I’m a passionate and results-driven Software Engineer with a strong foundation 
+                    in full-stack development, backend systems, desktop applications, data analytics, 
+                    and intelligent automation. With an academic background in Software Development 
+                    and hands-on experience delivering freelance projects across startups and consulting 
+                    firms, I specialize in building scalable, cross-platform applications 
+                    that solve real-world problems.
                   </p>
 
                   <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                    My passion lies in creating integrated user experiences across web and desktop platforms, automating
-                    processes, and building solutions powered by data and logic. I combine technical expertise with
-                    creative problem-solving to deliver innovative digital solutions that work beautifully on any
-                    device.
+                    My passion lies in creating integrated user experiences across web and 
+                    desktop platforms, automating processes, and delivering solutions powered 
+                    by data, AI, and modern cloud technologies. I combine technical expertise 
+                    with creative problem-solving to deliver innovative, efficient, and 
+                    user-focused applications that scale.
                   </p>
                 </div>
               </div>
@@ -543,7 +545,7 @@ export default function HomePage() {
             {/* Stats Section - Full Width Grid on Mobile */}
             <div className="mt-8 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
               {[
-                { value: "1+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
+                { value: "2+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
                 { value: "9+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
                 { value: "25+", label: "Major Technologies", border: "border-t-blue-400", text: "text-blue-600" },
                 { value: "100%", label: "Client Satisfaction", border: "border-t-orange-400", text: "text-orange-600" },

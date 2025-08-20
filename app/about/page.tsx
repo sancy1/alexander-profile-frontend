@@ -420,16 +420,17 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Professional Journey</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                I'm Alexander Sanchez Cyril, a passionate and results-oriented software engineer with a strong
-                foundation in full-stack and desktop development, backend systems, data analytics, and intelligent
-                automation. With an academic background in Software Development and a track record of self-initiated
-                tech projects, I specialize in building scalable applications that solve real-world problems.
+                I’m Alexander Sanchez Cyril, a passionate and results-driven Software Engineer with a strong 
+                foundation in full-stack, backend, and desktop development, alongside hands-on expertise 
+                in AI/ML, data analytics, and intelligent automation. With an academic background in Software 
+                Development and a proven track record delivering impactful freelance projects, I specialize 
+                in building scalable, cloud-ready applications that solve real-world problems.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                My passion lies in creating smooth user experiences, automating processes, and building solutions
-                powered by data and logic. I believe in the transformative power of technology and strive to create
-                solutions that not only meet technical requirements but also deliver exceptional value to users and
-                businesses.
+                My passion lies in creating seamless user experiences, automating workflows, and developing 
+                AI-powered solutions that drive productivity and innovation. I believe in the transformative 
+                power of technology and strive to deliver products that not only meet technical requirements 
+                but also provide tangible value to users and businesses.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Problem Solver", "Tech Innovator", "Data Enthusiast", "Full-Stack Developer"].map((tag, index) => (
