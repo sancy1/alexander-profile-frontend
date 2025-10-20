@@ -161,6 +161,22 @@ const projects = [
     downloadPageUrl: "https://universaltime.vercel.app", // Add this line
     featured: false,
   },
+
+  {
+    id: 7,
+    title: "Track Expenses",
+    description:
+      "A sleek and user-friendly personal finance app designed to help you take control of your money. Track expenses, manage budgets, and achieve your financial goals effortlessly with BudgetBuddy’s intuitive tools and real-time insights.",
+    image: "/images/portfolio/track-expenses.png?height=300&width=400",
+    tags: ["ASP.NET Blazor", "PostgreSQL", "Bootstrap"],
+    categories: ["fullstack", "fullstack"],
+    status: "In Development",
+    hostedOn: "Visit website >",
+    demoUrl: "https://budgetbuddy-u82p.onrender.com/",
+    githubUrl: "#",
+    downloadPageUrl: "https://budgetbuddy-u82p.onrender.com/", // Add this line
+    featured: false,
+  },
 ]
 
 export default function PortfolioPage() {
