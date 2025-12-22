@@ -40,7 +40,7 @@ const projects = [
     demoUrl: "https://handcrafted-gamma.vercel.app",
     githubUrl: "#",
     downloadPageUrl: "#", // Add this line
-    featured: true,
+    featured: false,
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ const projects = [
     demoUrl: "https://aibuilder-ten.vercel.app",
     githubUrl: "#",
     downloadPageUrl: "#", 
-    featured: true,
+    featured: false,
   },
   // {
   //   id: 3,
@@ -175,7 +175,23 @@ const projects = [
     demoUrl: "https://budgetbuddy-u82p.onrender.com/",
     githubUrl: "#",
     downloadPageUrl: "https://budgetbuddy-u82p.onrender.com/", // Add this line
-    featured: false,
+    featured: true,
+  },
+
+  {
+    id: 7,
+    title: "AxioQuan (E-Learning)",
+    description:
+      "the future of education a platform where knowledge meets innovation, and learning becomes an immersive journey of discovery and growth",
+    image: "/images/portfolio/AxioQan.png?height=300&width=400",
+    tags: ["Next.JS", "PostgreSQL", "Tailwind CSS"],
+    categories: ["fullstack", "fullstack"],
+    status: "In Development",
+    hostedOn: "Visit website >",
+    demoUrl: "https://axioquan-two.vercel.app//",
+    githubUrl: "#",
+    downloadPageUrl: "https://axioquan-two.vercel.app//", // Add this line
+    featured: true,
   },
 ]
 

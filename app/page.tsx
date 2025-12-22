@@ -809,3 +809,449 @@ export default function HomePage() {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client"
+
+// import { motion } from "framer-motion"
+// import { Code, Database, Brain, Zap, Smartphone, ArrowRight, Download, Eye } from "lucide-react"
+// import { Button } from "@/components/ui/button"
+// import { Badge } from "@/components/ui/badge"
+// import WhatsAppFloat from "@/components/whatsapp-float"
+// import Navigation from "@/components/navigation"
+// import Footer from "@/components/footer"
+// import Image from "next/image"
+// import Link from 'next/link'
+// import { FullWidthSection } from "@/components/full-width-section"
+// import { useResumeActions } from "@/hooks/use-resume-actions"
+// import HeroSlider from "@/components/hero-slider" // ← NEW IMPORT
+
+// const heroSlides = [
+//   {
+//     title: "Crafting Innovative Digital Solutions",
+//     subtitle: "Full-Stack Development Excellence",
+//     description: "Building robust, scalable applications from concept to deployment",
+//     tags: ["Next.js", "Django", "Python", "React", "Node.js"],
+//     image: "images/slider/Digital-Solutions.jpg",
+//     showGreeting: true,
+//   },
+//   {
+//     title: "Driving Insights Through Data & AI",
+//     subtitle: "Machine Learning & Data Science",
+//     description: "Transforming data into intelligent, actionable insights",
+//     tags: ["AI", "ML", "Pandas", "NumPy", "Scikit-learn"],
+//     image: "images/slider/ML-AI.jpg", 
+//   },
+//   {
+//     title: "Optimizing Processes, Maximizing Efficiency",
+//     subtitle: "Automation & System Optimization",
+//     description: "Streamlining workflows with intelligent automation solutions",
+//     tags: ["Automation", "Selenium", "Process Optimization", "Data Analysis"],
+//     image: "images/slider/task.jpg",
+//   },
+//   {
+//     title: "Crafting Modern Desktop Applications",
+//     subtitle: "Desktop App Development",
+//     description: "Building powerful, cross-platform desktop applications using Electron with React and robust APIs powered by Node.js and Django.",
+//     tags: ["Electron", "Node", "Express", "React", "Django"],
+//     image: "images/slider/desktop.jpg"
+//   }
+// ]
+
+// const expertiseCards = [
+//   {
+//     title: "Software Development",
+//     description:
+//       "Building robust and intuitive web applications from concept to deployment, specializing in both backend and frontend technologies.",
+//     tags: ["C#", "ASP.NET Core", "Python", "Django", "FastAPI", "Go", "JavaScript", "TypeScript", "Node.js", "Next.js",],
+//     icon: Code,
+//     gradient: "from-emerald-500 to-teal-600",
+//     bgColor: "bg-emerald-50",
+//     borderColor: "border-emerald-200",
+//     iconBg: "bg-emerald-100",
+//     iconColor: "text-emerald-600",
+//   },
+//   {
+//     title: "Machine Learning & AI",
+//     description:
+//       "Developing intelligent systems and predictive models to unlock new possibilities and drive informed decision-making.",
+//     tags: ["Scikit-learn", "TensorFlow", "PyTorch", "OpenCV", "NLP", "LLMs", "Hugging", "Face", "NumPy"],
+//     icon: Brain,
+//     gradient: "from-purple-500 to-indigo-600",
+//     bgColor: "bg-purple-50",
+//     borderColor: "border-purple-200",
+//     iconBg: "bg-purple-100",
+//     iconColor: "text-purple-600",
+//   },
+//   {
+//     title: "Data & Process Optimization",
+//     description:
+//       "Transforming raw data into actionable insights and streamlining workflows for enhanced efficiency and performance.",
+//     tags: ["Pandas", "Matplotlib", "Data Analysis", "SQL", "Automation", "Selenium", "Excel"],
+//     icon: Database,
+//     gradient: "from-orange-500 to-red-600",
+//     bgColor: "bg-orange-50",
+//     borderColor: "border-orange-200",
+//     iconBg: "bg-orange-100",
+//     iconColor: "text-orange-600",
+//   },
+//   {
+//     title: "Desktop Development",
+//     description:
+//       "Developing cross-platform desktop applications with Electron for smooth performance and real-time functionality.",
+//     tags: ["React", "Node", "Django", "Electron", "Tkinter"],
+//     icon: Smartphone,
+//     gradient: "from-blue-500 to-cyan-600",
+//     bgColor: "bg-blue-50",
+//     borderColor: "border-blue-200",
+//     iconBg: "bg-blue-100",
+//     iconColor: "text-blue-600",
+//   },
+// ]
+
+// export default function HomePage() {
+//   const { downloadResume, viewResume } = useResumeActions()
+
+//   return (
+//     <div className="min-h-screen">
+//       <Navigation />
+
+//       {/* Hero Section with New Slider Component */}
+//       <FullWidthSection
+//         backgroundColor="bg-gradient-to-br from-slate-900 to-slate-950"
+//         className="relative min-h-screen flex items-center justify-center overflow-hidden"
+//       >
+//         <div className="container mx-auto px-4 z-10 h-full flex items-center">
+//           <div className="w-full max-w-7xl mx-auto h-full">
+//             <HeroSlider slides={heroSlides} autoPlayInterval={7000} />
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+//       {/* Beautiful Introduction Section with Matching Widths */}
+//       <FullWidthSection className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+//         {/* Decorative background elements */}
+//         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+//           <div className="absolute top-20 -left-20 w-64 h-64 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
+//           <div className="absolute bottom-20 -right-20 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
+//         </div>
+
+//         {/* Mobile: Full width, Desktop: Constrained */}
+//         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
+//           <div className="max-w-none sm:max-w-6xl lg:max-w-5xl mx-auto">
+//             <motion.div
+//               initial={{ opacity: 0, y: 50 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               viewport={{ once: true }}
+//               className="w-full"
+//             >
+//               {/* Solid Background Heading Card - Full Width on Mobile */}
+//               <motion.div
+//                 whileHover={{ y: -3 }}
+//                 className="relative mb-8 sm:mb-12 bg-gradient-to-r from-emerald-600 to-teal-700 rounded-lg sm:rounded-2xl p-6 sm:p-8 shadow-md w-full"
+//               >
+//                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center leading-tight">
+//                   Passionate Software Engineer
+//                   <br />
+//                   <span className="text-emerald-100">& Data Professional</span>
+//                 </h2>
+//                 <div className="mt-4 flex justify-center">
+//                   <div className="w-16 sm:w-24 h-1 bg-white/50 rounded-full"></div>
+//                 </div>
+//                 <p className="text-base sm:text-lg text-emerald-50 text-center mt-4 leading-relaxed">
+//                   Creating digital solutions that bridge technology and business needs
+//                 </p>
+//               </motion.div>
+
+//               {/* Main Content Card - Full Width on Mobile */}
+//               <motion.div
+//                 whileHover={{ y: -2 }}
+//                 className="bg-white rounded-lg sm:rounded-2xl p-6 sm:p-8 lg:p-10 shadow-lg border border-slate-100 relative overflow-hidden w-full"
+//               >
+//                 <div className="flex items-start mb-6 sm:mb-8">
+//                   <div className="flex-shrink-0 mr-3 sm:mr-4 mt-1">
+//                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center shadow-sm">
+//                       <svg
+//                         xmlns="http://www.w3.org/2000/svg"
+//                         width="20"
+//                         height="20"
+//                         viewBox="0 0 24 24"
+//                         fill="none"
+//                         stroke="currentColor"
+//                         strokeWidth="2"
+//                         strokeLinecap="round"
+//                         strokeLinejoin="round"
+//                         className="text-emerald-600 w-5 h-5 sm:w-6 sm:h-6"
+//                       >
+//                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+//                         <circle cx="12" cy="7" r="4"></circle>
+//                       </svg>
+//                     </div>
+//                   </div>
+//                   <div>
+//                     <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-1 sm:mb-2">Alexander S. Cyril</h3>
+//                     <p className="text-xs sm:text-sm text-slate-500">Software Engineer</p>
+//                   </div>
+//                 </div>
+
+//                 <div className="space-y-4 sm:space-y-6">
+//                   <div className="space-y-4 sm:space-y-6">
+//                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+//                       I'm a passionate and results-driven Software Engineer with a strong foundation 
+//                       in full-stack development, backend systems, desktop applications, data analytics, 
+//                       and intelligent automation. With an academic background in Software Development 
+//                       and hands-on experience delivering freelance projects across startups and consulting 
+//                       firms, I specialize in building scalable, cross-platform applications 
+//                       that solve real-world problems.
+//                     </p>
+
+//                     <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+//                       My passion lies in creating integrated user experiences across web and 
+//                       desktop platforms, automating processes, and delivering solutions powered 
+//                       by data, AI, and modern cloud technologies. I combine technical expertise 
+//                       with creative problem-solving to deliver innovative, efficient, and 
+//                       user-focused applications that scale.
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 {/* Signature */}
+//                 <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-100 flex justify-center sm:justify-end">
+//                   <div className="text-slate-400 font-serif italic flex items-center text-sm sm:text-base">
+//                     <span className="mr-2">Let's build something amazing</span>
+//                     <svg
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       width="16"
+//                       height="16"
+//                       viewBox="0 0 24 24"
+//                       fill="none"
+//                       stroke="currentColor"
+//                       strokeWidth="2"
+//                       strokeLinecap="round"
+//                       strokeLinejoin="round"
+//                       className="text-emerald-500 w-4 h-4 sm:w-5 sm:h-5"
+//                     >
+//                       <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+//                       <polyline points="16 6 12 2 8 6"></polyline>
+//                       <line x1="12" y1="2" x2="12" y2="15"></line>
+//                     </svg>
+//                   </div>
+//                 </div>
+//               </motion.div>
+
+//               {/* Stats Section - Full Width Grid on Mobile */}
+//               <div className="mt-8 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full">
+//                 {[
+//                   { value: "2+", label: "Years Experience", border: "border-t-emerald-400", text: "text-emerald-600" },
+//                   { value: "9+", label: "Projects Completed", border: "border-t-purple-400", text: "text-purple-600" },
+//                   { value: "25+", label: "Major Technologies", border: "border-t-blue-400", text: "text-blue-600" },
+//                   { value: "100%", label: "Client Satisfaction", border: "border-t-orange-400", text: "text-orange-600" },
+//                 ].map((stat, index) => (
+//                   <motion.div
+//                     key={index}
+//                     whileHover={{ y: -3, scale: 1.03 }}
+//                     className={`p-4 sm:p-6 bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all border-t-4 ${stat.border} ${stat.text}`}
+//                   >
+//                     <div className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">{stat.value}</div>
+//                     <div className="text-xs sm:text-sm text-slate-500 leading-tight">{stat.label}</div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+//       {/* Collaboration Banner Section */}
+//       <section className="relative pt-12 md:pt-20 pb-16 md:pb-24 w-full max-w-6xl mx-auto px-4">
+//         <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+//           {/* Background Image with Universal Opacity Control */}
+//           <div className="absolute inset-0 bg-black/70 z-0"></div>
+//           <Image 
+//             src="/images/slider/ideal4.png"
+//             alt="Let's build your software idea together"
+//             width={1440}
+//             height={600}
+//             className="w-full h-full object-cover absolute inset-0 opacity-10" 
+//             priority
+//           />
+          
+//           {/* Content Container */}
+//           <div className="relative z-10 px-6 py-12 md:px-12 md:py-20 lg:px-16 lg:py-24">
+//             <div className="max-w-2xl">
+//               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+//                 Got a <span className="text-emerald-300">Software Idea</span> for Your Business?
+//               </h2>
+              
+//               <p className="text-lg md:text-xl text-white mb-8 leading-relaxed">
+//                 Let's brainstorm together! I'll help you refine your concept and transform it into a fully functional digital solution tailored to your business needs.
+//               </p>
+              
+//               <div className="flex flex-col sm:flex-row gap-4">
+//                 <Link href="/contact" passHref>
+//                   <Button 
+//                     size="lg" 
+//                     className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105"
+//                   >
+//                     Let's Discuss Your Idea
+//                     <ArrowRight className="ml-2 w-5 h-5" />
+//                   </Button>
+//                 </Link>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Key Expertise Highlights */}
+//       <FullWidthSection className="py-20 bg-slate-50 w-full">
+//         <div className="container mx-auto px-4">
+//           <motion.div
+//             initial={{ opacity: 0, y: 50 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8 }}
+//             viewport={{ once: true }}
+//             className="text-center mb-16"
+//           >
+//             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Core Expertise</h2>
+//             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+//               Delivering comprehensive solutions across the full technology stack
+//             </p>
+//           </motion.div>
+
+//           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+//             {expertiseCards.map((card, index) => (
+//               <motion.div
+//                 key={index}
+//                 initial={{ opacity: 0, y: 50 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.6, delay: index * 0.2 }}
+//                 viewport={{ once: true }}
+//                 whileHover={{ y: -10 }}
+//                 className="group relative"
+//               >
+//                 {/* Gradient background overlay */}
+//                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                
+//                 {/* Main card */}
+//                 <div className={`h-full border-2 ${card.borderColor} rounded-2xl bg-white overflow-hidden transition-all duration-300 group-hover:shadow-xl relative z-10`}>
+//                   {/* Icon with gradient background */}
+//                   <div className={`w-full h-32 bg-gradient-to-r ${card.gradient} flex items-center justify-center`}>
+//                     <div className={`p-4 ${card.iconBg} rounded-full backdrop-blur-sm bg-white/20`}>
+//                       <card.icon className={`w-8 h-8 ${card.iconColor}`} />
+//                     </div>
+//                   </div>
+                  
+//                   {/* Card content */}
+//                   <div className="p-8">
+//                     <h3 className="text-2xl font-bold text-slate-900 mb-4">{card.title}</h3>
+//                     <p className="text-slate-600 mb-6 leading-relaxed">{card.description}</p>
+                    
+//                     {/* Tags with animated hover effect */}
+//                     <div className="flex flex-wrap gap-2">
+//                       {card.tags.map((tag, tagIndex) => (
+//                         <motion.div
+//                           key={tagIndex}
+//                           whileHover={{ scale: 1.05 }}
+//                           transition={{ duration: 0.2 }}
+//                         >
+//                           <Badge
+//                             className={`${card.iconColor} bg-white border ${card.borderColor} hover:bg-opacity-10 hover:shadow-sm text-sm font-medium`}
+//                           >
+//                             {tag}
+//                           </Badge>
+//                         </motion.div>
+//                       ))}
+//                     </div>
+//                   </div>
+                  
+//                   {/* Subtle corner accent */}
+//                   <div className={`absolute bottom-0 right-0 w-16 h-16 ${card.bgColor} rounded-tl-full opacity-20`}></div>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+//       </FullWidthSection>
+
+//       {/* Quick Access Buttons */}
+//       <FullWidthSection backgroundColor="bg-gradient-to-br from-slate-900 to-emerald-900" className="relative overflow-hidden py-24">
+//         {/* Floating elements */}
+//         <div className="absolute inset-0 opacity-10">
+//           <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-emerald-500 blur-3xl"></div>
+//           <div className="absolute bottom-20 right-20 w-64 h-64 rounded-full bg-teal-500 blur-3xl"></div>
+//         </div>
+        
+//         <div className="container mx-auto px-4 relative z-10">
+//           <motion.div
+//             initial={{ opacity: 0, y: 50 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8 }}
+//             viewport={{ once: true }}
+//             className="text-center max-w-4xl mx-auto"
+//           >
+//             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+//               Ready to Get Started?
+//             </h2>
+//             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//               <Button
+//                 size="lg"
+//                 variant="secondary"
+//                 className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-3"
+//                 onClick={downloadResume} 
+//               >
+//                 <Download className="mr-2 w-5 h-5" />
+//                 Download Resume
+//               </Button>
+              
+//               <Link href="/portfolio" passHref>
+//                 <Button
+//                   size="lg"
+//                   variant="outline"
+//                   className="border-white text-green hover:bg-white hover:text-emerald-600 px-8 py-3"
+//                 >
+//                   See Portfolio
+//                 </Button>
+//               </Link>
+
+//               <Link href="/contact" passHref>
+//                 <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3">
+//                   Hire Me
+//                   <ArrowRight className="ml-2 w-5 h-5" />
+//                 </Button>
+//               </Link>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </FullWidthSection>
+
+//       <WhatsAppFloat />
+//     </div>
+//   )
+// }
