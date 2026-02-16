@@ -72,14 +72,14 @@ const education = [
   {
     degree: "Bachelor's Degree in Software Development",
     institution: "Brigham Young University – Idaho",
-    status: "In Progress",
-    year: "2023 - Present",
+    status: "Completed",
+    year: "2026",
     icon: GraduationCap,
   },
   {
     degree: "Applied Associate Degree in Software Development",
     institution: "Brigham Young University – Idaho",
-    status: "In Progress",
+    status: "Completed",
     year: "2025",
     icon: Award,
   },
@@ -87,7 +87,7 @@ const education = [
     degree: "Machine Learning Certification",
     institution: "Coursera/Udemy",
     status: "In Progress",
-    year: "2025",
+    year: "2028",
     icon: Award,
   },
   // {
