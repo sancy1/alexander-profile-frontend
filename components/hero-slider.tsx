@@ -1,326 +1,369 @@
+// "use client"
 
-// // components/hero-slider.tsx
+// import { useState, useEffect, useRef, useCallback } from "react"
+// import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion"
+// import { ArrowRight, Eye, Download } from "lucide-react"
+// import Image from "next/image"
+// import Link from "next/link"
 
-// // "use client"
+// // ─── Slide data ───────────────────────────────────────────────────────────────
+// const slides = [
+//   {
+//     id: 0,
+//     eyebrow: "Full-Stack Development",
+//     title: "Crafting\nDigital\nSolutions",
+//     description:
+//       "Building robust, scalable applications from concept to deployment with modern technologies.",
+//     tags: ["Next.js", "Django", "Python", "React", "Node.js"],
+//     image: "/images/slider/Digital-Solutions.jpg",
+//     accent: "#10b981", // emerald
+//     accentMuted: "rgba(16,185,129,0.12)",
+//     showGreeting: true,
+//   },
+//   {
+//     id: 1,
+//     eyebrow: "Machine Learning & AI",
+//     title: "Insights\nThrough\nData & AI",
+//     description:
+//       "Transforming raw data into intelligent, actionable insights with cutting-edge ML models.",
+//     tags: ["AI", "ML", "Pandas", "NumPy", "Scikit-learn"],
+//     image: "/images/slider/ML-AI.jpg",
+//     accent: "#8b5cf6", // violet
+//     accentMuted: "rgba(139,92,246,0.12)",
+//   },
+//   {
+//     id: 2,
+//     eyebrow: "Automation & Optimization",
+//     title: "Optimizing\nProcesses,\nMaximizing\nEfficiency",
+//     description:
+//       "Streamlining workflows with intelligent automation — less friction, more output.",
+//     tags: ["Automation", "Selenium", "Process Optimization"],
+//     image: "/images/slider/task.jpg",
+//     accent: "#f59e0b", // amber
+//     accentMuted: "rgba(245,158,11,0.12)",
+//   },
+//   {
+//     id: 3,
+//     eyebrow: "Desktop App Development",
+//     title: "Modern\nDesktop\nApplications",
+//     description:
+//       "Powerful cross-platform desktop applications built with Electron, React, and Django.",
+//     tags: ["Electron", "Node", "Express", "React", "Django"],
+//     image: "/images/slider/desktop.jpg",
+//     accent: "#06b6d4", // cyan
+//     accentMuted: "rgba(6,182,212,0.12)",
+//   },
+// ]
 
-// // import { useState, useEffect, useCallback, useRef } from "react"
-// // import { motion, AnimatePresence } from "framer-motion"
-// // import { ChevronLeft, ChevronRight, ArrowRight, Eye } from "lucide-react"
-// // import { Button } from "@/components/ui/button"
-// // import { Badge } from "@/components/ui/badge"
-// // import Image from "next/image"
-// // import Link from "next/link"
+// const SLIDE_DURATION = 7000
 
-// // interface Slide {
-// //   title: string
-// //   subtitle?: string
-// //   description: string
-// //   tags: string[]
-// //   image: string
-// //   showGreeting?: boolean
-// // }
+// // ─── Sub-components ───────────────────────────────────────────────────────────
 
-// // interface HeroSliderProps {
-// //   slides: Slide[]
-// //   autoPlayInterval?: number
-// // }
+// function ProgressRail({
+//   total,
+//   current,
+//   duration,
+//   onSelect,
+//   accent,
+// }: {
+//   total: number
+//   current: number
+//   duration: number
+//   onSelect: (i: number) => void
+//   accent: string
+// }) {
+//   return (
+//     <div className="flex flex-col gap-3">
+//       {Array.from({ length: total }).map((_, i) => (
+//         <button
+//           key={i}
+//           onClick={() => onSelect(i)}
+//           aria-label={`Go to slide ${i + 1}`}
+//           className="group flex items-center gap-3 text-left"
+//         >
+//           <div className="relative h-12 w-0.5 bg-white/20 overflow-hidden rounded-full">
+//             {i === current && (
+//               <motion.div
+//                 className="absolute top-0 left-0 w-full rounded-full"
+//                 style={{ backgroundColor: accent }}
+//                 initial={{ height: "0%" }}
+//                 animate={{ height: "100%" }}
+//                 transition={{ duration: duration / 1000, ease: "linear" }}
+//               />
+//             )}
+//             {i < current && (
+//               <div className="absolute inset-0 rounded-full" style={{ backgroundColor: accent }} />
+//             )}
+//           </div>
+//           <span
+//             className="text-xs font-mono tracking-widest transition-colors duration-300"
+//             style={{ color: i === current ? accent : "rgba(255,255,255,0.35)" }}
+//           >
+//             0{i + 1}
+//           </span>
+//         </button>
+//       ))}
+//     </div>
+//   )
+// }
 
-// // export default function HeroSlider({ slides, autoPlayInterval = 7000 }: HeroSliderProps) {
-// //   const [currentSlide, setCurrentSlide] = useState(0)
-// //   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-// //   const [isTransitioning, setIsTransitioning] = useState(false)
-// //   const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+// function Tag({ label, accent }: { label: string; accent: string }) {
+//   return (
+//     <span
+//       className="inline-block rounded-full px-3 py-1 text-xs font-medium tracking-wide border"
+//       style={{
+//         color: accent,
+//         borderColor: `${accent}40`,
+//         backgroundColor: `${accent}14`,
+//       }}
+//     >
+//       {label}
+//     </span>
+//   )
+// }
 
-// //   const nextSlide = useCallback(() => {
-// //     if (isTransitioning) return
-    
-// //     setIsTransitioning(true)
-// //     setCurrentSlide((prev) => (prev + 1) % slides.length)
-// //     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-// //     // Clear any existing timeout
-// //     if (transitionTimeoutRef.current) {
-// //       clearTimeout(transitionTimeoutRef.current)
-// //     }
-    
-// //     // Set timeout to clear transitioning state
-// //     transitionTimeoutRef.current = setTimeout(() => {
-// //       setIsTransitioning(false)
-// //     }, 800) // Match animation duration
-// //   }, [slides.length, isTransitioning])
+// // ─── Main component ───────────────────────────────────────────────────────────
 
-// //   const prevSlide = useCallback(() => {
-// //     if (isTransitioning) return
-    
-// //     setIsTransitioning(true)
-// //     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-// //     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-// //     // Clear any existing timeout
-// //     if (transitionTimeoutRef.current) {
-// //       clearTimeout(transitionTimeoutRef.current)
-// //     }
-    
-// //     // Set timeout to clear transitioning state
-// //     transitionTimeoutRef.current = setTimeout(() => {
-// //       setIsTransitioning(false)
-// //     }, 800) // Match animation duration
-// //   }, [slides.length, isTransitioning])
+// export default function HeroSlider() {
+//   const [current, setCurrent] = useState(0)
+//   const [paused, setPaused] = useState(false)
+//   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-// //   const goToSlide = useCallback((index: number) => {
-// //     if (isTransitioning || index === currentSlide) return
-    
-// //     setIsTransitioning(true)
-// //     setCurrentSlide(index)
-// //     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-// //     // Clear any existing timeout
-// //     if (transitionTimeoutRef.current) {
-// //       clearTimeout(transitionTimeoutRef.current)
-// //     }
-    
-// //     // Set timeout to clear transitioning state
-// //     transitionTimeoutRef.current = setTimeout(() => {
-// //       setIsTransitioning(false)
-// //     }, 800) // Match animation duration
-// //   }, [currentSlide, isTransitioning])
+//   const slide = slides[current]
 
-// //   // Auto-play effect
-// //   useEffect(() => {
-// //     if (!isAutoPlaying) return
+//   const goTo = useCallback((index: number) => {
+//     setCurrent(index)
+//     setPaused(false)
+//   }, [])
 
-// //     const interval = setInterval(() => {
-// //       if (!isTransitioning) {
-// //         setCurrentSlide((prev) => (prev + 1) % slides.length)
-// //       }
-// //     }, autoPlayInterval)
+//   const next = useCallback(() => {
+//     setCurrent((p) => (p + 1) % slides.length)
+//   }, [])
 
-// //     return () => clearInterval(interval)
-// //   }, [isAutoPlaying, autoPlayInterval, slides.length, isTransitioning])
+//   // Auto-advance
+//   useEffect(() => {
+//     if (paused) return
+//     timerRef.current = setInterval(next, SLIDE_DURATION)
+//     return () => {
+//       if (timerRef.current) clearInterval(timerRef.current)
+//     }
+//   }, [paused, current, next])
 
-// //   // Cleanup timeout on unmount
-// //   useEffect(() => {
-// //     return () => {
-// //       if (transitionTimeoutRef.current) {
-// //         clearTimeout(transitionTimeoutRef.current)
-// //       }
-// //     }
-// //   }, [])
+//   return (
+//     <section
+//       className="relative min-h-screen w-full overflow-hidden bg-[#080c10] flex items-stretch"
+//       onMouseEnter={() => setPaused(true)}
+//       onMouseLeave={() => setPaused(false)}
+//     >
+//       {/* ── Background image layer ── */}
+//       <AnimatePresence mode="sync">
+//         <motion.div
+//           key={`bg-${current}`}
+//           className="absolute inset-0 z-0"
+//           initial={{ opacity: 0, scale: 1.04 }}
+//           animate={{ opacity: 1, scale: 1 }}
+//           exit={{ opacity: 0, scale: 0.98 }}
+//           transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+//         >
+//           <Image
+//             src={slide.image}
+//             alt={slide.title.replace(/\n/g, " ")}
+//             fill
+//             priority
+//             className="object-cover"
+//             sizes="100vw"
+//           />
+//           {/* Deep cinematic gradient overlay */}
+//           <div className="absolute inset-0 bg-gradient-to-r from-[#080c10] via-[#080c10]/85 to-[#080c10]/20" />
+//           <div className="absolute inset-0 bg-gradient-to-t from-[#080c10]/60 via-transparent to-transparent" />
+//           {/* Accent color wash — subtle tint from slide accent */}
+//           <motion.div
+//             className="absolute inset-0"
+//             style={{ backgroundColor: slide.accentMuted }}
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ duration: 1.4 }}
+//           />
+//         </motion.div>
+//       </AnimatePresence>
 
-// //   return (
-// //     <div className="relative w-full h-full">
-// //       {/* Slides Container */}
-// //       <div className="relative h-full w-full overflow-hidden">
-// //         <AnimatePresence mode="wait" initial={false}>
-// //           <motion.div
-// //             key={currentSlide}
-// //             initial={{ opacity: 0 }}
-// //             animate={{ opacity: 1 }}
-// //             exit={{ opacity: 0 }}
-// //             transition={{ 
-// //               duration: 0.8, 
-// //               ease: [0.22, 1, 0.36, 1]
-// //             }}
-// //             className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center w-full h-full"
-// //           >
-// //             {/* Left Column: Content */}
-// //             <div className="text-center md:text-left order-2 lg:order-1 px-4 md:px-0 h-full flex flex-col justify-center">
-// //               <motion.div
-// //                 initial={{ opacity: 0, y: 30 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ duration: 0.6, delay: 0.3 }}
-// //                 className="mb-6 md:mb-8"
-// //               >
-// //                 {slides[currentSlide].showGreeting && (
-// //                   <motion.h1
-// //                     initial={{ opacity: 0, y: 30 }}
-// //                     animate={{ opacity: 1, y: 0 }}
-// //                     transition={{ duration: 0.6, delay: 0.3 }}
-// //                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
-// //                   >
-// //                     Hi, I'm <span className="text-emerald-300">Alexander</span>
-// //                   </motion.h1>
-// //                 )}
-// //               </motion.div>
+//       {/* ── Layout ── */}
+//       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 flex flex-col justify-between min-h-screen">
 
-// //               <motion.h2
-// //                 initial={{ opacity: 0, y: 30 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ duration: 0.6, delay: 0.4 }}
-// //                 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 md:mb-6"
-// //               >
-// //                 {slides[currentSlide].title}
-// //               </motion.h2>
+//         {/* Top bar */}
+//         <div className="flex items-center justify-between">
+//           <motion.div
+//             animate={{ color: slide.accent }}
+//             transition={{ duration: 0.6 }}
+//             className="text-sm font-mono tracking-[0.2em] uppercase"
+//           >
+//             Alexander
+//           </motion.div>
+//           <div className="hidden md:flex items-center gap-6 text-xs text-white/30 font-mono tracking-widest">
+//             <span>Portfolio</span>
+//             <span
+//               className="h-px w-16 inline-block"
+//               style={{ backgroundColor: slide.accent, opacity: 0.4 }}
+//             />
+//             <span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+//           </div>
+//         </div>
 
-// //               <motion.p
-// //                 initial={{ opacity: 0, y: 30 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ duration: 0.6, delay: 0.5 }}
-// //                 className="text-base sm:text-lg text-slate-200 mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0"
-// //               >
-// //                 {slides[currentSlide].description}
-// //               </motion.p>
+//         {/* Content area */}
+//         <div className="flex-1 flex items-center">
+//           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 w-full items-center">
 
-// //               <motion.div
-// //                 initial={{ opacity: 0, y: 30 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ duration: 0.6, delay: 0.6 }}
-// //                 className="flex flex-wrap justify-center md:justify-start gap-3 mb-6 md:mb-8"
-// //               >
-// //                 {slides[currentSlide].tags.map((tag, index) => (
-// //                   <motion.div
-// //                     key={index}
-// //                     initial={{ opacity: 0, scale: 0.8 }}
-// //                     animate={{ opacity: 1, scale: 1 }}
-// //                     transition={{ delay: 0.7 + index * 0.1 }}
-// //                   >
-// //                     <Badge
-// //                       className="bg-emerald-500/20 backdrop-blur-sm border-emerald-400/30 text-white hover:bg-emerald-500/30 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium"
-// //                     >
-// //                       {tag}
-// //                     </Badge>
-// //                   </motion.div>
-// //                 ))}
-// //               </motion.div>
+//             {/* Left: text content */}
+//             <div className="max-w-3xl">
+//               <AnimatePresence mode="wait">
+//                 <motion.div
+//                   key={`content-${current}`}
+//                   initial={{ opacity: 0, y: 32 }}
+//                   animate={{ opacity: 1, y: 0 }}
+//                   exit={{ opacity: 0, y: -24 }}
+//                   transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+//                 >
+//                   {/* Eyebrow */}
+//                   <div className="flex items-center gap-3 mb-6">
+//                     <motion.span
+//                       className="h-px w-8 block"
+//                       style={{ backgroundColor: slide.accent }}
+//                       initial={{ scaleX: 0 }}
+//                       animate={{ scaleX: 1 }}
+//                       transition={{ duration: 0.5, delay: 0.2 }}
+//                     />
+//                     <span
+//                       className="text-xs font-mono tracking-[0.25em] uppercase"
+//                       style={{ color: slide.accent }}
+//                     >
+//                       {slide.eyebrow}
+//                     </span>
+//                   </div>
 
-// //               <motion.div
-// //                 initial={{ opacity: 0, y: 30 }}
-// //                 animate={{ opacity: 1, y: 0 }}
-// //                 transition={{ duration: 0.6, delay: 0.8 }}
-// //                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
-// //               >
-// //                 <Link href="/contact" passHref>
-// //                   <Button 
-// //                     size="lg" 
-// //                     className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105"
-// //                   >
-// //                     Let's Innovate Together
-// //                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-// //                   </Button>
-// //                 </Link>
+//                   {/* Greeting (slide 0 only) */}
+//                   {slide.showGreeting && (
+//                     <motion.p
+//                       className="text-white/50 text-xl md:text-2xl font-light mb-2"
+//                       initial={{ opacity: 0 }}
+//                       animate={{ opacity: 1 }}
+//                       transition={{ delay: 0.15 }}
+//                     >
+//                       Hi, I&apos;m{" "}
+//                       <span className="font-semibold" style={{ color: slide.accent }}>
+//                         Alexander
+//                       </span>
+//                     </motion.p>
+//                   )}
 
-// //                 <Link href="/portfolio" passHref>
-// //                   <Button
-// //                     size="lg"
-// //                     variant="outline"
-// //                     className="border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105"
-// //                   >
-// //                     View My Work
-// //                     <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-// //                   </Button>
-// //                 </Link>
-// //               </motion.div>
-// //             </div>
+//                   {/* Title — large display type, line-broken */}
+//                   <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[0.92] tracking-tight text-white mb-6">
+//                     {slide.title.split("\n").map((line, i) => (
+//                       <span key={i} className="block">
+//                         {line}
+//                       </span>
+//                     ))}
+//                   </h1>
 
-// //             {/* Right Column: Image */}
-// //             <motion.div
-// //               initial={{ opacity: 0, x: 50 }}
-// //               animate={{ opacity: 1, x: 0 }}
-// //               transition={{ duration: 0.8, delay: 0.4 }}
-// //               className="relative order-1 lg:order-2 w-full h-64 sm:h-72 md:h-[28rem] lg:h-96"
-// //             >
-// //               <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl border border-white/10">
-// //                 <Image
-// //                   src={slides[currentSlide].image || "/placeholder.svg"}
-// //                   alt={slides[currentSlide].title}
-// //                   fill
-// //                   className="object-cover"
-// //                   priority
-// //                   sizes="(max-width: 1024px) 100vw, 50vw"
-// //                 />
-// //                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-// //               </div>
-// //             </motion.div>
-// //           </motion.div>
-// //         </AnimatePresence>
-// //       </div>
+//                   {/* Description */}
+//                   <p className="text-white/55 text-base md:text-lg leading-relaxed mb-8 max-w-md">
+//                     {slide.description}
+//                   </p>
 
-// //       {/* Navigation Controls */}
-// //       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
-// //         {/* Previous Button */}
-// //         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-// //           <Button
-// //             variant="outline"
-// //             size="icon"
-// //             onClick={prevSlide}
-// //             className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 w-10 h-10 rounded-full"
-// //             disabled={isTransitioning}
-// //           >
-// //             <ChevronLeft className="w-5 h-5 text-white" />
-// //           </Button>
-// //         </motion.div>
+//                   {/* Tags */}
+//                   <div className="flex flex-wrap gap-2 mb-10">
+//                     {slide.tags.map((tag) => (
+//                       <Tag key={tag} label={tag} accent={slide.accent} />
+//                     ))}
+//                   </div>
 
-// //         {/* Slide Indicators */}
-// //         <div className="flex items-center gap-2">
-// //           {slides.map((_, index) => (
-// //             <motion.button
-// //               key={index}
-// //               onClick={() => goToSlide(index)}
-// //               className="relative focus:outline-none"
-// //               whileHover={{ scale: 1.2 }}
-// //               whileTap={{ scale: 0.9 }}
-// //               disabled={isTransitioning}
-// //             >
-// //               <div
-// //                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-// //                   index === currentSlide
-// //                     ? "bg-white"
-// //                     : "bg-white/50 hover:bg-white/70"
-// //                 }`}
-// //               />
-// //               {index === currentSlide && (
-// //                 <motion.div
-// //                   layoutId="activeIndicator"
-// //                   className="absolute inset-0 rounded-full border-2 border-white"
-// //                   initial={false}
-// //                   transition={{
-// //                     type: "spring",
-// //                     stiffness: 300,
-// //                     damping: 30,
-// //                   }}
-// //                 />
-// //               )}
-// //             </motion.button>
-// //           ))}
-// //         </div>
+//                   {/* CTAs */}
+//                   <div className="flex flex-wrap gap-4">
+//                     <Link href="/contact">
+//                       <button
+//                         className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
+//                         style={{
+//                           backgroundColor: slide.accent,
+//                           color: "#fff",
+//                         }}
+//                       >
+//                         Let&apos;s Innovate
+//                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+//                       </button>
+//                     </Link>
+//                     <Link href="/portfolio">
+//                       <button
+//                         className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
+//                       >
+//                         <Eye className="w-4 h-4" />
+//                         View Work
+//                       </button>
+//                     </Link>
+//                   </div>
+//                 </motion.div>
+//               </AnimatePresence>
+//             </div>
 
-// //         {/* Next Button */}
-// //         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-// //           <Button
-// //             variant="outline"
-// //             size="icon"
-// //             onClick={nextSlide}
-// //             className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 w-10 h-10 rounded-full"
-// //             disabled={isTransitioning}
-// //           >
-// //             <ChevronRight className="w-5 h-5 text-white" />
-// //           </Button>
-// //         </motion.div>
-// //       </div>
+//             {/* Right: progress rail (desktop) */}
+//             <div className="hidden lg:flex items-center">
+//               <ProgressRail
+//                 total={slides.length}
+//                 current={current}
+//                 duration={paused ? 999999 : SLIDE_DURATION}
+//                 onSelect={goTo}
+//                 accent={slide.accent}
+//               />
+//             </div>
+//           </div>
+//         </div>
 
-// //       {/* Progress Bar */}
-// //       <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 overflow-hidden">
-// //         <motion.div
-// //           key={currentSlide}
-// //           initial={{ width: "0%" }}
-// //           animate={{ width: "100%" }}
-// //           transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
-// //           className="h-full bg-gradient-to-r from-emerald-400 to-cyan-400"
-// //         />
-// //       </div>
+//         {/* Bottom bar — mobile dots + slide eyebrow label */}
+//         <div className="flex items-center justify-between">
+//           {/* Mobile progress dots */}
+//           <div className="flex lg:hidden gap-2">
+//             {slides.map((_, i) => (
+//               <button
+//                 key={i}
+//                 onClick={() => goTo(i)}
+//                 className="h-0.5 rounded-full transition-all duration-500"
+//                 style={{
+//                   width: i === current ? "2rem" : "0.5rem",
+//                   backgroundColor: i === current ? slide.accent : "rgba(255,255,255,0.25)",
+//                 }}
+//                 aria-label={`Slide ${i + 1}`}
+//               />
+//             ))}
+//           </div>
 
-// //       {/* Slide Counter */}
-// //       <div className="absolute top-8 right-8 hidden lg:block">
-// //         <div className="bg-black/40 backdrop-blur-sm rounded-full px-4 py-2">
-// //           <span className="text-sm font-medium text-white">
-// //             <span className="text-emerald-300">{currentSlide + 1}</span>
-// //             <span className="text-white/60"> / {slides.length}</span>
-// //           </span>
-// //         </div>
-// //       </div>
-// //     </div>
-// //   )
-// // }
+//           {/* Slide label */}
+//           <AnimatePresence mode="wait">
+//             <motion.p
+//               key={`label-${current}`}
+//               className="text-xs text-white/25 font-mono tracking-widest hidden md:block"
+//               initial={{ opacity: 0, y: 8 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               exit={{ opacity: 0, y: -8 }}
+//               transition={{ duration: 0.4 }}
+//             >
+//               {slide.eyebrow.toUpperCase()}
+//             </motion.p>
+//           </AnimatePresence>
+//         </div>
+//       </div>
+
+//       {/* ── Right edge vignette (image bleed area hint) ── */}
+//       <div className="pointer-events-none absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-[#080c10]/30 to-transparent z-5" />
+//     </section>
+//   )
+// }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -349,323 +392,799 @@
 
 // "use client"
 
-// import { useState, useEffect, useCallback, useRef } from "react"
-// import { motion, AnimatePresence } from "framer-motion"
-// import { ChevronLeft, ChevronRight, ArrowRight, Eye } from "lucide-react"
-// import { Button } from "@/components/ui/button"
-// import { Badge } from "@/components/ui/badge"
+// import { useState, useEffect, useRef, useCallback } from "react"
+// import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion"
+// import { ArrowRight, Eye, Download } from "lucide-react"
 // import Image from "next/image"
 // import Link from "next/link"
 
-// interface Slide {
-//   title: string
-//   subtitle?: string
-//   description: string
-//   tags: string[]
-//   image: string
-//   showGreeting?: boolean
-// }
+// // ─── Slide data ───────────────────────────────────────────────────────────────
+// // REMOVED \n line breaks so text flows horizontally across multiple words per line
+// const slides = [
+//   {
+//     id: 0,
+//     eyebrow: "Software Engineering",
+//     title: "Building Production-Ready Software Systems",
+//     description:
+//       "Designing, developing, and deploying scalable applications across full-stack platforms, backend services, APIs, and cloud-native environments.",
+//     tags: [
+//       "System Design",
+//       "Full-Stack",
+//       "Backend",
+//       "APIs",
+//       "PostgreSQL",
+//     ],
+//     image: "/images/slider/Digital-Solutions.jpg",
+//     accent: "#10b981",
+//     accentMuted: "rgba(16,185,129,0.12)",
+//     showGreeting: true,
+//   },
 
-// interface HeroSliderProps {
-//   slides: Slide[]
-//   autoPlayInterval?: number
-// }
+//   {
+//     id: 1,
+//     eyebrow: "AI & Agentic Systems",
+//     title: "Intelligent Applications Beyond Chatbots",
+//     description:
+//       "Building AI-powered systems using LangGraph, LangChain, LlamaIndex, RAG, MCP, and autonomous tool-calling workflows.",
+//     tags: [
+//       "LangGraph",
+//       "LangChain",
+//       "LlamaIndex",
+//       "RAG",
+//       "MCP",
+//     ],
+//     image: "/images/slider/ML-AI.jpg",
+//     accent: "#8b5cf6",
+//     accentMuted: "rgba(139,92,246,0.12)",
+//   },
 
-// export default function HeroSlider({ slides, autoPlayInterval = 7000 }: HeroSliderProps) {
-//   const [currentSlide, setCurrentSlide] = useState(0)
-//   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-//   const [isTransitioning, setIsTransitioning] = useState(false)
-//   const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+//   {
+//     id: 2,
+//     eyebrow: "Backend & Distributed Systems",
+//     title: "Scalable APIs and Reliable Architectures",
+//     description:
+//       "Designing API-first backend systems with authentication, event-driven communication, caching, and modern distributed architecture patterns.",
+//     tags: [
+//       "Node.js",
+//       "FastAPI",
+//       "Kafka",
+//       "Redis",
+//       "Microservices",
+//     ],
+//     image: "/images/slider/task.jpg",
+//     accent: "#f59e0b",
+//     accentMuted: "rgba(245,158,11,0.12)",
+//   },
 
-//   const nextSlide = useCallback(() => {
-//     if (isTransitioning) return
-    
-//     setIsTransitioning(true)
-//     setCurrentSlide((prev) => (prev + 1) % slides.length)
-//     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-//     // Clear any existing timeout
-//     if (transitionTimeoutRef.current) {
-//       clearTimeout(transitionTimeoutRef.current)
-//     }
-    
-//     // Set timeout to clear transitioning state
-//     transitionTimeoutRef.current = setTimeout(() => {
-//       setIsTransitioning(false)
-//     }, 800) // Match animation duration
-//   }, [slides.length, isTransitioning])
+//   {
+//     id: 3,
+//     eyebrow: "Cloud, DevOps & Infrastructure",
+//     title: "Automated Deployments and Cloud-Native Delivery",
+//     description:
+//       "Containerizing applications, building CI/CD pipelines, and managing infrastructure with Docker, GitHub Actions, and Terraform.",
+//     tags: [
+//       "Docker",
+//       "CI/CD",
+//       "Terraform",
+//       "AWS",
+//       "GitHub Actions",
+//     ],
+//     image: "/images/slider/desktop.jpg",
+//     accent: "#06b6d4",
+//     accentMuted: "rgba(6,182,212,0.12)",
+//   },
+// ];
 
-//   const prevSlide = useCallback(() => {
-//     if (isTransitioning) return
-    
-//     setIsTransitioning(true)
-//     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-//     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-//     // Clear any existing timeout
-//     if (transitionTimeoutRef.current) {
-//       clearTimeout(transitionTimeoutRef.current)
-//     }
-    
-//     // Set timeout to clear transitioning state
-//     transitionTimeoutRef.current = setTimeout(() => {
-//       setIsTransitioning(false)
-//     }, 800) // Match animation duration
-//   }, [slides.length, isTransitioning])
+// const SLIDE_DURATION = 7000
 
-//   const goToSlide = useCallback((index: number) => {
-//     if (isTransitioning || index === currentSlide) return
-    
-//     setIsTransitioning(true)
-//     setCurrentSlide(index)
-//     setIsAutoPlaying(true) // Keep auto-playing after manual navigation
-    
-//     // Clear any existing timeout
-//     if (transitionTimeoutRef.current) {
-//       clearTimeout(transitionTimeoutRef.current)
-//     }
-    
-//     // Set timeout to clear transitioning state
-//     transitionTimeoutRef.current = setTimeout(() => {
-//       setIsTransitioning(false)
-//     }, 800) // Match animation duration
-//   }, [currentSlide, isTransitioning])
+// // ─── Sub-components ───────────────────────────────────────────────────────────
 
-//   // Auto-play effect
-//   useEffect(() => {
-//     if (!isAutoPlaying) return
-
-//     const interval = setInterval(() => {
-//       if (!isTransitioning) {
-//         setCurrentSlide((prev) => (prev + 1) % slides.length)
-//       }
-//     }, autoPlayInterval)
-
-//     return () => clearInterval(interval)
-//   }, [isAutoPlaying, autoPlayInterval, slides.length, isTransitioning])
-
-//   // Cleanup timeout on unmount
-//   useEffect(() => {
-//     return () => {
-//       if (transitionTimeoutRef.current) {
-//         clearTimeout(transitionTimeoutRef.current)
-//       }
-//     }
-//   }, [])
-
+// function ProgressRail({
+//   total,
+//   current,
+//   duration,
+//   onSelect,
+//   accent,
+// }: {
+//   total: number
+//   current: number
+//   duration: number
+//   onSelect: (i: number) => void
+//   accent: string
+// }) {
 //   return (
-//     // <div className="relative w-full h-full min-h-[600px] md:min-h-[700px] lg:min-h-[800px]"> {/* ADDED MIN HEIGHT */}
-//     <div className="relative w-full h-full min-h-[100px] md:min-h-[450px] lg:min-h-[100px]">
-
-//       {/* Slides Container */}
-//       <div className="relative h-full w-full overflow-hidden">
-//         <AnimatePresence mode="wait" initial={false}>
-//           <motion.div
-//             key={currentSlide}
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             transition={{ 
-//               duration: 0.8, 
-//               ease: [0.22, 1, 0.36, 1]
-//             }}
-//             className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center w-full h-full"
-//           >
-//             {/* Left Column: Content */}
-//             <div className="text-center md:text-left order-2 lg:order-1 px-4 md:px-0 h-full flex flex-col justify-center">
+//     <div className="flex flex-col gap-3">
+//       {Array.from({ length: total }).map((_, i) => (
+//         <button
+//           key={i}
+//           onClick={() => onSelect(i)}
+//           aria-label={`Go to slide ${i + 1}`}
+//           className="group flex items-center gap-3 text-left"
+//         >
+//           <div className="relative h-12 w-0.5 bg-white/20 overflow-hidden rounded-full">
+//             {i === current && (
 //               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: 0.3 }}
-//                 className="mb-6 md:mb-8"
-//               >
-//                 {slides[currentSlide].showGreeting && (
-//                   <motion.h1
-//                     initial={{ opacity: 0, y: 30 }}
-//                     animate={{ opacity: 1, y: 0 }}
-//                     transition={{ duration: 0.6, delay: 0.3 }}
-//                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4"
-//                   >
-//                     Hi, I'm <span className="text-emerald-300">Alexander</span>
-//                   </motion.h1>
-//                 )}
-//               </motion.div>
-
-//               <motion.h2
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: 0.4 }}
-//                 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 md:mb-6"
-//               >
-//                 {slides[currentSlide].title}
-//               </motion.h2>
-
-//               <motion.p
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: 0.5 }}
-//                 className="text-base sm:text-lg text-slate-200 mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0"
-//               >
-//                 {slides[currentSlide].description}
-//               </motion.p>
-
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: 0.6 }}
-//                 className="flex flex-wrap justify-center md:justify-start gap-3 mb-6 md:mb-8"
-//               >
-//                 {slides[currentSlide].tags.map((tag, index) => (
-//                   <motion.div
-//                     key={index}
-//                     initial={{ opacity: 0, scale: 0.8 }}
-//                     animate={{ opacity: 1, scale: 1 }}
-//                     transition={{ delay: 0.7 + index * 0.1 }}
-//                   >
-//                     <Badge
-//                       className="bg-emerald-500/20 backdrop-blur-sm border-emerald-400/30 text-white hover:bg-emerald-500/30 px-3 py-1 sm:px-4 sm:py-2 text-sm font-medium"
-//                     >
-//                       {tag}
-//                     </Badge>
-//                   </motion.div>
-//                 ))}
-//               </motion.div>
-
-//               <motion.div
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ duration: 0.6, delay: 0.8 }}
-//                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start"
-//               >
-//                 <Link href="/contact" passHref>
-//                   <Button 
-//                     size="lg" 
-//                     className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105"
-//                   >
-//                     Let's Innovate Together
-//                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-//                   </Button>
-//                 </Link>
-
-//                 <Link href="/portfolio" passHref>
-//                   <Button
-//                     size="lg"
-//                     variant="outline"
-//                     className="border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105"
-//                   >
-//                     View My Work
-//                     <Eye className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-//                   </Button>
-//                 </Link>
-//               </motion.div>
-//             </div>
-
-//             {/* Right Column: Image - Increased height */}
-//             <motion.div
-//               initial={{ opacity: 0, x: 50 }}
-//               animate={{ opacity: 1, x: 0 }}
-//               transition={{ duration: 0.8, delay: 0.4 }}
-//               className="relative order-1 lg:order-2 w-full h-72 sm:h-80 md:h-[32rem] lg:h-[36rem]" // INCREASED HEIGHT
-//             >
-//               <div className="relative w-full h-full rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl border border-white/10">
-//                 <Image
-//                   src={slides[currentSlide].image || "/placeholder.svg"}
-//                   alt={slides[currentSlide].title}
-//                   fill
-//                   className="object-cover"
-//                   priority
-//                   sizes="(max-width: 1024px) 100vw, 50vw"
-//                 />
-//                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         </AnimatePresence>
-//       </div>
-
-//       {/* Navigation Controls */}
-//       <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 z-20">
-//         {/* Previous Button */}
-//         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-//           <Button
-//             variant="outline"
-//             size="icon"
-//             onClick={prevSlide}
-//             className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 w-10 h-10 rounded-full"
-//             disabled={isTransitioning}
-//           >
-//             <ChevronLeft className="w-5 h-5 text-white" />
-//           </Button>
-//         </motion.div>
-
-//         {/* Slide Indicators */}
-//         <div className="flex items-center gap-2">
-//           {slides.map((_, index) => (
-//             <motion.button
-//               key={index}
-//               onClick={() => goToSlide(index)}
-//               className="relative focus:outline-none"
-//               whileHover={{ scale: 1.2 }}
-//               whileTap={{ scale: 0.9 }}
-//               disabled={isTransitioning}
-//             >
-//               <div
-//                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-//                   index === currentSlide
-//                     ? "bg-white"
-//                     : "bg-white/50 hover:bg-white/70"
-//                 }`}
+//                 className="absolute top-0 left-0 w-full rounded-full"
+//                 style={{ backgroundColor: accent }}
+//                 initial={{ height: "0%" }}
+//                 animate={{ height: "100%" }}
+//                 transition={{ duration: duration / 1000, ease: "linear" }}
 //               />
-//               {index === currentSlide && (
-//                 <motion.div
-//                   layoutId="activeIndicator"
-//                   className="absolute inset-0 rounded-full border-2 border-white"
-//                   initial={false}
-//                   transition={{
-//                     type: "spring",
-//                     stiffness: 300,
-//                     damping: 30,
-//                   }}
-//                 />
-//               )}
-//             </motion.button>
-//           ))}
-//         </div>
-
-//         {/* Next Button */}
-//         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-//           <Button
-//             variant="outline"
-//             size="icon"
-//             onClick={nextSlide}
-//             className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 w-10 h-10 rounded-full"
-//             disabled={isTransitioning}
+//             )}
+//             {i < current && (
+//               <div className="absolute inset-0 rounded-full" style={{ backgroundColor: accent }} />
+//             )}
+//           </div>
+//           <span
+//             className="text-xs font-mono tracking-widest transition-colors duration-300"
+//             style={{ color: i === current ? accent : "rgba(255,255,255,0.35)" }}
 //           >
-//             <ChevronRight className="w-5 h-5 text-white" />
-//           </Button>
-//         </motion.div>
-//       </div>
-
-//       {/* Progress Bar - At the very bottom of the slider */}
-//       <div className="absolute bottom-0 left-0 right-0 h-2 bg-white/10 overflow-hidden">
-//         <motion.div
-//           key={currentSlide}
-//           initial={{ width: "0%" }}
-//           animate={{ width: "100%" }}
-//           transition={{ duration: autoPlayInterval / 1000, ease: "linear" }}
-//           className="h-full bg-gradient-to-r from-emerald-400 to-cyan-400"
-//         />
-//       </div>
-
-//       {/* Slide Counter - Top right */}
-//       <div className="absolute top-4 right-4 lg:top-8 lg:right-8">
-//         <div className="bg-black/40 backdrop-blur-sm rounded-full px-3 py-1 lg:px-4 lg:py-2">
-//           <span className="text-xs lg:text-sm font-medium text-white">
-//             <span className="text-emerald-300">{currentSlide + 1}</span>
-//             <span className="text-white/60"> / {slides.length}</span>
+//             0{i + 1}
 //           </span>
-//         </div>
-//       </div>
+//         </button>
+//       ))}
 //     </div>
 //   )
 // }
+
+// function Tag({ label, accent }: { label: string; accent: string }) {
+//   return (
+//     <span
+//       className="inline-block rounded-full px-3 py-1 text-xs font-medium tracking-wide border"
+//       style={{
+//         color: accent,
+//         borderColor: `${accent}40`,
+//         backgroundColor: `${accent}14`,
+//       }}
+//     >
+//       {label}
+//     </span>
+//   )
+// }
+
+// // ─── Main component ───────────────────────────────────────────────────────────
+
+// export default function HeroSlider() {
+//   const [current, setCurrent] = useState(0)
+//   const [paused, setPaused] = useState(false)
+//   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+//   const slide = slides[current]
+
+//   const goTo = useCallback((index: number) => {
+//     setCurrent(index)
+//     setPaused(false)
+//   }, [])
+
+//   const next = useCallback(() => {
+//     setCurrent((p) => (p + 1) % slides.length)
+//   }, [])
+
+//   // Auto-advance
+//   useEffect(() => {
+//     if (paused) return
+//     timerRef.current = setInterval(next, SLIDE_DURATION)
+//     return () => {
+//       if (timerRef.current) clearInterval(timerRef.current)
+//     }
+//   }, [paused, current, next])
+
+//   return (
+//     <section
+//       className="relative min-h-screen w-full overflow-hidden bg-[#080c10] flex items-stretch"
+//       onMouseEnter={() => setPaused(true)}
+//       onMouseLeave={() => setPaused(false)}
+//     >
+//       {/* ── Background image layer ── */}
+//       <AnimatePresence mode="sync">
+//         <motion.div
+//           key={`bg-${current}`}
+//           className="absolute inset-0 z-0"
+//           initial={{ opacity: 0, scale: 1.04 }}
+//           animate={{ opacity: 1, scale: 1 }}
+//           exit={{ opacity: 0, scale: 0.98 }}
+//           transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+//         >
+//           <Image
+//             src={slide.image}
+//             alt={slide.title.replace(/\n/g, " ")}
+//             fill
+//             priority
+//             className="object-cover"
+//             sizes="100vw"
+//           />
+//           {/* Deep cinematic gradient overlay */}
+//           <div className="absolute inset-0 bg-gradient-to-r from-[#080c10] via-[#080c10]/85 to-[#080c10]/20" />
+//           <div className="absolute inset-0 bg-gradient-to-t from-[#080c10]/60 via-transparent to-transparent" />
+//           {/* Accent color wash — subtle tint from slide accent */}
+//           <motion.div
+//             className="absolute inset-0"
+//             style={{ backgroundColor: slide.accentMuted }}
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ duration: 1.4 }}
+//           />
+//         </motion.div>
+//       </AnimatePresence>
+
+//       {/* ── Layout ── */}
+//       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 flex flex-col justify-between min-h-screen">
+
+//         {/* Top bar */}
+//         <div className="flex items-center justify-between">
+//           <motion.div
+//             animate={{ color: slide.accent }}
+//             transition={{ duration: 0.6 }}
+//             className="text-sm font-mono tracking-[0.2em] uppercase"
+//           >
+//             Alexander
+//           </motion.div>
+//           <div className="hidden md:flex items-center gap-6 text-xs text-white/30 font-mono tracking-widest">
+//             <span>Portfolio</span>
+//             <span
+//               className="h-px w-16 inline-block"
+//               style={{ backgroundColor: slide.accent, opacity: 0.4 }}
+//             />
+//             <span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+//           </div>
+//         </div>
+
+//         {/* Content area */}
+//         <div className="flex-1 flex items-center">
+//           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 w-full items-center">
+
+//             {/* Left: text content - WIDENED CONTAINER */}
+//             <div className="max-w-4xl min-w-0 w-full">
+//               <AnimatePresence mode="wait">
+//                 <motion.div
+//                   key={`content-${current}`}
+//                   initial={{ opacity: 0, y: 32 }}
+//                   animate={{ opacity: 1, y: 0 }}
+//                   exit={{ opacity: 0, y: -24 }}
+//                   transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+//                 >
+//                   {/* Eyebrow */}
+//                   <div className="flex items-center gap-3 mb-6">
+//                     <motion.span
+//                       className="h-px w-8 block"
+//                       style={{ backgroundColor: slide.accent }}
+//                       initial={{ scaleX: 0 }}
+//                       animate={{ scaleX: 1 }}
+//                       transition={{ duration: 0.5, delay: 0.2 }}
+//                     />
+//                     <span
+//                       className="text-xs font-mono tracking-[0.25em] uppercase"
+//                       style={{ color: slide.accent }}
+//                     >
+//                       {slide.eyebrow}
+//                     </span>
+//                   </div>
+
+//                   {/* Greeting (slide 0 only) */}
+//                   {slide.showGreeting && (
+//                     <motion.p
+//                       className="text-white/50 text-xl md:text-2xl font-light mb-2"
+//                       initial={{ opacity: 0 }}
+//                       animate={{ opacity: 1 }}
+//                       transition={{ delay: 0.15 }}
+//                     >
+//                       Hi, I&apos;m{" "}
+//                       <span className="font-semibold" style={{ color: slide.accent }}>
+//                         Alexander
+//                       </span>
+//                     </motion.p>
+//                   )}
+
+//                   {/* Title — NOW DISPLAYS HORIZONTALLY with proper line wrapping */}
+//                   <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.2] tracking-tight text-white mb-6 max-w-full">
+//                     {slide.title}
+//                   </h1>
+
+//                   {/* Description */}
+//                   <p className="text-white/55 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+//                     {slide.description}
+//                   </p>
+
+//                   {/* Tags */}
+//                   <div className="flex flex-wrap gap-2 mb-10">
+//                     {slide.tags.map((tag) => (
+//                       <Tag key={tag} label={tag} accent={slide.accent} />
+//                     ))}
+//                   </div>
+
+//                   {/* CTAs */}
+//                   <div className="flex flex-wrap gap-4">
+//                     <Link href="/contact">
+//                       <button
+//                         className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
+//                         style={{
+//                           backgroundColor: slide.accent,
+//                           color: "#fff",
+//                         }}
+//                       >
+//                         Let&apos;s Innovate
+//                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+//                       </button>
+//                     </Link>
+//                     <Link href="/portfolio">
+//                       <button
+//                         className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
+//                       >
+//                         <Eye className="w-4 h-4" />
+//                         View Work
+//                       </button>
+//                     </Link>
+//                   </div>
+//                 </motion.div>
+//               </AnimatePresence>
+//             </div>
+
+//             {/* Right: progress rail (desktop) */}
+//             <div className="hidden lg:flex items-center">
+//               <ProgressRail
+//                 total={slides.length}
+//                 current={current}
+//                 duration={paused ? 999999 : SLIDE_DURATION}
+//                 onSelect={goTo}
+//                 accent={slide.accent}
+//               />
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Bottom bar — mobile dots + slide eyebrow label */}
+//         <div className="flex items-center justify-between">
+//           {/* Mobile progress dots */}
+//           <div className="flex lg:hidden gap-2">
+//             {slides.map((_, i) => (
+//               <button
+//                 key={i}
+//                 onClick={() => goTo(i)}
+//                 className="h-0.5 rounded-full transition-all duration-500"
+//                 style={{
+//                   width: i === current ? "2rem" : "0.5rem",
+//                   backgroundColor: i === current ? slide.accent : "rgba(255,255,255,0.25)",
+//                 }}
+//                 aria-label={`Slide ${i + 1}`}
+//               />
+//             ))}
+//           </div>
+
+//           {/* Slide label */}
+//           <AnimatePresence mode="wait">
+//             <motion.p
+//               key={`label-${current}`}
+//               className="text-xs text-white/25 font-mono tracking-widest hidden md:block"
+//               initial={{ opacity: 0, y: 8 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               exit={{ opacity: 0, y: -8 }}
+//               transition={{ duration: 0.4 }}
+//             >
+//               {slide.eyebrow.toUpperCase()}
+//             </motion.p>
+//           </AnimatePresence>
+//         </div>
+//       </div>
+
+//       {/* ── Right edge vignette (image bleed area hint) ── */}
+//       <div className="pointer-events-none absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-[#080c10]/30 to-transparent z-5" />
+//     </section>
+//   )
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"use client"
+
+import { useState, useEffect, useRef, useCallback } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowRight, Eye } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+
+// ─── Slide data ───────────────────────────────────────────────────────────────
+const slides = [
+  {
+    id: 0,
+    eyebrow: "Software Engineering",
+    title: "Building Production-Ready Software Systems",
+    description:
+      "Designing, developing, and deploying scalable applications across full-stack platforms, backend services, APIs, and cloud-native environments.",
+    tags: [
+      "System Design",
+      "Full-Stack",
+      "Backend",
+      "APIs",
+      "PostgreSQL",
+    ],
+    image: "/images/slider/Digital-Solutions.png",
+    accent: "#10b981",
+    accentMuted: "rgba(16,185,129,0.12)",
+    showGreeting: true,
+  },
+
+  {
+    id: 1,
+    eyebrow: "AI & Agentic Systems",
+    title: "Intelligent Applications Beyond Chatbots",
+    description:
+      "Building AI-powered systems using LangGraph, LangChain, LlamaIndex, RAG, MCP, and autonomous tool-calling workflows.",
+    tags: [
+      "LangGraph",
+      "LangChain",
+      "LlamaIndex",
+      "RAG",
+      "MCP",
+    ],
+    image: "/images/slider/ML-AI.jpg",
+    accent: "#8b5cf6",
+    accentMuted: "rgba(139,92,246,0.12)",
+  },
+
+  {
+    id: 2,
+    eyebrow: "Backend & Distributed Systems",
+    title: "Scalable APIs and Reliable Architectures",
+    description:
+      "Designing API-first backend systems with authentication, event-driven communication, caching, and modern distributed architecture patterns.",
+    tags: [
+      "Node.js",
+      "FastAPI",
+      "RabbitMQ",
+      "Kafka",
+      "Redis",
+      "Microservices",
+    ],
+    image: "/images/slider/task2.jpg",
+    accent: "#f59e0b",
+    accentMuted: "rgba(245,158,11,0.12)",
+  },
+
+  {
+    id: 3,
+    eyebrow: "Cloud, DevOps & Infrastructure",
+    title: "Automated Deployments and Cloud-Native Delivery",
+    description:
+      "Containerizing applications, building CI/CD pipelines, and managing infrastructure with Docker, GitHub Actions, and Terraform.",
+    tags: [
+      "Docker",
+      "CI/CD",
+      "Terraform",
+      "AWS",
+      "GitHub Actions",
+    ],
+    image: "/images/slider/devup2.png",
+    accent: "#06b6d4",
+    accentMuted: "rgba(6,182,212,0.12)",
+  },
+];
+
+const SLIDE_DURATION = 7000
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function ProgressRail({
+  total,
+  current,
+  duration,
+  onSelect,
+  accent,
+}: {
+  total: number
+  current: number
+  duration: number
+  onSelect: (i: number) => void
+  accent: string
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      {Array.from({ length: total }).map((_, i) => (
+        <button
+          key={i}
+          onClick={() => onSelect(i)}
+          aria-label={`Go to slide ${i + 1}`}
+          className="group flex items-center gap-3 text-left"
+        >
+          <div className="relative h-12 w-0.5 bg-white/20 overflow-hidden rounded-full">
+            {i === current && (
+              <motion.div
+                className="absolute top-0 left-0 w-full rounded-full"
+                style={{ backgroundColor: accent }}
+                initial={{ height: "0%" }}
+                animate={{ height: "100%" }}
+                transition={{ duration: duration / 1000, ease: "linear" }}
+              />
+            )}
+            {i < current && (
+              <div className="absolute inset-0 rounded-full" style={{ backgroundColor: accent }} />
+            )}
+          </div>
+          <span
+            className="text-xs font-mono tracking-widest transition-colors duration-300"
+            style={{ color: i === current ? accent : "rgba(255,255,255,0.35)" }}
+          >
+            0{i + 1}
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function Tag({ label, accent }: { label: string; accent: string }) {
+  return (
+    <span
+      className="inline-block rounded-full px-3 py-1 text-xs font-medium tracking-wide border"
+      style={{
+        color: accent,
+        borderColor: `${accent}40`,
+        backgroundColor: `${accent}14`,
+      }}
+    >
+      {label}
+    </span>
+  )
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+export default function HeroSlider() {
+  const [current, setCurrent] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const slide = slides[current]
+
+  const goTo = useCallback((index: number) => {
+    setCurrent(index)
+    setPaused(false)
+  }, [])
+
+  const next = useCallback(() => {
+    setCurrent((p) => (p + 1) % slides.length)
+  }, [])
+
+  // Auto-advance
+  useEffect(() => {
+    if (paused) return
+    timerRef.current = setInterval(next, SLIDE_DURATION)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [paused, current, next])
+
+  return (
+    <section
+      className="relative min-h-screen w-screen overflow-hidden bg-[#080c10] flex items-stretch"
+      style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* ── Background image layer ── */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={`bg-${current}`}
+          className="absolute inset-0 z-0"
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          {/* Deep cinematic gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080c10] via-[#080c10]/85 to-[#080c10]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080c10]/60 via-transparent to-transparent" />
+          {/* Accent color wash — subtle tint from slide accent */}
+          <motion.div
+            className="absolute inset-0"
+            style={{ backgroundColor: slide.accentMuted }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.4 }}
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* ── Layout - FULL WIDTH with no constraints ── */}
+      <div className="relative z-10 w-full px-6 md:px-12 lg:px-20 py-24 flex flex-col justify-between min-h-screen">
+
+        {/* Top bar */}
+        <div className="flex items-center justify-between">
+          <motion.div
+            animate={{ color: slide.accent }}
+            transition={{ duration: 0.6 }}
+            className="text-sm font-mono tracking-[0.2em] uppercase"
+          >
+            Alexander
+          </motion.div>
+          <div className="hidden md:flex items-center gap-6 text-xs text-white/30 font-mono tracking-widest">
+            <span>Portfolio</span>
+            <span
+              className="h-px w-16 inline-block"
+              style={{ backgroundColor: slide.accent, opacity: 0.4 }}
+            />
+            <span>{String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+          </div>
+        </div>
+
+        {/* Content area */}
+        <div className="flex-1 flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-24 w-full items-center">
+
+            {/* Left: text content */}
+            <div className="max-w-3xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`content-${current}`}
+                  initial={{ opacity: 0, y: 32 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -24 }}
+                  transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  {/* Eyebrow */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <motion.span
+                      className="h-px w-8 block"
+                      style={{ backgroundColor: slide.accent }}
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                    />
+                    <span
+                      className="text-xs font-mono tracking-[0.25em] uppercase"
+                      style={{ color: slide.accent }}
+                    >
+                      {slide.eyebrow}
+                    </span>
+                  </div>
+
+                  {/* Greeting (slide 0 only) */}
+                  {slide.showGreeting && (
+                    <motion.p
+                      className="text-white/50 text-xl md:text-2xl font-light mb-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.15 }}
+                    >
+                      Hi, I&apos;m{" "}
+                      <span className="font-semibold" style={{ color: slide.accent }}>
+                        Alexander
+                      </span>
+                    </motion.p>
+                  )}
+
+                  {/* Title - natural sentence flow with proper line wrapping */}
+                  <h1 className="text-[clamp(2rem,5vw,4rem)] font-bold leading-[1.2] tracking-tight text-white mb-6">
+                    {slide.title}
+                  </h1>
+
+                  {/* Description */}
+                  <p className="text-white/55 text-base md:text-lg leading-relaxed mb-8 max-w-md">
+                    {slide.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {slide.tags.map((tag) => (
+                      <Tag key={tag} label={tag} accent={slide.accent} />
+                    ))}
+                  </div>
+
+                  {/* CTAs */}
+                  <div className="flex flex-wrap gap-4">
+                    <Link href="/contact">
+                      <button
+                        className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300"
+                        style={{
+                          backgroundColor: slide.accent,
+                          color: "#fff",
+                        }}
+                      >
+                        Let&apos;s Innovate
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                      </button>
+                    </Link>
+                    <Link href="/portfolio">
+                      <button
+                        className="group flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-white/20 text-white/70 hover:text-white hover:border-white/40 transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <Eye className="w-4 h-4" />
+                        View Work
+                      </button>
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right: progress rail (desktop) */}
+            <div className="hidden lg:flex items-center">
+              <ProgressRail
+                total={slides.length}
+                current={current}
+                duration={paused ? 999999 : SLIDE_DURATION}
+                onSelect={goTo}
+                accent={slide.accent}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar — mobile dots + slide eyebrow label */}
+        <div className="flex items-center justify-between">
+          {/* Mobile progress dots */}
+          <div className="flex lg:hidden gap-2">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className="h-0.5 rounded-full transition-all duration-500"
+                style={{
+                  width: i === current ? "2rem" : "0.5rem",
+                  backgroundColor: i === current ? slide.accent : "rgba(255,255,255,0.25)",
+                }}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Slide label */}
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`label-${current}`}
+              className="text-xs text-white/25 font-mono tracking-widest hidden md:block"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4 }}
+            >
+              {slide.eyebrow.toUpperCase()}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ── Right edge vignette (image bleed area hint) ── */}
+      <div className="pointer-events-none absolute right-0 inset-y-0 w-1/3 bg-gradient-to-l from-[#080c10]/30 to-transparent z-5" />
+    </section>
+  )
+}
