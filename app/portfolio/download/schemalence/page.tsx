@@ -727,9 +727,9 @@ import { FullWidthSection } from "@/components/full-width-section"
 const appDetails = {
   name: "SchemaLence",
   version: "1.0.0",
-  fileSize: "49.9 MB",
+  fileSize: "50.0 MB",
   lastUpdated: "June 16, 2026",
-  portableUrl: "/downloads/SchemaLence.exe"
+  portableUrl: "/downloads/SchemaLence.zip"
 }
 
 // Features list
@@ -756,25 +756,25 @@ const features = [
   },
 ]
 
-// Installation steps
+// Updated Installation steps for the ZIP deployment
 const installationSteps = [
   {
     step: 1,
-    title: "Download the executable file",
+    title: "Download the portable ZIP archive",
     description:
-      "Click the download button to save the standalone SchemaLence.exe file directly onto your computer.",
+      "Click the download button to save the compressed SchemaLence package (.zip) securely onto your system.",
   },
   {
     step: 2,
-    title: "Handle Windows 11 SmartScreen alerts",
+    title: "Extract the application folder",
     description:
-      "Because this is a free standalone tool that is not digitally signed, Windows Defender or SmartScreen may show a warning. To run the app, simply click 'More info' and then select 'Run anyway'.",
+      "Right-click the downloaded .zip file and select 'Extract All...'. Extracting the folder protects the standalone executable from being prematurely locked or corrupted by background system scans.",
   },
   {
     step: 3,
-    title: "Launch and operate immediately",
+    title: "Launch and handle SmartScreen if prompted",
     description:
-      "No installation setup wizards or extraction steps are required. Just double-click the SchemaLence.exe file to instantly launch and run the app from any directory on your PC.",
+      "Open the extracted folder and double-click SchemaLence.exe. Because this is a free, standalone developer tool that is not digitally signed, click 'More info' and select 'Run anyway' if a Windows SmartScreen warning appears.",
   },
 ]
 
@@ -821,7 +821,7 @@ export default function DownloadPage() {
     setTimeout(() => {
       const link = document.createElement("a")
       const fileUrl = appDetails.portableUrl
-      const fileName = `SchemaLence_${appDetails.version}.exe`
+      const fileName = `SchemaLence_${appDetails.version}.zip`
 
       link.href = fileUrl
       link.download = fileName

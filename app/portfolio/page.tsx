@@ -551,9 +551,9 @@ const projects = [
     categories: ["desktop"],
     status: " ",
     hostedOn: "PyInstaller | Downloadable >",
-    demoUrl: "/portfolio/schemalence",
+    demoUrl: "portfolio/download/schemalence",
     githubUrl: "https://github.com/sancy1/SchemaLence.git",
-    downloadPageUrl: "/portfolio/schemalence",
+    downloadPageUrl: "portfolio/download/schemalence",
   },
    {
     id: 2,
