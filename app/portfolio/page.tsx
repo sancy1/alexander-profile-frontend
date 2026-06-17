@@ -507,9 +507,9 @@ const projects = [
     categories: ["backend", "fullstack"],
     status: " ",
     hostedOn: "Visit website >",
-    demoUrl: "https://axioquan-two.vercel.app//",
+    demoUrl: "https://axio-prod-dev.onrender.com/",
     githubUrl: "https://github.com/sancy1/axioquan-cloudflare.git",
-    downloadPageUrl: "https://axioquan-two.vercel.app//",
+    downloadPageUrl: "https://axio-prod-dev.onrender.com/",
     featured: true,
   },
   {
