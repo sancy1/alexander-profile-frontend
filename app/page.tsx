@@ -14,57 +14,6 @@ import { useResumeActions } from "@/hooks/use-resume-actions";
 import HeroSlider from "@/components/hero-slider"
 import TechnologiesSection from "@/components/technologies-section"
 
-// const expertiseCards = [
-//   {
-//     title: "Software Development",
-//     description:
-//       "Building robust and intuitive web applications from concept to deployment, specializing in both backend and frontend technologies.",
-//     tags: ["C#", "ASP.NET Core", "Python", "Django", "FastAPI", "Go", "JavaScript", "TypeScript", "Node.js", "Next.js"],
-//     icon: Code,
-//     gradient: "from-emerald-500 to-teal-600",
-//     bgColor: "bg-emerald-50",
-//     borderColor: "border-emerald-200",
-//     iconBg: "bg-emerald-100",
-//     iconColor: "text-emerald-600",
-//   },
-//   {
-//     title: "Machine Learning & AI",
-//     description:
-//       "Developing intelligent systems and predictive models to unlock new possibilities and drive informed decision-making.",
-//     tags: ["Scikit-learn", "TensorFlow", "PyTorch", "OpenCV", "NLP", "LLMs", "Hugging Face", "NumPy"],
-//     icon: Brain,
-//     gradient: "from-purple-500 to-indigo-600",
-//     bgColor: "bg-purple-50",
-//     borderColor: "border-purple-200",
-//     iconBg: "bg-purple-100",
-//     iconColor: "text-purple-600",
-//   },
-//   {
-//     title: "Data & Process Optimization",
-//     description:
-//       "Transforming raw data into actionable insights and streamlining workflows for enhanced efficiency and performance.",
-//     tags: ["Pandas", "Matplotlib", "Data Analysis", "SQL", "Automation", "Selenium", "Excel"],
-//     icon: Database,
-//     gradient: "from-orange-500 to-red-600",
-//     bgColor: "bg-orange-50",
-//     borderColor: "border-orange-200",
-//     iconBg: "bg-orange-100",
-//     iconColor: "text-orange-600",
-//   },
-//   {
-//     title: "Desktop Development",
-//     description:
-//       "Developing cross-platform desktop applications with Electron for smooth performance and real-time functionality.",
-//     tags: ["React", "Node", "Django", "Electron", "Tkinter"],
-//     icon: Smartphone,
-//     gradient: "from-blue-500 to-cyan-600",
-//     bgColor: "bg-blue-50",
-//     borderColor: "border-blue-200",
-//     iconBg: "bg-blue-100",
-//     iconColor: "text-blue-600",
-//   },
-// ]
-
 
 export default function HomePage() {
   const { downloadResume, viewResume } = useResumeActions();
@@ -586,7 +535,7 @@ export default function HomePage() {
         </motion.div>
       </div>
 
-      {/* Custom CSS Animations */}
+     
       <style jsx>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0.3; transform: scale(1); }
