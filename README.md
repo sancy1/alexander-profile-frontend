@@ -615,3 +615,7 @@ Enterprise-grade Django REST Framework backend powering this application.
 This project is licensed under the MIT License.
 
 See the LICENSE file for full details.
+
+SCREENSHOTS
+<img width="1891" height="870" alt="profile" src="https://github.com/user-attachments/assets/93d23898-a726-4d88-b513-85703aeaf230" />
+
