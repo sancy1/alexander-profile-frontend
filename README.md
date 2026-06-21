@@ -618,4 +618,12 @@ See the LICENSE file for full details.
 
 SCREENSHOTS
 <img width="1891" height="870" alt="profile" src="https://github.com/user-attachments/assets/93d23898-a726-4d88-b513-85703aeaf230" />
+|->
+<img width="1894" height="865" alt="1" src="https://github.com/user-attachments/assets/6e5989e2-41e1-43f9-9740-211d2ee58932" />
+|->
+<img width="1891" height="861" alt="2" src="https://github.com/user-attachments/assets/d0df74a6-40ae-460e-972c-1ddda8697f03" />
+|->
+<img width="1887" height="871" alt="3" src="https://github.com/user-attachments/assets/f0a41a00-9f51-4a37-8a63-3591299dc633" />
+|->
+<img width="1879" height="867" alt="4" src="https://github.com/user-attachments/assets/a2efe510-589e-4eb8-b8f4-0cfd3f60911f" />
 
