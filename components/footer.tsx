@@ -341,7 +341,7 @@ const socialLinks = [
     name: "WhatsApp",
     href: "#",
     onClick: () => {
-      const phoneNumber = "2349067467561";
+      const phoneNumber = "2349022162214";
       const whatsappUrl = `https://wa.me/${phoneNumber}`;
       window.open(whatsappUrl, "_blank");
     },

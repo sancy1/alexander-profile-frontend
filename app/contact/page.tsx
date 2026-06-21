@@ -64,7 +64,7 @@ const socialLinks = [
     name: "WhatsApp",
     href: "#", // Keep as fallback
     onClick: () => {
-      const phoneNumber = "2349067467561"; // Your number without + or dashes
+      const phoneNumber = "2349022162214"; // Your number without + or dashes
       const whatsappUrl = `https://wa.me/${phoneNumber}`;
       window.open(whatsappUrl, "_blank");
     },

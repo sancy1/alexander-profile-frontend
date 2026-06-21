@@ -6,7 +6,8 @@ import { MessageCircle } from "lucide-react"
 
 export default function WhatsAppFloat() {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "+2349067467561" 
+    const phoneNumber = "+2349022162214" 
+    // "+2349067467561"
     
     // Completely clean link — opens an empty, organic chat box
     const whatsappUrl = `https://wa.me/${phoneNumber}`
