@@ -1479,12 +1479,62 @@ const projects = [
     image: "/images/portfolio/AxioQan.png",
     // ✅ UNIQUE GALLERY IMAGES FOR EACH PROJECT
     gallery: [
-      "/images/portfolio/AxioQuan/AxioQan-1.png",
-      "/images/portfolio/AxioQuan/AxioQan-2.png",
-      "/images/portfolio/AxioQuan/AxioQan-3.png",
-      "/images/portfolio/AxioQuan/AxioQan-4.png",
+      "/images/portfolio/AxioQuan/1.png",
+      "/images/portfolio/AxioQuan/2.png",
+      "/images/portfolio/AxioQuan/3.png",
+      "/images/portfolio/AxioQuan/4.png",
+      "/images/portfolio/AxioQuan/5.png",
+      "/images/portfolio/AxioQuan/6.png",
+      "/images/portfolio/AxioQuan/7.png",
+      "/images/portfolio/AxioQuan/8.png",
+      "/images/portfolio/AxioQuan/9.png",
+      "/images/portfolio/AxioQuan/10.png",
+      "/images/portfolio/AxioQuan/11.png",
+      "/images/portfolio/AxioQuan/12.png",
+      "/images/portfolio/AxioQuan/13.png",
+      "/images/portfolio/AxioQuan/14.png",
+      "/images/portfolio/AxioQuan/15.png",
+      "/images/portfolio/AxioQuan/16.png",
+      "/images/portfolio/AxioQuan/17.png",
+      "/images/portfolio/AxioQuan/18.png",
+      "/images/portfolio/AxioQuan/19.png",
+      "/images/portfolio/AxioQuan/20.png",
+      "/images/portfolio/AxioQuan/21.png",
+      "/images/portfolio/AxioQuan/22.png",
+      "/images/portfolio/AxioQuan/23.png",
+      "/images/portfolio/AxioQuan/24.png",
+      "/images/portfolio/AxioQuan/25.png",  
+      "/images/portfolio/AxioQuan/26.png",
+      "/images/portfolio/AxioQuan/27.png",
+      "/images/portfolio/AxioQuan/28.png",
+      "/images/portfolio/AxioQuan/29.png",
+      "/images/portfolio/AxioQuan/30.png",
+      "/images/portfolio/AxioQuan/31.png",
+      "/images/portfolio/AxioQuan/32.png",
+      "/images/portfolio/AxioQuan/33.png",
+      "/images/portfolio/AxioQuan/34.png",
+      "/images/portfolio/AxioQuan/35.png",
+      "/images/portfolio/AxioQuan/36.png",
+      "/images/portfolio/AxioQuan/37.png",
+      "/images/portfolio/AxioQuan/38.png",
+      "/images/portfolio/AxioQuan/39.png",
+      "/images/portfolio/AxioQuan/40.png",
+      "/images/portfolio/AxioQuan/41.png",
+      "/images/portfolio/AxioQuan/42.png",
+      "/images/portfolio/AxioQuan/43.png",
+      "/images/portfolio/AxioQuan/44.png",
+      "/images/portfolio/AxioQuan/45.png",
+      "/images/portfolio/AxioQuan/46.png",
+      "/images/portfolio/AxioQuan/47.png",
+      "/images/portfolio/AxioQuan/48.png",
+      "/images/portfolio/AxioQuan/49.png",
+      "/images/portfolio/AxioQuan/50.png",
+      "/images/portfolio/AxioQuan/51.png",
+      "/images/portfolio/AxioQuan/52.png",
+      "/images/portfolio/AxioQuan/53.png",
+
     ],
-    tags: ["Java", "C#", "TypeScript", "Next.JS", "Tailwind CSS", "Spring Boot", "Cloudflare"],
+    tags: ["Java", "C#", "Fastify + TypeScript", "Next.JS", "Tailwind CSS", "Spring Boot", "ASP.NET Core Web API", "Cloudflare", "Terraform", "CI/CD", "Docker", "PostgreSQL", "JWT", "OAuth2", "Cloudinary", "Shadcn/UI", "Next-Auth", "WebSockets"],
     categories: ["backend", "fullstack"],
     status: "",
     hostedOn: "Visit >",
@@ -1965,20 +2015,23 @@ export default function PortfolioPage() {
                 />
 
                 {/* Left navigation arrow controller */}
-                <button
-                  onClick={(e) => prevImage(e, getGalleryImages(activeGalleryProject).length)}
-                  className="absolute left-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-md transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
+                {/* Left navigation arrow controller */}
+              <button
+                onClick={(e) => prevImage(e, getGalleryImages(activeGalleryProject).length)}
+                className="absolute left-4 bg-gray-800/75 hover:bg-gray-900/90 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 shadow-lg border border-white/10 hover:scale-110"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
 
-                {/* Right navigation arrow controller */}
-                <button
-                  onClick={(e) => nextImage(e, getGalleryImages(activeGalleryProject).length)}
-                  className="absolute right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-md transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
+              {/* Right navigation arrow controller */}
+              <button
+                onClick={(e) => nextImage(e, getGalleryImages(activeGalleryProject).length)}
+                className="absolute right-4 bg-gray-800/75 hover:bg-gray-900/90 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 shadow-lg border border-white/10 hover:scale-110"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
 
                 {/* Index Counter Indicator */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-slate-900/60 text-white text-xs px-3 py-1 rounded-full font-medium tracking-wide backdrop-blur-sm">
@@ -1988,25 +2041,45 @@ export default function PortfolioPage() {
 
               {/* Lower Modal Metadata Information Footer bar */}
               <div className="p-6 bg-slate-50 border-t border-slate-100">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-1">{activeGalleryProject.title} App Walkthrough</h4>
-                    <p className="text-slate-500 text-sm">Reviewing sliding layout architecture interfaces and production screenshots.</p>
+                <div className="flex flex-col gap-4">
+                  {/* Project Title & Description */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-1">{activeGalleryProject.title} App Walkthrough</h4>
+                      <p className="text-slate-500 text-sm">Reviewing sliding layout architecture interfaces and production screenshots.</p>
+                    </div>
+                    <div className="text-xs text-slate-400 font-medium bg-white px-3 py-1 rounded-full border border-slate-200 whitespace-nowrap">
+                      {currentImageIndex + 1} / {getGalleryImages(activeGalleryProject).length}
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    {getGalleryImages(activeGalleryProject).map((_, thumbIndex) => (
-                      <button
-                        key={thumbIndex}
-                        onClick={() => setCurrentImageIndex(thumbIndex)}
-                        className={`w-3 h-3 rounded-full transition-all ${
-                          currentImageIndex === thumbIndex ? "bg-emerald-600 scale-125" : "bg-slate-300 hover:bg-slate-400"
-                        }`}
-                      />
-                    ))}
+
+                  {/* ✅ FIXED: Multi-line Thumbnail Dots Grid - 10 per row */}
+                  <div className="flex flex-col gap-1.5 w-full">
+                    {/* Dots arranged in rows of 10 */}
+                    <div className="flex flex-wrap gap-1.5 justify-start">
+                      {getGalleryImages(activeGalleryProject).map((_, thumbIndex) => (
+                        <button
+                          key={thumbIndex}
+                          onClick={() => setCurrentImageIndex(thumbIndex)}
+                          className={`
+                            w-2.5 h-2.5 rounded-full transition-all duration-200 flex-shrink-0
+                            ${currentImageIndex === thumbIndex 
+                              ? "bg-emerald-600 scale-125 ring-2 ring-emerald-200" 
+                              : "bg-slate-300 hover:bg-slate-400 hover:scale-110"
+                            }
+                          `}
+                          title={`Go to image ${thumbIndex + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Row indicator - shows which row you're on */}
+                    {/* <div className="text-[10px] text-slate-400 font-medium mt-1">
+                      Row {Math.floor(currentImageIndex / 10) + 1} of {Math.ceil(getGalleryImages(activeGalleryProject).length / 10)}
+                    </div> */}
                   </div>
                 </div>
               </div>
-
             </motion.div>
           </motion.div>
         )}
