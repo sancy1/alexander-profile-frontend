@@ -1451,7 +1451,8 @@ import {
   Image as ImageIcon, 
   X, 
   ChevronLeft, 
-  ChevronRight 
+  ChevronRight, 
+  Package
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -1468,6 +1469,7 @@ const filterCategories = [
   { name: "Full-Stack", value: "fullstack", icon: Code },
   { name: "Backend", value: "backend", icon: Code },
   { name: "Desktop", value: "desktop", icon: Monitor },
+  { name: "Libraries & Packages", value: "Libraries & Packages", icon: Package },
 ]
 
 const projects = [
@@ -1592,6 +1594,88 @@ const projects = [
     downloadPageUrl: "https://elexousia-weatherforecast-lovat.vercel.app/",
     featured: false,
   },
+
+{
+    id: 10, // DONE --------------------------------------------------------
+    title: "Portfolio-Resilience",
+    description:
+      "Portfolio.Resilience is a production-grade .NET10 resilience library for microservices and payment systems. It wraps every outbound call — HTTP, database, cache, filesystem — in one configurable pipeline so no service has to hand-roll retry logic again.\n\nWhat it protects against: transient failures, slow dependencies, burst traffic, cascading outages, and duplicate writes on retry.\n\nThe pipeline: Rate Limiter → Bulkhead → Hedging → Retry → Circuit Breaker → Timeout → Operation. Every layer has one job. Fallback runs per call when the pipeline exhausts.\n\nCross-cutting: structured JSON events, latency metrics (p50/p95/p99, error rate, in-flight), and ambient correlation IDs that propagate via X-Correlation-Id — all built in, no OpenTelemetry required.\n\nFour capabilities Polly does not ship as first-class APIs:\n\nIdempotency key propagation — the same key reaches every retry and hedged attempt.\n\nPCI-safe event scrubbing — PAN, CVV, and SSN masked before any sink sees them.\n\nTotal time budget — one wall-clock ceiling across the whole call, not just per attempt.\n\nPayment Processing Preset (PPP) — a named factory returning the fail-safe layer order for charges, refunds, payouts, and other non-idempotent writes.\n\nEngineering: 548 tests, 0 failures, 0 warnings; three coordinated NuGet packages; zero third-party runtime dependencies; MIT licensed; CI on GitHub Actions.\n\nReal-world proof: File-Ferry v1.0.0 uses it in production for every filesystem operation",
+    image: "/images/portfolio/portfolio-resilience-1.png",
+    
+    gallery: [
+      "/images/portfolio/portfolio-resilience-1.png",
+      "/images/portfolio/Portfolio-Resilience/Portfolio-Resilience.png",
+      "/images/portfolio/Portfolio-Resilience/1.png",
+      "/images/portfolio/Portfolio-Resilience/2.png",
+      "/images/portfolio/Portfolio-Resilience/3.png",
+      "/images/portfolio/Portfolio-Resilience/4.png",
+       "/images/portfolio/Portfolio-Resilience/5.png",
+      "/images/portfolio/Portfolio-Resilience/6.png",
+      "/images/portfolio/Portfolio-Resilience/7.png",
+      "/images/portfolio/Portfolio-Resilience/8.png",
+       "/images/portfolio/Portfolio-Resilience/9.png",
+      "/images/portfolio/Portfolio-Resilience/10.png",
+      "/images/portfolio/Portfolio-Resilience/11.png",
+      "/images/portfolio/Portfolio-Resilience/12.png",
+
+      "/images/portfolio/Portfolio-Resilience/13.png",
+       "/images/portfolio/Portfolio-Resilience/14.png",
+      "/images/portfolio/Portfolio-Resilience/15.png",
+      "/images/portfolio/Portfolio-Resilience/16.png",
+      "/images/portfolio/Portfolio-Resilience/17.png",
+    ],
+    tags: ["C#", "Nuget", "Asp.Net-Core", "Net10"],
+    categories: ["Libraries & Packages"],
+    status: "",
+    hostedOn: "Visit >",
+    demoUrl: "https://www.nuget.org/packages/Portfolio.Resilience",
+    githubUrl: "https://github.com/sancy1/portfolio-resilience.git",
+    downloadPageUrl: "",
+  },
+  
+{
+    id: 11, // DONE --------------------------------------------------------
+    title: "File-Ferry",
+    description:
+      "File-Ferry is a Windows desktop app that harvests files from anywhere on your PC and delivers them in any format you choose.\n\nThe workflow:\n\nAdd files — paste paths, pick files, or pick a whole folder\n\nFind them — type just a name like note and File-Ferry searches your entire PC, matching note.txt, note.pdf, note.png, notes.md — with a picker when there are multiple matches\n\nChoose a format — .txt, .md, .json, .html, .docx, .pdf, .xlsx, .csv, or .zip\n\nChoose how to deliver — one merged bundle, or separate files\n\nHarvest — click once, get the output, open the folder\n\nWhat makes it different:\n\nClean output by default — the file's exact content, nothing added unless you ask for headers, code fences, TOC, or a manifest\n\nReliability built in — every file read, search, and write runs through retry, circuit breaker, timeout, and fallback policies\n\nLive observability — a log drawer streams every pipeline event; a diagnostics tab shows p50/p95/p99 latency and circuit states per policy\n\nModern native UI — Avalonia UI, Fluent design, light/dark themes, Mica backdrop\n\nPortable — one 72 MB .exe, no installer, no .NET runtime, no admin rights\n\nWhat it is for:\nBundling a project's source code into a single Markdown file for review. Archiving scattered files into a ZIP. Converting a folder of documents into a Word or PDF bundle. Finding a file you only know by name. Delivering file contents in whatever format the recipient needs.",
+    image: "/images/portfolio/File-Ferry-1.png",
+    
+    gallery: [
+      "/images/portfolio/File-Ferry/File-Ferry.png",
+      "/images/portfolio/File-Ferry/1.png",
+      "/images/portfolio/File-Ferry/2.png",
+      "/images/portfolio/File-Ferry/3.png",
+      "/images/portfolio/File-Ferry/4.png",
+    ],
+    tags: ["C#", "Avalonia-UI", "Portfolio.Resilience", "Net10", "Windows-App", "Desktop-App", "File-Management", "File-Converter", "Open-Source", "MIT-License"],
+    categories: ["desktop"],
+    status: "",
+    hostedOn: "Visit >",
+    demoUrl: "https://github.com/sancy1/file-ferry/releases/tag/v1.0.0",
+    githubUrl: "https://github.com/sancy1/file-ferry.git",
+    downloadPageUrl: "https://github.com/sancy1/file-ferry/releases/tag/v1.0.0",
+  },
+
+  {
+    id: 12, // DONE --------------------------------------------------------
+    title: "VoltSentry",
+    description:
+      "VoltSentry is an intelligent battery health manager for Windows laptops that actively prevents overcharging and deep discharge — the two biggest killers of lithium-ion lifespan.\n\nYou set a \"Stop Charging at\" limit (e.g. 85%) and a \"Start Charging at\" limit (e.g. 20%). When your battery hits either threshold, VoltSentry fires persistent, impossible-to-ignore alarms — looping sounds plus Windows tray pop-ups that repeat until you plug in or unplug.\n\nKey features:\n\n🔔 Dual alarm system (full charge / low battery)\n\n📊 Dashboard with live battery %, \n\n🖥️ Native Windows 11 system tray icon\n\n🔁 Auto-start on Windows boot\n\n🌙 Quiet Hours + Snooze\n\n🔒 Encrypted backup & restore\n\n🎵 Custom alarm sounds\n\nThe result: keeping your battery in the healthy 20–85% range can double its lifespan — turning 2–3 years into 5–7, and saving a $150–$300 replacement.",
+    image: "/images/portfolio/VoltSentry-1.png",
+    
+    gallery: [
+      "/images/portfolio/VoltSentry/VoltSentry.png",
+      "/images/portfolio/VoltSentry/1.png",
+    ],
+    tags: ["Python", "PyQt6", "SQLite", "Windows-App", "Desktop-App", "Battery-Management", "Data-Visualization", "Open-Source", "PyInstaller"],
+    categories: ["desktop"],
+    status: "",
+    hostedOn: "Visit >",
+    demoUrl: "https://github.com/sancy1/voltsentry/releases/tag/v1.0.0",
+    githubUrl: "https://github.com/sancy1/voltsentry.git",
+    downloadPageUrl: "https://github.com/sancy1/voltsentry/releases/tag/v1.0.0",
+  },
+
   {
     id: 9, // DONE --------------------------------------------------------
     title: "SchemaLence",
