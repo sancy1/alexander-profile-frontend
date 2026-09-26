@@ -945,7 +945,8 @@ import {
   Award, 
   Star, 
   Code,
-  CheckCircle 
+  CheckCircle, 
+  Package
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -1058,6 +1059,16 @@ const technicalSkills = [
     icon: GitBranch,
     gradient: "from-cyan-500 to-blue-500",
   },
+
+  {
+    category: "Resilience & Reliability Engineering",
+    skills: [
+      "Retry", "Circuit Breaker", "Timeout", "Rate Limiter", "Bulkhead", "Hedging", "Fallback", "Policy Composition", "Payment Processing Preset (PPP)", "Idempotency Propagation", "PCI-Safe Scrubbing", "Total Time Budgets", "Structured Events", "p50/p95/p99", "Correlation IDs", "OpenTelemetry", "548 tests", "CI on Windows + Linux", "Zero runtime dependencies", "MIT", "nuget.org/PackageId", "github.com"
+    ],
+    icon: Package,
+    gradient: "from-amber-800 to-orange-900",
+  },
+  
 ];
 
 const mainExpertise = [
