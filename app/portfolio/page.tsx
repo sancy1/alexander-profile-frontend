@@ -1603,7 +1603,7 @@ const projects = [
     image: "/images/portfolio/portfolio-resilience-1.png",
     
     gallery: [
-      "/images/portfolio/portfolio-resilience-1.png",
+      "/images/portfolio/Portfolio-Resilience/portfolio-resilience-1.png",
       "/images/portfolio/Portfolio-Resilience/Portfolio-Resilience.png",
       "/images/portfolio/Portfolio-Resilience/1.png",
       "/images/portfolio/Portfolio-Resilience/2.png",
