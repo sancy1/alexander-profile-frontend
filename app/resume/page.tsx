@@ -1068,6 +1068,15 @@ const technicalSkills = [
     icon: Package,
     gradient: "from-amber-800 to-orange-900",
   },
+
+  {
+  category: "API Boundary & Security Engineering",
+  skills: [
+    "Contract-First APIs", "JSON Response Envelopes", "Stable Error Codes", "Validation Envelopes", "Pagination Contract", "Filtering & Sorting Metadata", "Correlation IDs", "CSRF Issuance & Validation", "Secure Cookie Profiles", "Origin Policy", "Fetch Metadata", "Content Negotiation", "Repository-Owned OpenAPI", "Rate-Limit Integration", "Diagnostics", "Zero-Runtime Browser Client", "Cross-Language Wire Specification", "ASP.NET Core"
+  ],
+  icon: Package,
+  gradient: "from-teal-700 to-indigo-900",
+},
   
 ];
 

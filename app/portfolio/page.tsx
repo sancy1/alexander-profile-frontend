@@ -1637,7 +1637,7 @@ const projects = [
     id: 11, // DONE --------------------------------------------------------
     title: "File-Ferry",
     description:
-      "File-Ferry is a Windows desktop app that harvests files from anywhere on your PC and delivers them in any format you choose.\n\nThe workflow:\n\nAdd files — paste paths, pick files, or pick a whole folder\n\nFind them — type just a name like note and File-Ferry searches your entire PC, matching note.txt, note.pdf, note.png, notes.md — with a picker when there are multiple matches\n\nChoose a format — .txt, .md, .json, .html, .docx, .pdf, .xlsx, .csv, or .zip\n\nChoose how to deliver — one merged bundle, or separate files\n\nHarvest — click once, get the output, open the folder\n\nWhat makes it different:\n\nClean output by default — the file's exact content, nothing added unless you ask for headers, code fences, TOC, or a manifest\n\nReliability built in — every file read, search, and write runs through retry, circuit breaker, timeout, and fallback policies\n\nLive observability — a log drawer streams every pipeline event; a diagnostics tab shows p50/p95/p99 latency and circuit states per policy\n\nModern native UI — Avalonia UI, Fluent design, light/dark themes, Mica backdrop\n\nPortable — one 72 MB .exe, no installer, no .NET runtime, no admin rights\n\nWhat it is for:\nBundling a project's source code into a single Markdown file for review. Archiving scattered files into a ZIP. Converting a folder of documents into a Word or PDF bundle. Finding a file you only know by name. Delivering file contents in whatever format the recipient needs.",
+      "File-Ferry is a Windows desktop app that harvests files from anywhere on your PC, downloads files from supported cloud providers, inspects PostgreSQL databases, and delivers content in the format you choose.\n\nThe workflow:\n\nAdd files — paste paths, pick files, or pick a whole folder\n\nFind them — type just a name like note and File-Ferry searches your entire PC, matching note.txt, note.pdf, note.png, notes.md — with a picker when there are multiple matches\n\nConnect to cloud — download one or more files from Google Drive and other configured providers\n\nInspect databases — browse PostgreSQL schemas and tables, preview role-visible data, export results, and create backups with SchemaLence\n\nChoose a format — .txt, .md, .json, .html, .docx, .pdf, .xlsx, .csv, or .zip\n\nChoose how to deliver — one merged bundle, or separate files\n\nHarvest — click once, get the output, open the folder\n\nWhat makes it different:\n\nClean output by default — the file’s exact content, nothing added unless you ask for headers, code fences, TOC, or a manifest\n\nReliability built in — file reads, searches, writes, cloud downloads, and database operations run through retry, circuit breaker, timeout, and fallback policies\n\nLive observability — a log drawer streams every pipeline event; a diagnostics tab shows p50/p95/p99 latency and circuit states per policy\n\nModern native UI — Avalonia UI, Fluent design, light/dark themes, Mica backdrop\n\nPortable — one 72 MB .exe, no installer, no .NET runtime, no admin rights\n\nWhat it is for:\nBundling a project’s source code into a single Markdown file for review. Archiving scattered files into a ZIP. Converting a folder of documents into a Word or PDF bundle. Finding a file you only know by name. Downloading files from cloud storage. Inspecting PostgreSQL databases and exporting their structure or data. Delivering file contents in whatever format the recipient needs.",
     image: "/images/portfolio/File-Ferry-1.png",
     
     gallery: [
@@ -1646,6 +1646,9 @@ const projects = [
       "/images/portfolio/File-Ferry/2.png",
       "/images/portfolio/File-Ferry/3.png",
       "/images/portfolio/File-Ferry/4.png",
+      "/images/portfolio/File-Ferry/5.png",
+      "/images/portfolio/File-Ferry/6.png",
+      "/images/portfolio/File-Ferry/7.png",
     ],
     tags: ["C#", "Avalonia-UI", "Portfolio.Resilience", "Net10", "Windows-App", "Desktop-App", "File-Management", "File-Converter", "Open-Source", "MIT-License"],
     categories: ["desktop"],
@@ -1676,28 +1679,28 @@ const projects = [
     downloadPageUrl: "https://github.com/sancy1/voltsentry/releases/tag/v1.0.0",
   },
 
-  {
-    id: 9, // DONE --------------------------------------------------------
-    title: "SchemaLence",
-    description:
-      "A desktop PostgreSQL database schema viewer and data exploration tool featuring table analysis, and interactive data grids.",
-    image: "/images/portfolio/schemaLence-1.png",
+  // {
+  //   id: 9, // DONE --------------------------------------------------------
+  //   title: "SchemaLence",
+  //   description:
+  //     "A desktop PostgreSQL database schema viewer and data exploration tool featuring table analysis, and interactive data grids.",
+  //   image: "/images/portfolio/schemaLence-1.png",
     
-    gallery: [
-      "/images/portfolio/SchemaLence/SchemaLence.png",
-      "/images/portfolio/SchemaLence/1.png",
-      "/images/portfolio/SchemaLence/2.png",
-      "/images/portfolio/SchemaLence/3.png",
-      "/images/portfolio/SchemaLence/4.png",
-    ],
-    tags: ["Python", "Pandas", "TTKBootstrap", "tkinter"],
-    categories: ["desktop"],
-    status: "",
-    hostedOn: "Visit >",
-    demoUrl: "portfolio/download/schemalence",
-    githubUrl: "https://github.com/sancy1/SchemaLence.git",
-    downloadPageUrl: "portfolio/download/schemalence",
-  },
+  //   gallery: [
+  //     "/images/portfolio/SchemaLence/SchemaLence.png",
+  //     "/images/portfolio/SchemaLence/1.png",
+  //     "/images/portfolio/SchemaLence/2.png",
+  //     "/images/portfolio/SchemaLence/3.png",
+  //     "/images/portfolio/SchemaLence/4.png",
+  //   ],
+  //   tags: ["Python", "Pandas", "TTKBootstrap", "tkinter"],
+  //   categories: ["desktop"],
+  //   status: "",
+  //   hostedOn: "Visit >",
+  //   demoUrl: "portfolio/download/schemalence",
+  //   githubUrl: "https://github.com/sancy1/SchemaLence.git",
+  //   downloadPageUrl: "portfolio/download/schemalence",
+  // },
   {
     id: 2, // DONE --------------------------------------------------------
     title: "Universal Time",

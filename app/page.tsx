@@ -88,6 +88,14 @@ export default function HomePage() {
                   shadowColor: "shadow-blue-500/20",
                   icon: "⚙️"
                 },
+                {
+                  value: "2",
+                  label: "Libraries Developed",
+                  gradient: "from-yellow-500 to-fuchsia-500",
+                  bgGradient: "bg-gradient-to-br from-yellow-50 to-fuchsia-50",
+                  shadowColor: "shadow-yellow-500/20",
+                  icon: "📦"
+                },
                 { 
                   value: "25+", 
                   label: "Technologies & Tools", 
