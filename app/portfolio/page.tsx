@@ -1595,6 +1595,45 @@ const projects = [
     featured: false,
   },
 
+
+  {
+    id: 9, // DONE --------------------------------------------------------
+    title: "ApiPilot",
+    description:
+    "ApiPilot is a production-grade .NET10 API platform library for ASP.NET Core services. It gives every endpoint one consistent response contract, one validation pipeline, and one security boundary so no service has to hand-roll envelopes, error handling, correlation, or CSRF protection again.\n\nWhat it protects against: inconsistent success and error responses, unstructured validation failures, missing request correlation, unsafe cookie handling, cross-origin abuse, CSRF attacks on state-changing requests, and silent credential leakage.\n\nThe pipeline: Correlation → Content Negotiation → Validation → Exception Mapping → CSRF → Origin Policy → Fetch Metadata → Endpoint. Every layer has one job. The response contract stays stable across MVC controllers, minimal APIs, and the browser client.\n\nCross-cutting: structured JSON envelopes, stable error codes and field errors, pagination and filtering metadata, X-Correlation-Id propagation, safe logging and redaction, and built-in observability with System.Diagnostics — all built in, no third-party telemetry SDK required.\n\nFour capabilities most API stacks do not ship as first-class APIs:\n\nCSRF endpoint precedence — Require, Skip, and global policy resolve through one shared rule across every documented endpoint path.\n\nPCI-conscious response hygiene — credentials, tokens, and secrets stay out of logs; security diagnostics fail closed at startup.\n\nMulti-instance CSRF safety — legitimate requests remain valid across application instances sharing a Data Protection key ring.\n\nZero-dependency browser client — a framework-neutral fetch client with in-memory CSRF tokens, typed response envelopes, and no silent retry or replay of state-changing requests.\n\nEngineering: 910+ .NET tests plus 60 JavaScript tests, 0 failures, 0 warnings; three coordinated NuGet packages plus a zero-dependency JavaScript client; zero third-party runtime dependencies; MIT licensed; CI on GitHub Actions.\n\nReal-world proof: the repository ships coordinated ApiPilot.Core, ApiPilot.AspNetCore, and ApiPilot.Security packages at v1.0.0, with framework examples for React, Angular, Vue, Svelte, Next.js, Blazor interop, and vanilla JavaScript.",
+    image: "/images/portfolio/apipilot-1.png",
+    
+    gallery: [
+      "/images/portfolio/apipilot/apipilot-1.png",
+      "/images/portfolio/apipilot/apipilot.png",
+      "/images/portfolio/apipilot/1.png",
+      "/images/portfolio/apipilot/2.png",
+      "/images/portfolio/apipilot/3.png",
+      "/images/portfolio/apipilot/4.png",
+       "/images/portfolio/apipilot/5.png",
+      "/images/portfolio/apipilot/6.png",
+      "/images/portfolio/apipilot/7.png",
+      "/images/portfolio/apipilot/8.png",
+       "/images/portfolio/apipilot/9.png",
+      "/images/portfolio/apipilot/10.png",
+      "/images/portfolio/apipilot/11.png",
+      "/images/portfolio/apipilot/12.png",
+      "/images/portfolio/apipilot/13.png",
+       "/images/portfolio/apipilot/14.png",
+      "/images/portfolio/apipilot/15.png",
+      "/images/portfolio/apipilot/16.png",
+      "/images/portfolio/apipilot/17.png",
+    ],
+    tags: ["C#", "Nuget", "Asp.Net-Core", "Net10"],
+    categories: ["Libraries & Packages"],
+    status: "",
+    hostedOn: "Visit >",
+    demoUrl: "https://www.nuget.org/packages/ApiPilot.Core",
+    githubUrl: "https://github.com/sancy1/ApiPilot",
+    downloadPageUrl: "",
+  },
+
+
 {
     id: 10, // DONE --------------------------------------------------------
     title: "Portfolio-Resilience",
