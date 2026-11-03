@@ -72,14 +72,14 @@ export default function HomePage() {
                   shadowColor: "shadow-emerald-500/20",
                   icon: "💻"
                 },
-                { 
-                  value: "8+", 
-                  label: "Deployed Projects", 
-                  gradient: "from-purple-500 to-indigo-500",
-                  bgGradient: "bg-gradient-to-br from-purple-50 to-indigo-50",
-                  shadowColor: "shadow-purple-500/20",
-                  icon: "🚀"
-                },
+                // { 
+                //   value: "8+", 
+                //   label: "Deployed Projects", 
+                //   gradient: "from-purple-500 to-indigo-500",
+                //   bgGradient: "bg-gradient-to-br from-purple-50 to-indigo-50",
+                //   shadowColor: "shadow-purple-500/20",
+                //   icon: "🚀"
+                // },
                 { 
                   value: "4", 
                   label: "Engineering Domains", 

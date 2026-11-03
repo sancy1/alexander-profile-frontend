@@ -1345,7 +1345,7 @@ const values = [
 
 const stats = [
   { value: "3+", label: "Years Building Software", icon: Zap },
-  { value: "8+", label: "Deployed Projects", icon: Star },
+  // { value: "8+", label: "Deployed Projects", icon: Star },
   { value: "4", label: "Engineering Specializations", icon: Code },
   { value: "End-to-End", label: "System Ownership", icon: Heart },
 ]
